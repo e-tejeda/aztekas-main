@@ -1,3 +1,6 @@
+#include<stdio.h>
+#include<math.h>
+#include"../Headers/matrix.h"
 #include"../Headers/main.h"
     
 int funct_A(double *a, double *uu)

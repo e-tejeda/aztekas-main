@@ -1,9 +1,8 @@
 #include"main.h"
     
-void funct_F(double *f, double *v, double *u, double *x)
+void funct_Q(double *q, double *u, double *x)
 {
    double E, e;
-   double cs;
    double rho, p, vx1=0, vx2=0, vx3=0;
    rho = u[0];
    p   = u[1];
@@ -20,19 +19,14 @@ void funct_F(double *f, double *v, double *u, double *x)
 #endif
 
 #if EOS == IDEAL
-   EoS_Ideal(&e,u,x);
-   Sound_Speed(&cs,u,x);
+   EoS_Ideal(e,u,x);
 #endif
 
    E = 0.5 * rho * (vx1*vx1 + vx2*vx2 + vx3*vx3) + rho * e;
 
-   f[0] = rho * vx1;
-   f[1] = vx1 * (E + p);
-   f[2] = rho * vx1 * vx1 + p;
-   f[3] = rho * vx2 * vx1;
-   f[4] = rho * vx3 * vx1;
-
-   v[0] = vx1 - cs;
-   v[1] = vx1 + cs;
-   v[2] = vx1;
+   q[0] = rho;
+   q[1] = E;
+   q[2] = rho*vx1;
+   q[3] = rho*vx2;
+   q[4] = rho*vx3;
 }

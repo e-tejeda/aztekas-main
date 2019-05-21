@@ -1,6 +1,6 @@
-#include"../Headers/main.h"
+#include"main.h"
     
-int funct_H(double *a, double *uu)
+int Source_Terms(double *a, double *uu, double *x)
 {
    int i;
    double r;
@@ -19,11 +19,11 @@ int funct_H(double *a, double *uu)
    w = uu[4];
 #endif
 
-   a[0] = n*w;
-   a[1] = ((K-1)*n*pow(w,3.0)+((K-1)*n*pow(v,2.0)+(K-1)*n*pow(u,2.0)+2*K*p)*w)/(2*K-2);
-   a[2] = n*u*w;
-   a[3] = n*v*w;
-   a[4] = n*pow(w,2.0)+p;
+   a[0] = 0;
+   a[1] = 0;
+   a[2] = 0;
+   a[3] = 0;
+   a[4] = 0;
 
    return 0;
 }

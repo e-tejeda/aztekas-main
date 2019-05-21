@@ -1,39 +1,32 @@
-#include<stdio.h>
-#include<math.h>
-#include"../Headers/vector.h"
-#include"../Headers/main.h"
+#include"main.h"
     
-int funct_Q(double *a, double *uu)
+void funct_Q(double *q, double *u, double *x)
 {
-   int i;
-   double r;
-   double n, p, u=0, v=0, w=0;
-   n = uu[0];
-   p = uu[1];
+   double E, e;
+   double rho, p, vx1=0, vx2=0, vx3=0;
+   rho = u[0];
+   p   = u[1];
 
-#if dim == 1
-   u = uu[2];
-#elif dim == 2
-   u = uu[2];
-   v = uu[3];
-#elif dim == 3 || dim == 4
-   u = uu[2];
-   v = uu[3];
-   w = uu[4];
+#if DIM == 1
+   vx1 = u[2];
+#elif DIM == 2
+   vx1 = u[2];
+   vx2 = u[3];
+#elif DIM == 3 || DIM == 4
+   vx1 = u[2];
+   vx2 = u[3];
+   vx3 = u[4];
 #endif
 
-   a[0] = n;
-   a[1] = ((K-1)*n*pow(w,2.0)+(K-1)*n*pow(v,2.0)+(K-1)*n*pow(u,2.0)+2*p)/(2*K-2);
-#if dim == 1
-   a[2] = n*u;
-#elif dim == 2
-   a[2] = n*u;
-   a[3] = n*v;
-#elif dim == 3 || dim == 4
-   a[2] = n*u;
-   a[3] = n*v;
-   a[4] = n*w;
+#if EOS == IDEAL
+   EoS_Ideal(&e,u,x);
 #endif
 
-   return 0;
+   E = 0.5 * rho * (vx1*vx1 + vx2*vx2 + vx3*vx3) + rho * e;
+
+   q[0] = rho;
+   q[1] = E;
+   q[2] = rho*vx1;
+   q[3] = rho*vx2;
+   q[4] = rho*vx3;
 }

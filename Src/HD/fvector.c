@@ -1,6 +1,6 @@
 #include"main.h"
     
-void funct_F(double *f, double *v, double *u, double *x)
+void Prim2FluxF(double *f, double *v, double *u, double *x)
 {
    double E, e;
    double cs;

@@ -1,6 +1,6 @@
 #include"main.h"
     
-void funct_F(double *f, double *v, double *u, double *x)
+void Prim2FluxG(double *f, double *v, double *u, double *x)
 {
    double E, e;
    double cs;
@@ -26,13 +26,13 @@ void funct_F(double *f, double *v, double *u, double *x)
 
    E = 0.5 * rho * (vx1*vx1 + vx2*vx2 + vx3*vx3) + rho * e;
 
-   f[0] = rho * vx1;
-   f[1] = vx1 * (E + p);
-   f[2] = rho * vx1 * vx1 + p;
-   f[3] = rho * vx2 * vx1;
-   f[4] = rho * vx3 * vx1;
+   f[0] = rho * vx2;
+   f[1] = vx2 * (E + p);
+   f[2] = rho * vx1 * vx2;
+   f[3] = rho * vx2 * vx2 + p;
+   f[4] = rho * vx3 * vx2;
 
-   v[0] = vx1 - cs;
-   v[1] = vx1 + cs;
-   v[2] = vx1;
+   v[0] = vx2 - cs;
+   v[1] = vx2 + cs;
+   v[2] = vx2;
 }

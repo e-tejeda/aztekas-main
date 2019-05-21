@@ -1,4 +1,4 @@
-#include"../Headers/main.h"
+#include"main.h"
 
 int GAUGE(double *a, double g1, double g2, double g3)
 {

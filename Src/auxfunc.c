@@ -7,12 +7,7 @@
  */
 
 //Do not erase any of these libraries//
-#include<stdio.h>
-#include<math.h>
-#include<stdlib.h>
-#include<string.h>
 #include"main.h"
-#include"param.h"
 
 int MxV(double *M, double *V, double *L)
 {
@@ -33,7 +28,7 @@ int MxV(double *M, double *V, double *L)
    return 0;
 }
 
-void roundgen(double *num)
+void RoundGen(double *num)
 {
    double r;
    double bla;

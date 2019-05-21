@@ -1,9 +1,8 @@
-#include"../Headers/main.h"
+#include"main.h"
     
-int Source_Terms(double *a, double *uu, double *x)
+int funct_Dm(double *a, double *uu)
 {
-   int i;
-   double r;
+   int i;   double r;
    double n, p, u=0, v=0, w=0;
    n = uu[0];
    p = uu[1];
@@ -19,11 +18,9 @@ int Source_Terms(double *a, double *uu, double *x)
    w = uu[4];
 #endif
 
-   a[0] = 0;
-   a[1] = 0;
-   a[2] = 0;
-   a[3] = 0;
-   a[4] = 0;
-
+   a[0] = -(sqrt(K*n*p)-n*u)/n;
+   a[1] = (n*u+sqrt(K*n*p))/n;
+   a[2] = u;
+     
    return 0;
 }

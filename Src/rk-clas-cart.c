@@ -14,43 +14,34 @@
  */
 
 //Do not erase any of these libraries//
-#include<stdio.h>
-#include<math.h>
-#include<stdlib.h>
-#include<string.h>
 #include"main.h"
-#include"vector.h"
-#include"param.h"
 
 int RK1D(double *u, double *q, double *q1, double *q2, int order)
 {
-   char r;
    int n, i;
    int I[3];
    double Dx1 = dx1;
    double Dt  = dt;
    double L[eq+1], F[eq+1];
-   double UU[eq+1];
    double g[6], g1p[6], g1m[6];
-   vec_ v;
-   lim_ l;
+   vec_ vector;
+   lim_ limiter;
 
    for(i = gc; i <= Nx1-gc; i++)
    {
-      //#pragma omp atomic read
       I[0] = i;
-      r = limiter;
  
-      RECONST1D(u,r,&l,I);
-      FLUX1D(&v,&l,I);
+      Reconst1D(u,&limiter,I);
+      Sources(u,&vector,I);
+      Flux1D(&vector,&limiter,I);
  
       for(n = 0; n < eq; n++)
       {
-         F[n] = (v.Fp[n] - v.Fm[n])/(Dx1) - \
-         v.S[n];
+         F[n] = (vector.Fp[n] - vector.Fm[n])/(Dx1) - \
+         vector.S[n];
       }
 
-#if integration == 1 //PVRS
+#if INTEGRATION == PVRS
       for(n = 0; n < eq; n++)
       {
          L[n] = F[n];
@@ -101,10 +92,9 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
          {
             I[0] = i;
             I[1] = j;
-            r = limiter;
 
-            RECONST2D(u,r,&l,I);
-            FLUX2D(&v,&l,I);
+            Reconst2D(u,&l,I);
+            Flux2D(&v,&l,I);
             
             for(n = 0; n < eq; n++)
             {
@@ -113,7 +103,7 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
                v.S[n];
             }
 
-#if integration == 1 //PVRS
+#if INTEGRATION == PVRS
             for(n = 0; n < eq; n++)
             {
                L[n] = F[n];
@@ -172,10 +162,9 @@ int RK3D(double *u, double *q, double *q1, double *q2, int order)
                I[0] = i;
                I[1] = j;
                I[2] = k;
-               r = limiter;
 
-               RECONST3D(u,r,&l,I);
-               FLUX3D(&v,&l,I);
+               Reconst3D(u,&l,I);
+               Flux3D(&v,&l,I);
 
                for(n = 0; n < eq; n++)
                {

@@ -14,80 +14,50 @@
  */
 
 //Do not erase any of these libraries//
-#include<stdio.h>
-#include<math.h>
-#include<stdlib.h>
-#include<string.h>
 #include"main.h"
-#include"vector.h"
-#include"param.h"
 
-int AMATRIX1D(double *u, vec_ *v, int *I)
+int Sources(double *u, vec_ *v, int *I)
 {
-   int m, n;
-   int i;
-   double geoS[eq + 1], extS[eq + 1];
+   int n;
+   double x[4];
+   double default_S[eq + 1], user_S[eq + 1];
 
-   x1 = X1[I[0]];
-#if alfa == 0 || alfa == 1
-   x2 = 0;
-#elif alfa == 2
-   x2 = M_PI_2;
-#endif
-   x3 = 0;
+   x[0] = time;
 
-   funct_S(geoS,u);
-   EXTFORCE(extS,u);
+#if DIM == 1
+
+   x[1] = X1[I[0]];
+   x[2] = 0.0;
+   x[3] = 0.0;
+   #if COORDINATES == SPHERICAL
+   x[2] = M_PI_2;
+   #endif
+
+#elif DIM == 2 || DIM == 4
+
+   x[1] = X1[I[0]];
+   x[2] = X2[I[1]];
+   x[3] = 0.0;
+
+#elif DIM == 3
+
+   x[1] = X1[I[0]];
+   x[2] = X2[I[1]];
+   x[3] = X3[I[2]];
+
+#endif 
+
+   Source_Terms(default_S,u,x);
+   User_Source_Terms(user_S,u,x);
 
 #if integration == 1
-   funct_A(v->A,u);
+   funct_A(v->A,u,x);
 #endif
 
    for(n = 0; n < eq; n++)
    {
-      v->S[n] = geoS[n] + extS[n];
+      v->S[n] = default_S[n] + user_S[n];
    }
-
-   return 0;
-}
-
-int AMATRIX2D(double *u, vec_ *v, int *I)
-{
-   int m, n;
-   double geoS[eq + 1], extS[eq + 1];
-
-   x1  = X1[I[0]];
-   x2  = X2[I[1]];
-   x3  = 0;
-
-#if polar == 1
-   x2 = M_PI_2;
-#endif
-   
-   funct_S(geoS,u);
-   EXTFORCE(extS,u);
-
-#if integration == 1
-   funct_A(v->A,u);
-#endif
-
-   for(n = 0; n < eq; n++)
-   {
-      v->S[n] = geoS[n] + extS[n];
-   }
-
-   return 0;
-}
-
-int AMATRIX3D(double *u, vec_ *v, int *I)
-{
-   int m, n;
-
-   x1  = X1[I[0]];
-   x2  = X2[I[1]];
-   x3  = X3[I[2]];
-
-   funct_S(v->S,u);
 
    return 0;
 }
@@ -100,25 +70,36 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
    double *u, lr, ll;
    double up[eq + 1];
    double um[eq + 1];
-   double dp[3];
-   double dm[3];
+   double lp[3];
+   double lm[3];
    double dup[eq + 1];
    double dum[eq + 1];
-   x1 = 0.0;
-   x2 = 0.0;
-   x3 = 0.0;
+   double x[4];
 
-#if dim == 1
-   x1 = X1[I[0]];
-   x2 = M_PI_2;
-#elif dim == 2
-   x1 = X1[I[0]];
-   x2 = X2[I[1]];
-#elif dim == 3 
-   x1 = X1[I[0]];
-   x2 = X2[I[1]];
-   x3 = X3[I[2]];
-#endif
+   x[0] = time;
+
+#if DIM == 1
+
+   x[1] = X1[I[0]];
+   x[2] = 0.0;
+   x[3] = 0.0;
+   #if COORDINATES == SPHERICAL
+   x[2] = M_PI_2;
+   #endif
+
+#elif DIM == 2 || DIM == 4
+
+   x[1] = X1[I[0]];
+   x[2] = X2[I[1]];
+   x[3] = 0.0;
+
+#elif DIM == 3
+
+   x[1] = X1[I[0]];
+   x[2] = X2[I[1]];
+   x[3] = X3[I[2]];
+
+#endif 
 
    if(pm == 1)
    {
@@ -126,17 +107,17 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
       {
          case 'f':
             u = l->ux1p;
-            x1 = X1p[I[0]];
+            x[1] = X1p[I[0]];
          break;
 
          case 'g':
             u = l->ux2p;
-            x2 = X2p[I[1]];
+            x[2] = X2p[I[1]];
          break;
 
          case 'h':
             u = l->ux3p;
-            x3 = X3p[I[2]];
+            x[3] = X3p[I[2]];
          break;
       }
    }
@@ -146,17 +127,17 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
       {
          case 'f':
             u = l->ux1m;
-            x1 = X1m[I[0]];
+            x[1] = X1m[I[0]];
          break;
 
          case 'g':
             u = l->ux2m;
-            x2 = X2m[I[1]];
+            x[2] = X2m[I[1]];
          break;
 
          case 'h':
             u = l->ux3m;
-            x3 = X3m[I[2]];
+            x[3] = X3m[I[2]];
          break;
       }
    }
@@ -167,53 +148,44 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
       f->um[n] = u[0*eq + n];
    }
 
-   funct_Q(f->qp,f->up);
-   funct_Q(f->qm,f->um);
+   Prim2Cons(f->qp,f->up,x);
+   Prim2Cons(f->qm,f->um,x);
 
    switch(flux)
    {
       case 'f':
-         funct_F(f->fp,f->up);
-         funct_Dm(dp,f->up);
-
-         funct_F(f->fm,f->um);
-         funct_Dm(dm,f->um);
+         Prim2FluxF(f->fp,lp,f->up,x);
+         Prim2FluxF(f->fm,lm,f->um,x);
       break;
 
       case 'g':
-         funct_G(f->fp,f->up);
-         funct_Dn(dp,f->up);
-
-         funct_G(f->fm,f->um);
-         funct_Dn(dm,f->um);
+         Prim2FluxG(f->fp,lp,f->up,x);
+         Prim2FluxG(f->fm,lm,f->um,x);
       break;
 
       case 'h':
-         funct_H(f->fp,f->up);
-         funct_Do(dp,f->up);
-
-         funct_H(f->fm,f->um);
-         funct_Do(dm,f->um);
+         Prim2FluxH(f->fp,lp,f->up,x);
+         Prim2FluxH(f->fm,lm,f->um,x);
       break;
    }
 
-   lr = max(dp[0],dp[1]);
-   lr = max(lr,dp[2]);
-   lr = max(0.0,lr);
-   ll = max(dm[0],dm[1]);
-   ll = max(ll,dm[2]);
-   ll = max(0.0,ll);
+   lr = MAX(lp[0],lp[1]);
+   lr = MAX(lr,lp[2]);
+   lr = MAX(0.0,lr);
+   ll = MAX(lm[0],lm[1]);
+   ll = MAX(ll,lm[2]);
+   ll = MAX(0.0,ll);
 
-   f->lp = max(lr,ll);
+   f->lp = MAX(lr,ll);
 
-   lr = min(dp[0],dp[1]);
-   lr = min(lr,dp[2]);
-   lr = min(0.0,lr);
-   ll = min(dm[0],dm[1]);
-   ll = min(ll,dm[2]);
-   ll = min(0.0,ll);
+   lr = MIN(lp[0],lp[1]);
+   lr = MIN(lr,lp[2]);
+   lr = MIN(0.0,lr);
+   ll = MIN(lm[0],lm[1]);
+   ll = MIN(ll,lm[2]);
+   ll = MIN(0.0,ll);
 
-   f->lm = min(lr,ll);
+   f->lm = MIN(lr,ll);
 
    return 0;
 }
