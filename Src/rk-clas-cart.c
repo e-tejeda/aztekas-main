@@ -82,51 +82,50 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
    double L[eq+1], F[eq+1];
    double g[6], g1p[6], g1m[6];
    double g2p[6], g2m[6];
-   vec_ v;
-   lim_ l;
+   vec_ vector;
+   lim_ limiter;
 
+   for(i = gc; i <= Nx1-gc; i++)
    {
-      for(i = gc; i <= Nx1-gc; i++)
+      for(j = gc; j <= Nx2-gc; j++)
       {
-         for(j = gc; j <= Nx2-gc; j++)
-         {
-            I[0] = i;
-            I[1] = j;
+         I[0] = i;
+         I[1] = j;
 
-            Reconst2D(u,&l,I);
-            Flux2D(&v,&l,I);
-            
-            for(n = 0; n < eq; n++)
-            {
-               F[n] = (v.Fp[n] - v.Fm[n])/(Dx1) + \
-               (v.Gp[n] - v.Gm[n])/(Dx2) - \
-               v.S[n];
-            }
+         Reconst2D(u,&limiter,I);
+         Sources(limiter.ux,&vector,I);
+         Flux2D(&vector,&limiter,I);
+         
+         for(n = 0; n < eq; n++)
+         {
+            F[n] = (vector.Fp[n] - vector.Fm[n])/(Dx1) + \
+            (vector.Gp[n] - vector.Gm[n])/(Dx2) - \
+            vector.S[n];
+         }
 
 #if INTEGRATION == PVRS
-            for(n = 0; n < eq; n++)
-            {
-               L[n] = F[n];
-            }
+         for(n = 0; n < eq; n++)
+         {
+            L[n] = F[n];
+         }
 
-            MxV(v.A,L,F);
+         MxV(v.A,L,F);
 #endif
-            switch(order)
-            {
-               case 1:
-                  for(n = 0; n < eq; n++)
-                  {
-                     q1[c2(n,i,j)] = q[c2(n,i,j)] - (Dt)*(F[n]);
-                  }
-               break;
+         switch(order)
+         {
+            case 1:
+               for(n = 0; n < eq; n++)
+               {
+                  q1[c2(n,i,j)] = q[c2(n,i,j)] - (Dt)*(F[n]);
+               }
+            break;
 
-               case 2:
-                  for(n = 0; n < eq; n++)
-                  {
-                     q2[c2(n,i,j)] = 0.5*(q1[c2(n,i,j)] + q[c2(n,i,j)] - (Dt)*F[n]);
-                  }
-               break;
-            }
+            case 2:
+               for(n = 0; n < eq; n++)
+               {
+                  q2[c2(n,i,j)] = 0.5*(q1[c2(n,i,j)] + q[c2(n,i,j)] - (Dt)*F[n]);
+               }
+            break;
          }
       }
    }

@@ -3,14 +3,9 @@
  *  Date of creation: 02-01-2019 12:50:45
  *  author: Alejandro Aguayo Ortiz 
  */
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
-#include<stdlib.h>
 #include"main.h"
-#include"param.h"
 
-void INITIAL(double *dtprint)
+void Initial(double *dtprint)
 {
    int n, i, j, k, cell;
 
