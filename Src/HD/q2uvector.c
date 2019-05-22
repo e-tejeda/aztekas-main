@@ -16,7 +16,9 @@ int funct_Q2U(double *a, double *uu)
       m3 = 0;
  
       a[c1(0,i)] = D;
+      #if EOS == IDEAL
       a[c1(1,i)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(m3,2.0)+(1.0-K)*pow(m2,2.0)+(1.0-K)*pow(m1,2.0))/(2.0*D);
+      #endif
       a[c1(2,i)] = m1/D;
       a[c1(3,i)] = m2/D;
       a[c1(4,i)] = m3/D;
@@ -35,7 +37,9 @@ int funct_Q2U(double *a, double *uu)
          m3 = 0;
  
          a[c2(0,i,j)] = D;
+         #if EOS == IDEAL
          a[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(m3,2.0)+(1.0-K)*pow(m2,2.0)+(1.0-K)*pow(m1,2.0))/(2.0*D);
+         #endif
          a[c2(2,i,j)] = m1/D;
          a[c2(3,i,j)] = m2/D;
          a[c2(4,i,j)] = m3/D;
@@ -55,7 +59,9 @@ int funct_Q2U(double *a, double *uu)
          m3 = uu[c2(4,i,j)];
  
          a[c2(0,i,j)] = D;
+         #if EOS == IDEAL
          a[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(m3,2.0)+(1.0-K)*pow(m2,2.0)+(1.0-K)*pow(m1,2.0))/(2.0*D);
+         #endif
          a[c2(2,i,j)] = m1/D;
          a[c2(3,i,j)] = m2/D;
          a[c2(4,i,j)] = m3/D;
@@ -77,7 +83,9 @@ int funct_Q2U(double *a, double *uu)
             m3 = uu[c3(4,i,j,k)];
  
             a[c3(0,i,j,k)] = D;
+            #if EOS == IDEAL
             a[c3(1,i,j,k)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(m3,2.0)+(1.0-K)*pow(m2,2.0)+(1.0-K)*pow(m1,2.0))/(2.0*D);
+            #endif
             a[c3(2,i,j,k)] = m1/D;
             a[c3(3,i,j,k)] = m2/D;
             a[c3(4,i,j,k)] = m3/D;

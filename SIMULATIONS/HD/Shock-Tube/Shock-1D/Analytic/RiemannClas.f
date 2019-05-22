@@ -72,16 +72,16 @@ C     Initial data and parameters are read in
 
 C      WRITE(*,*) ' ADIABATIC INDEX OF THE GAS: ' 
 C      READ (*,*)   GAMMA
-      GAMMA = 1.4
+      GAMMA = 5.0/3.0
 
       TIMEOU = 0.2
       
       PL = 1.0
-      DL = 5.0
-      UL = 0.5
+      DL = 1.0
+      UL = 0.0
 
-      PR = 1.0
-      DR = 1.0
+      PR = 0.1
+      DR = 0.125
       UR = 0.0
 
       DOMLEN = 1.0

@@ -84,7 +84,7 @@ endif
 #####################################
 # PATH TO AZTEKAS
 #####################################
-AZTPATH = /home/aaguayoo/AZTEKAS/Github/
+AZTPATH = /home/aaguayoo/AZTEKAS/Github/aztekas-main/
 #####################################
 
 #####################################

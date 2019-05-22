@@ -83,8 +83,7 @@ endif
 #####################################
 # PATH TO AZTEKAS
 #####################################
-AZTPATH = ../../../
-AZTPATH = /home/aaguayoo/AZTEKAS/Github/
+AZTPATH = /home/aaguayoo/AZTEKAS/Github/aztekas-main/
 #####################################
 
 #####################################
@@ -119,7 +118,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/output.c \
 	  $(AZTPATH)/Src/integration$(INT).c \
 	  $(AZTPATH)/Src/flux.c \
-	  $(AZTPATH)/Src/rk-clas-$(COORD).c \
+	  $(AZTPATH)/Src/runge-kutta.c \
 	  $(AZTPATH)/Src/limiters.c \
 	  $(AZTPATH)/Src/vectors.c \
 	  $(AZTPATH)/Src/restart.c \

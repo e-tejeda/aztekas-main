@@ -16,7 +16,7 @@ double TimeStep()
    double c, dt, cmax;
    double r;
 
-   dtmin = 0.1;
+   dtmin = 1000000;
 
    if(DIM == 1)
    {

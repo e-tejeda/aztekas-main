@@ -1,4 +1,4 @@
-#include"main.h"
+#include"../Headers/main.h"
     
 int funct_U2Q(double *a, double *uu)
 {

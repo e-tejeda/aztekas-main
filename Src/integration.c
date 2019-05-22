@@ -12,10 +12,6 @@
 
 int Integration()
 {
-   int n, i, j, k;
-   double uu[eq+1];
-   double qq[eq+1];
-
    //Runge-Kutta 2th-Order and Piecewie Polynomial Reconstruction
 #if DIM == 1 
    
