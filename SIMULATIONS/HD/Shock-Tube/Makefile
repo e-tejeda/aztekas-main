@@ -19,7 +19,7 @@ PARAM += -Dgc=3
 # Physics (rhd,hd,mhd,rmhd)
 #####################################
 
-PHY = hd
+PHY = rhd
 ifeq ($(PHY),hd)
         PARAM += -DPHYSICS=HD
 endif
@@ -66,7 +66,7 @@ endif
 # Coordinates (cart,cyl,sph)
 #####################################
 
-COORD = sph
+COORD = cart
 
 ifeq ($(COORD),cart)
 	PARAM += -DCOORDINATES=CARTESIAN

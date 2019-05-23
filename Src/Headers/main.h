@@ -2,9 +2,14 @@
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
+#include"physics.h"
+
+#if PHYSICS == RHD
+#include"metric.h"
+#endif
+
 #include"limiters.h"
 #include"cond.h"
-#include"physics.h"
 
 #include"const.h"
 #include"macros.h"
