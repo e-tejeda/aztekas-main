@@ -8,10 +8,12 @@
 #define VERTICAL      1
 #define DIAGONAL      2
 
-#define outflow_x1max 1
-#define outflow_x1min 1
-#define outflow_x2max 1
-#define outflow_x2min 1
+#define outflow_x1max TRUE
+#define outflow_x1min TRUE
+//#define outflow_x2max TRUE
+//#define outflow_x2min TRUE
+#define reflective_x2max TRUE
+#define reflective_x2min TRUE
 
 #define RECONST         MC
 #define FLUX            HLLC

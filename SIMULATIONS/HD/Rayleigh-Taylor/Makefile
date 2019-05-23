@@ -127,9 +127,6 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  ./boundaries.c \
 	  $(AZTPATH)/Src/bound_cond.c \
 	  $(AZTPATH)/Src/HD/amatrix.c \
-	  $(AZTPATH)/Src/HD/dmmatrix.c \
-	  $(AZTPATH)/Src/HD/dnmatrix.c \
-	  $(AZTPATH)/Src/HD/domatrix.c \
 	  $(AZTPATH)/Src/HD/q2uvector.c \
 	  $(AZTPATH)/Src/HD/u2qvector.c \
 	  $(AZTPATH)/Src/HD/qvector.c \

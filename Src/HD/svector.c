@@ -45,18 +45,18 @@ void Source_Terms(double *s, double *u, double *x)
 
 #elif COORDINATES == SPHERICAL
 
-   double E, e;
-   double term1, term2;
+   double E;
+   eos_ eos;
    double t     = x[0];
    double r     = x[1];
    double theta = x[2];
    double phi   = x[3];
 
    #if EOS == IDEAL
-   EoS_Ideal(&e,u,x);
+   EoS_Ideal(&eos,u,x);
    #endif
 
-   E = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*e;
+   E = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
 
    s[0] = -2.0*rho*vx1/r - rho*vx2*cos(theta)/(r*sin(theta));
    s[1] = -2.0*(E+p)*vx1/r - (E+p)*vx2*cos(theta)/(r*sin(theta));

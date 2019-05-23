@@ -1,25 +1,39 @@
-#include"../Headers/main.h"
+#include"main.h"
     
-int funct_U2Q(double *a, double *uu)
+void Prim2Cons_All(double *q, double *u)
 {
    int i, j, k;
-   double n, p, u, v, w;
+   double P[eq+1];
+   eos_ eos;
+   double x[4];
    
 #if DIM == 1
 
    for(i = 0; i <= Nx1-0; i++)
    {
-      n = uu[c1(0,i)];
-      p = uu[c1(1,i)];
-      u = uu[c1(2,i)];
-      v = 0.0;
-      w = 0.0;
+      x[0] = time;
+      x[1] = X1[i];
+      x[2] = 0.0;
+      x[3] = 0.0;
+      #if SPHERICAL == TRUE
+      x[2] = M_PI_2;
+      #endif
+    
+      P[0] = u[c1(0,i)];
+      P[1] = u[c1(1,i)];
+      P[2] = u[c1(2,i)];
+      P[3] = 0.0;
+      P[4] = 0.0;
+
+      #if EOS == IDEAL
+      EoS_Ideal(&eos,P,x);
+      #endif
  
-      a[c1(0,i)] = n;
-      a[c1(1,i)] = ((K-1.0)*n*pow(w,2.0)+(K-1.0)*n*pow(v,2.0)+(K-1.0)*n*pow(u,2.0)+2.0*p)/(2.0*K-2.0);
-      a[c1(2,i)] = n*u;
-      a[c1(3,i)] = n*v;
-      a[c1(4,i)] = n*w;
+      q[c1(0,i)] = P[0];
+      q[c1(1,i)] = 0.5*P[0]*(P[2]*P[2] + P[3]*P[3] + P[4]*P[4]) + P[0]*eos.e;
+      q[c1(2,i)] = P[0]*P[2];
+      q[c1(3,i)] = P[0]*P[3];
+      q[c1(4,i)] = P[0]*P[4];
    }
 
 #elif DIM == 2
@@ -28,17 +42,29 @@ int funct_U2Q(double *a, double *uu)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         n = uu[c2(0,i,j)];
-         p = uu[c2(1,i,j)];
-         u = uu[c2(2,i,j)];
-         v = uu[c2(3,i,j)];
-         w = 0.0;
+         x[0] = time;
+         x[1] = X1[i];
+         x[2] = X2[j];
+         x[3] = 0.0;
+         #if POLAR == TRUE
+         x[2] = M_PI_2;
+         #endif
+       
+         P[0] = u[c2(0,i,j)];
+         P[1] = u[c2(1,i,j)];
+         P[2] = u[c2(2,i,j)];
+         P[3] = u[c2(3,i,j)];
+         P[4] = 0.0;
+
+         #if EOS == IDEAL
+         EoS_Ideal(&eos,P,x);
+         #endif
  
-         a[c2(0,i,j)] = n;
-         a[c2(1,i,j)] = ((K-1.0)*n*pow(w,2.0)+(K-1.0)*n*pow(v,2.0)+(K-1.0)*n*pow(u,2.0)+2.0*p)/(2.0*K-2.0);
-         a[c2(2,i,j)] = n*u;
-         a[c2(3,i,j)] = n*v;
-         a[c2(4,i,j)] = n*w;
+         q[c2(0,i,j)] = P[0];
+         q[c2(1,i,j)] = 0.5*P[0]*(P[2]*P[2] + P[3]*P[3] + P[4]*P[4]) + P[0]*eos.e;
+         q[c2(2,i,j)] = P[0]*P[2];
+         q[c2(3,i,j)] = P[0]*P[3];
+         q[c2(4,i,j)] = P[0]*P[4];
       }
    }
 
@@ -48,17 +74,26 @@ int funct_U2Q(double *a, double *uu)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         n = uu[c2(0,i,j)];
-         p = uu[c2(1,i,j)];
-         u = uu[c2(2,i,j)];
-         v = uu[c2(3,i,j)];
-         w = uu[c2(4,i,j)];
+         x[0] = time;
+         x[1] = X1[i];
+         x[2] = X2[j];
+         x[3] = 0.0;
+       
+         P[0] = u[c2(0,i,j)];
+         P[1] = u[c2(1,i,j)];
+         P[2] = u[c2(2,i,j)];
+         P[3] = u[c2(3,i,j)];
+         P[4] = u[c2(4,i,j)];
+
+         #if EOS == IDEAL
+         EoS_Ideal(&eos,P,x);
+         #endif
  
-         a[c2(0,i,j)] = n;
-         a[c2(1,i,j)] = ((K-1.0)*n*pow(w,2.0)+(K-1.0)*n*pow(v,2.0)+(K-1.0)*n*pow(u,2.0)+2.0*p)/(2.0*K-2.0);
-         a[c2(2,i,j)] = n*u;
-         a[c2(3,i,j)] = n*v;
-         a[c2(4,i,j)] = n*w;
+         q[c2(0,i,j)] = P[0];
+         q[c2(1,i,j)] = 0.5*P[0]*(P[2]*P[2] + P[3]*P[3] + P[4]*P[4]) + P[0]*eos.e;
+         q[c2(2,i,j)] = P[0]*P[2];
+         q[c2(3,i,j)] = P[0]*P[3];
+         q[c2(4,i,j)] = P[0]*P[4];
       }
    }
 
@@ -70,22 +105,29 @@ int funct_U2Q(double *a, double *uu)
       {
          for(k = 0; k <= Nx3; k++)
          {
-            n = uu[c3(0,i,j,k)];
-            p = uu[c3(1,i,j,k)];
-            u = uu[c3(2,i,j,k)];
-            v = uu[c3(3,i,j,k)];
-            w = uu[c3(4,i,j,k)];
- 
-            a[c3(0,i,j,k)] = n;
-            a[c3(1,i,j,k)] = ((K-1.0)*n*pow(w,2.0)+(K-1.0)*n*pow(v,2.0)+(K-1.0)*n*pow(u,2.0)+2.0*p)/(2.0*K-2.0);
-            a[c3(2,i,j,k)] = n*u;
-            a[c3(3,i,j,k)] = n*v;
-            a[c3(4,i,j,k)] = n*w;
+            x[0] = time;
+            x[1] = X1[i];
+            x[2] = X2[j];
+            x[3] = X3[k];
+        
+            P[0] = u[c2(0,i,j)];
+            P[1] = u[c2(1,i,j)];
+            P[2] = u[c2(2,i,j)];
+            P[3] = u[c2(3,i,j)];
+            P[4] = u[c2(4,i,j)];
+          
+            #if EOS == IDEAL
+            EoS_Ideal(&eos,P,x);
+            #endif
+          
+            q[c2(0,i,j)] = P[0];
+            q[c2(1,i,j)] = 0.5*P[0]*(P[2]*P[2] + P[3]*P[3] + P[4]*P[4]) + P[0]*eos.e;
+            q[c2(2,i,j)] = P[0]*P[2];
+            q[c2(3,i,j)] = P[0]*P[3];
+            q[c2(4,i,j)] = P[0]*P[4];
          }
       }
    }
 
 #endif
-
-   return 0;
 }

@@ -30,8 +30,11 @@ int Boundaries(double *B)
          RoundGen(&B[c1(n,i)]);
       }
    }
+
 #elif DIM == 2
+
    Outflow(B);
+   Reflection(B);
 
    for(i = 0; i <= Nx1; i++)
    {
@@ -44,6 +47,7 @@ int Boundaries(double *B)
       }
    }
 
+/*
    // Linear extrapolation. Important for the diagonal shock tube
    for(i = 0; i <= Nx1; i++)
    {
@@ -80,6 +84,8 @@ int Boundaries(double *B)
          }
       }
    }
+   */
+
 #endif
 
    return 0;

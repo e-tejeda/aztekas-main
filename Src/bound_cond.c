@@ -24,15 +24,15 @@ void Outflow(double *B)
       for(n = 0; n < eq; n++)
       {
          // r = 0 boundary in cylindrical and spherical coordinates
-      #if COORDINATES != CARTESIAN && outflow_x1min == 1
+      #if COORDINATES != CARTESIAN && outflow_x1min == TRUE
          if(x1min == 0.0)
             B[c1(n,gc)] = B[c1(n,gc+1)];
       #endif
 
-      #if outflow_x1max == 1
+      #if outflow_x1max == TRUE
          B[c1(n,Nx1-cell)] = B[c1(n,Nx1-gc)]; //x1max
       #endif
-      #if outflow_x1min == 1
+      #if outflow_x1min == TRUE
          B[c1(n,cell)] = B[c1(n,gc)]; //x1min
       #endif
       }
@@ -53,15 +53,15 @@ void Outflow(double *B)
          for(n = 0; n < eq; n++)
          {
          // r = 0 boundary in cylindrical and spherical coordinates
-         #if COORDINATES != SPHERICAL && outflow_x1min == 1
+         #if COORDINATES != CARTESIAN && outflow_x1min == TRUE
             if(x1min == 0.0) 
                 B[c2(n,gc,j)] = B[c2(n,gc+1,j)];
          #endif
 
-         #if outflow_x1max == 1
+         #if outflow_x1max == TRUE
             B[c2(n,Nx1-cell,j)] = B[c2(n,Nx1-gc,j)]; //x1max
          #endif
-         #if outflow_x1min == 1
+         #if outflow_x1min == TRUE
             B[c2(n,cell,j)] = B[c2(n,gc,j)]; //x1min
          #endif
          }
@@ -79,19 +79,19 @@ void Outflow(double *B)
          for(n = 0; n < eq; n++)
          {
          // theta = 0 or M_PI boundary in spherical coordinates
-         #if COORDINATES == SPHERICAL && outflow_x2max == 1
+         #if COORDINATES == SPHERICAL && outflow_x2max == TRUE
             if(x2max/M_PI == 1.0)
                B[c2(n,i,Nx2-gc)] = B[c2(n,i,Nx2-gc-1)]; //x2max
          #endif
-         #if COORDINATES == SPHERICAL && outflow_x2max == 1
+         #if COORDINATES == SPHERICAL && outflow_x2max == TRUE
             if(x2min/M_PI == 0.0)
                B[c2(n,i,gc)] = B[c2(n,i,gc+1)]; //x2min
          #endif
 
-         #if outflow_x2max == 1
+         #if outflow_x2max == TRUE
             B[c2(n,i,Nx2-cell)] = B[c2(n,i,Nx2-gc)]; //x2max
          #endif
-         #if outflow_x2min == 1
+         #if outflow_x2min == TRUE
             B[c2(n,i,cell)] = B[c2(n,i,gc)]; //x2min
          #endif
          }
@@ -129,7 +129,7 @@ void Reflection(double *B)
    #endif
 
    // Reflection on x1min //
-   #if reflective_x1min == 1
+   #if reflective_x1min == TRUE
       for(n = 0; n < eq; n++)
       {
       #if COORDINATES == CARTESIAN
@@ -207,7 +207,7 @@ void Reflection(double *B)
       for(cell = 0; cell < gc; cell++)
       {
       // Reflection on x2max //
-      #if reflective_x2max == 1
+      #if reflective_x2max == TRUE
          for(n = 0; n < eq; n++)
          {
          #if COORDINATES != SPHERICAL
@@ -242,7 +242,7 @@ void Reflection(double *B)
       #endif
 
       // Reflection on x2min //
-      #if reflective_x2min == 1
+      #if reflective_x2min == TRUE
          for(n = 0; n < eq; n++)
          {
          #if COORDINATES != SPHERICAL

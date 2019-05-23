@@ -2,8 +2,8 @@
     
 void Prim2FluxH(double *f, double *v, double *u, double *x)
 {
-   double E, e;
-   double cs;
+   double E;
+   eos_ eos;
    double rho, p, vx1=0, vx2=0, vx3=0;
    rho = u[0];
    p   = u[1];
@@ -20,11 +20,10 @@ void Prim2FluxH(double *f, double *v, double *u, double *x)
 #endif
 
 #if EOS == IDEAL
-   EoS_Ideal(&e,u,x);
-   Sound_Speed(&cs,u,x);
+   EoS_Ideal(&eos,u,x);
 #endif
 
-   E = 0.5 * rho * (vx1*vx1 + vx2*vx2 + vx3*vx3) + rho * e;
+   E = 0.5 * rho * (vx1*vx1 + vx2*vx2 + vx3*vx3) + rho * eos.e;
 
    f[0] = rho * vx3;
    f[1] = vx3 * (E + p);
@@ -32,7 +31,7 @@ void Prim2FluxH(double *f, double *v, double *u, double *x)
    f[3] = rho * vx2 * vx3;
    f[4] = rho * vx3 * vx3 + p;
 
-   v[0] = vx3 - cs;
-   v[1] = vx3 + cs;
+   v[0] = vx3 - eos.cs;
+   v[1] = vx3 + eos.cs;
    v[2] = vx3;
 }

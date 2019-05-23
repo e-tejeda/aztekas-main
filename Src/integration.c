@@ -15,7 +15,7 @@ int Integration()
    //Runge-Kutta 2th-Order and Piecewie Polynomial Reconstruction
 #if DIM == 1 
    
-   funct_U2Q(Q,U);
+   Prim2Cons_All(Q,U);
 
    RK1D(U,Q,Q1,Q2,1);
    funct_Q2U(U,Q1);
@@ -27,7 +27,7 @@ int Integration()
    
 #elif DIM == 2 || DIM == 4
 
-   funct_U2Q(Q,U);
+   Prim2Cons_All(Q,U);
 
    RK2D(U,Q,Q1,Q2,1);
    funct_Q2U(U,Q1);
@@ -39,7 +39,7 @@ int Integration()
    
 #elif DIM == 3 
    
-   funct_U2Q(Q,U);
+   Prim2Cons_All(Q,U);
    RK3D(U,Q,Q1,Q2,1);
    funct_Q2U(U1,Q1);
    Boundaries(U1);

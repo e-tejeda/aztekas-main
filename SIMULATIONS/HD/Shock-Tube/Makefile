@@ -42,7 +42,7 @@ endif
 # Dimension
 #####################################
 
-DIM = 2
+DIM = 1
 
 ifeq ($(DIM),1)
 	PARAM += -DDIM=1
@@ -66,7 +66,7 @@ endif
 # Coordinates (cart,cyl,sph)
 #####################################
 
-COORD = cart
+COORD = sph
 
 ifeq ($(COORD),cart)
 	PARAM += -DCOORDINATES=CARTESIAN
@@ -126,9 +126,6 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  ./boundaries.c \
 	  $(AZTPATH)/Src/bound_cond.c \
 	  $(AZTPATH)/Src/HD/amatrix.c \
-	  $(AZTPATH)/Src/HD/dmmatrix.c \
-	  $(AZTPATH)/Src/HD/dnmatrix.c \
-	  $(AZTPATH)/Src/HD/domatrix.c \
 	  $(AZTPATH)/Src/HD/q2uvector.c \
 	  $(AZTPATH)/Src/HD/u2qvector.c \
 	  $(AZTPATH)/Src/HD/qvector.c \
