@@ -7,4 +7,12 @@ typedef struct
    double yu[3][3];
 }metric_;
 
+typedef struct
+{
+   double lapse;
+   double beta[3];
+   double dety;
+}gauge_;
+
 void Metric_Components(metric_ *g, double *x);
+void Gauge_Components(gauge_ *g, double *x);

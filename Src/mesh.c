@@ -14,11 +14,7 @@
  */
 
 //Do not erase any of these libraries//
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
 #include"main.h"
-#include"param.h"
 
 int Mesh()
 {

@@ -4,9 +4,7 @@
 #include<math.h>
 #include"physics.h"
 
-#if PHYSICS == RHD
 #include"metric.h"
-#endif
 
 #include"limiters.h"
 #include"cond.h"

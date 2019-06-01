@@ -1,3 +1,5 @@
+#include"main.h"
+
 void Metric_Components(metric_ *g, double *x)
 {
 #if COORDINATES == CARTESIAN
