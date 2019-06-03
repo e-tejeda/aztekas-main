@@ -95,6 +95,9 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
    x[1] = X1[I[0]];
    x[2] = X2[I[1]];
    x[3] = 0.0;
+   #if POLAR == TRUE
+   x[2] = M_PI_2;
+   #endif
 
 #elif DIM == 3
 

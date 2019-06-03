@@ -10,8 +10,9 @@ typedef struct
 typedef struct
 {
    double lapse;
-   double beta[3];
    double dety;
+   double detg;
+   double beta[3];
 }gauge_;
 
 void Metric_Components(metric_ *g, double *x);
