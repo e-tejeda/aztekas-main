@@ -70,14 +70,14 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
          case 1:
             for(n = 0; n < eq; n++)
             {
-               q1[c1(n,i)] = q[c1(n,i)] - (Dt)*(F[n]);
+               q1(n,i) = q(n,i) - (Dt)*(F[n]);
             }
          break;
 
          case 2:
             for(n = 0; n < eq; n++)
             {
-               q2[c1(n,i)] = 0.5*(q1[c1(n,i)] + q[c1(n,i)] - (Dt)*F[n]);
+               q2(n,i) = 0.5*(q1(n,i) + q(n,i) - (Dt)*F[n]);
             }
          break;
       }
@@ -143,14 +143,14 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
             case 1:
                for(n = 0; n < eq; n++)
                {
-                  q1[c2(n,i,j)] = q[c2(n,i,j)] - (Dt)*(F[n]);
+                  q1(n,i,j) = q(n,i,j) - (Dt)*(F[n]);
                }
             break;
 
             case 2:
                for(n = 0; n < eq; n++)
                {
-                  q2[c2(n,i,j)] = 0.5*(q1[c2(n,i,j)] + q[c2(n,i,j)] - (Dt)*F[n]);
+                  q2(n,i,j) = 0.5*(q1(n,i,j) + q(n,i,j) - (Dt)*F[n]);
                }
             break;
          }

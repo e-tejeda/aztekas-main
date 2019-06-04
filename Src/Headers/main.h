@@ -23,6 +23,24 @@ double *X2p, *X2m;
 double *X3;
 double *X3p, *X3m;
 
+#if DIM == 1
+   #define U(n,i)  U[n*(Nx1+1) + i]
+   #define Q(n,i)  Q[n*(Nx1+1) + i]
+   #define B(n,i)  B[n*(Nx1+1) + i]
+   #define q(n,i)  q[n*(Nx1+1) + i]
+   #define q1(n,i) q1[n*(Nx1+1) + i]
+   #define q2(n,i) q2[n*(Nx1+1) + i]
+   #define u(n,i)  u[n*(Nx1+1) + i]
+#elif DIM == 2
+   #define U(n,i,j)  U[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+   #define Q(n,i,j)  Q[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+   #define B(n,i,j)  B[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+   #define q(n,i,j)  q[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+   #define q1(n,i,j) q1[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+   #define q2(n,i,j) q2[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+   #define u(n,i,j)  u[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
+#endif
+
 double x1, x2, x3;
 double dx1, dx2, dx3;
 double dt, time;

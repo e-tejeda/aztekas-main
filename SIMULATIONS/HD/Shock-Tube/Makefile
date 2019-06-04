@@ -19,7 +19,7 @@ PARAM += -Dgc=3
 # Physics (rhd,hd,mhd,rmhd)
 #####################################
 
-PHY = rhd
+PHY = hd
 ifeq ($(PHY),hd)
         PARAM += -DPHYSICS=HD
 endif
@@ -42,7 +42,7 @@ endif
 # Dimension
 #####################################
 
-DIM = 1
+DIM = 2
 
 ifeq ($(DIM),1)
 	PARAM += -DDIM=1

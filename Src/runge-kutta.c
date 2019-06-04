@@ -16,6 +16,8 @@
 //Do not erase any of these libraries//
 #include"main.h"
 
+#if DIM == 1
+
 int RK1D(double *u, double *q, double *q1, double *q2, int order)
 {
    int n, i;
@@ -63,14 +65,14 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
          case 1:
             for(n = 0; n < eq; n++)
             {
-               q1[c1(n,i)] = q[c1(n,i)] - (Dt)*(F[n]);
+               q1(n,i) = q(n,i) - (Dt)*(F[n]);
             }
          break;
 
          case 2:
             for(n = 0; n < eq; n++)
             {
-               q2[c1(n,i)] = 0.5*(q1[c1(n,i)] + q[c1(n,i)] - (Dt)*F[n]);
+               q2(n,i) = 0.5*(q1(n,i) + q(n,i) - (Dt)*F[n]);
             }
          break;
       }
@@ -78,6 +80,8 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
 
    return 0;
 }
+
+#elif DIM == 2 || DIM == 4
 
 int RK2D(double *u, double *q, double *q1, double *q2, int order)
 {
@@ -136,14 +140,14 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
             case 1:
                for(n = 0; n < eq; n++)
                {
-                  q1[c2(n,i,j)] = q[c2(n,i,j)] - (Dt)*(F[n]);
+                  q1(n,i,j) = q(n,i,j) - (Dt)*(F[n]);
                }
             break;
 
             case 2:
                for(n = 0; n < eq; n++)
                {
-                  q2[c2(n,i,j)] = 0.5*(q1[c2(n,i,j)] + q[c2(n,i,j)] - (Dt)*F[n]);
+                  q2(n,i,j) = 0.5*(q1(n,i,j) + q(n,i,j) - (Dt)*F[n]);
                }
             break;
          }
@@ -152,6 +156,8 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
 
    return 0;
 }
+
+#elif DIM == 3
 
 int RK3D(double *u, double *q, double *q1, double *q2, int order)
 {
@@ -216,4 +222,7 @@ int RK3D(double *u, double *q, double *q1, double *q2, int order)
    }
 
    return 0;
+
 }
+
+#endif

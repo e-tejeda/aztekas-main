@@ -1,6 +1,6 @@
 #include"main.h"
     
-int funct_Q2U(double *a, double *u)
+int funct_Q2U(double *u, double *q)
 {
    int i, j, k;
    double D, E, S1, S2, S3;
@@ -9,19 +9,19 @@ int funct_Q2U(double *a, double *u)
 
    for(i = 0; i <= Nx1-0; i++)
    {
-      D  = u[c1(0,i)];
-      E  = u[c1(1,i)];
-      S1 = u[c1(2,i)];
+      D  = q(0,i);
+      E  = q(1,i);
+      S1 = q(2,i);
       S2 = 0;
       S3 = 0;
  
-      a[c1(0,i)] = D;
+      u(0,i) = D;
       #if EOS == IDEAL
-      a[c1(1,i)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+      u(1,i) = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
       #endif
-      a[c1(2,i)] = S1/D;
-      a[c1(3,i)] = S2/D;
-      a[c1(4,i)] = S3/D;
+      u(2,i) = S1/D;
+      u(3,i) = S2/D;
+      u(4,i) = S3/D;
    }
 
 #elif DIM == 2
@@ -30,19 +30,19 @@ int funct_Q2U(double *a, double *u)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         D  = u[c2(0,i,j)];
-         E  = u[c2(1,i,j)];
-         S1 = u[c2(2,i,j)];
-         S2 = u[c2(3,i,j)];
+         D  = q[c2(0,i,j)];
+         E  = q[c2(1,i,j)];
+         S1 = q[c2(2,i,j)];
+         S2 = q[c2(3,i,j)];
          S3 = 0;
  
-         a[c2(0,i,j)] = D;
+         u[c2(0,i,j)] = D;
          #if EOS == IDEAL
-         a[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+         u[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
          #endif
-         a[c2(2,i,j)] = S1/D;
-         a[c2(3,i,j)] = S2/D;
-         a[c2(4,i,j)] = S3/D;
+         u[c2(2,i,j)] = S1/D;
+         u[c2(3,i,j)] = S2/D;
+         u[c2(4,i,j)] = S3/D;
       }
    }
 
@@ -52,19 +52,19 @@ int funct_Q2U(double *a, double *u)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         D  = u[c2(0,i,j)];
-         E  = u[c2(1,i,j)];
-         S1 = u[c2(2,i,j)];
-         S2 = u[c2(3,i,j)];
-         S3 = u[c2(4,i,j)];
+         D  = q[c2(0,i,j)];
+         E  = q[c2(1,i,j)];
+         S1 = q[c2(2,i,j)];
+         S2 = q[c2(3,i,j)];
+         S3 = q[c2(4,i,j)];
  
-         a[c2(0,i,j)] = D;
+         u[c2(0,i,j)] = D;
          #if EOS == IDEAL
-         a[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+         u[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
          #endif
-         a[c2(2,i,j)] = S1/D;
-         a[c2(3,i,j)] = S2/D;
-         a[c2(4,i,j)] = S3/D;
+         u[c2(2,i,j)] = S1/D;
+         u[c2(3,i,j)] = S2/D;
+         u[c2(4,i,j)] = S3/D;
       }
    }
 
@@ -76,19 +76,19 @@ int funct_Q2U(double *a, double *u)
       {
          for(k = 0; k <= Nx3; k++)
          {
-            D  = u[c3(0,i,j,k)];
-            E  = u[c3(1,i,j,k)];
-            S1 = u[c3(2,i,j,k)];
-            S2 = u[c3(3,i,j,k)];
-            S3 = u[c3(4,i,j,k)];
+            D  = q[c3(0,i,j,k)];
+            E  = q[c3(1,i,j,k)];
+            S1 = q[c3(2,i,j,k)];
+            S2 = q[c3(3,i,j,k)];
+            S3 = q[c3(4,i,j,k)];
  
-            a[c3(0,i,j,k)] = D;
+            u[c3(0,i,j,k)] = D;
             #if EOS == IDEAL
-            a[c3(1,i,j,k)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+            u[c3(1,i,j,k)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
             #endif
-            a[c3(2,i,j,k)] = S1/D;
-            a[c3(3,i,j,k)] = S2/D;
-            a[c3(4,i,j,k)] = S3/D;
+            u[c3(2,i,j,k)] = S1/D;
+            u[c3(3,i,j,k)] = S2/D;
+            u[c3(4,i,j,k)] = S3/D;
          }
       }
    }

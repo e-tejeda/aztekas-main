@@ -3,6 +3,7 @@
 void Prim2Cons_All(double *q, double *u)
 {
    int i, j, k;
+   double rho, p, vx1, vx2, vx3;
    double P[eq+1];
    eos_ eos;
    double x[4];
@@ -19,9 +20,9 @@ void Prim2Cons_All(double *q, double *u)
       x[2] = M_PI_2;
       #endif
     
-      rho = u[c1(0,i)];
-      p   = u[c1(1,i)];
-      vx1 = u[c1(2,i)];
+      rho = u(0,i);
+      p   = u(1,i);
+      vx1 = u(2,i);
       vx2 = 0.0;
       vx3 = 0.0;
 
@@ -32,11 +33,11 @@ void Prim2Cons_All(double *q, double *u)
       EoS_Ideal(&eos,P,x);
       #endif
  
-      q[c1(0,i)] = rho;
-      q[c1(1,i)] = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
-      q[c1(2,i)] = rho*vx1;
-      q[c1(3,i)] = rho*vx2;
-      q[c1(4,i)] = rho*vx3;
+      q(0,i) = rho;
+      q(1,i) = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
+      q(2,i) = rho*vx1;
+      q(3,i) = rho*vx2;
+      q(4,i) = rho*vx3;
    }
 
 #elif DIM == 2
