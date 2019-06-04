@@ -1,10 +1,19 @@
-#include"const.h"
-#include"cond.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+#include"physics.h"
+
+#include"metric.h"
+
 #include"limiters.h"
+#include"cond.h"
 
-#define min(a,b) (((a)<(b))?(a):(b))
-#define max(a,b) (((a)>(b))?(a):(b))
+#include"const.h"
+#include"macros.h"
+#include"param.h"
 
+/* Define pointers */
 double *U, *U1, *U2, *U3;
 double *Q, *Q1, *Q2, *Q3;
 double *X1;
@@ -22,9 +31,10 @@ double tmax, timefile, cou;
 double start, delta;
 double K;
 
-//Mesh
+/* Define number of grids */
 int Nx1, Nx2, Nx3;
 
+/* Define domain */
 double x1max, x2max, x3max;
 double x1min, x2min, x3min;
 
@@ -56,20 +66,6 @@ char paramfile_name[50], outputdirectory[50], outputfile[50];
 char restartfile[50];
 int read_parameters_file(char const *paramfile_name);
 int restart_simulation, restart_filecount;
-
-typedef struct
-{
-	double ux1p[2*eq];
-	double ux1m[2*eq];
-	double sx1[2*eq];
-	double ux2p[2*eq];
-	double ux2m[2*eq];
-	double sx2[2*eq];
-	double ux3p[2*eq];
-	double ux3m[2*eq];
-	double sx3[2*eq];
-	double ux[2*eq];
-}lim_;
 
 typedef struct
 {
@@ -105,31 +101,17 @@ typedef struct
 	double Hm[eq+1];
 }vec_;
 
-double LIMITER(double A, double B, char r);
+void Allocate_Array();
 
-double GODUNOV(double A, double B);
+void New_Size();
 
-double MAXMOD(double A, double B);
+int Mesh(); 
 
-double MINMOD(double A, double B);
+void Initial();
 
-double MC(double A, double B);
+double TimeStep();
 
-double SUPERBEE(double A, double B);
-
-double WENO5(double v1, double v2, double v3, double v4, double v5);
-
-void allocateArray();
-
-void new_SIZE();
-
-int MESH(); 
-
-void INITIAL();
-
-double TIMESTEP();
-
-int BOUNDARIES(double *B);
+int Boundaries(double *B);
 
 int PrintValues(double *tprint, double *dtprint, int *itprint);
 
@@ -145,7 +127,7 @@ int Output2_bin(int *itprint);
 
 int Output3_bin(int *itprint);
 
-int INTEGRATION();
+int Integration();
 
 int RK1D(double *u, double *q, double *q1, double *q2, int order);
 
@@ -153,15 +135,17 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order);
 
 int RK3D(double *u, double *q, double *q1, double *q2, int order);
 
-int FLUX1D(vec_ *v, lim_ *l, int *I);
+int Flux1D(vec_ *v, lim_ *l, int *I);
                                    
-int FLUX2D(vec_ *v, lim_ *l, int *I);
+int Flux2D(vec_ *v, lim_ *l, int *I);
                                    
-int FLUX3D(vec_ *v, lim_ *l, int *I);
+int Flux3D(vec_ *v, lim_ *l, int *I);
 
-int HLL(double *F, flx_ *f, int x);
+int Sources(double *u, vec_ *v, int *I);
 
-int HLLC(double *F, flx_ *f, int x);
+int Hll(double *F, flx_ *f, int x);
+
+int Hllc(double *F, flx_ *f, int x);
 
 int AMATRIX1D(double *u, vec_ *v, int *I);
                                                             
@@ -177,12 +161,6 @@ int c2(int n, int i, int j);
 
 int c3(int n, int i, int j, int k);
 
-int RECONST1D(double *u, char r, lim_ *l, int *I);
-
-int RECONST2D(double *u, char r, lim_ *l, int *I);
-
-int RECONST3D(double *u, char r, lim_ *l, int *I);
-
 int MxV(double *M, double *V, double *L);
 
-void roundgen(double *num);
+void RoundGen(double *num);

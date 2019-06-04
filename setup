@@ -41,10 +41,10 @@ PARAM += -Dgc=3
 
 PHY = $phy
 ifeq (\$(PHY),hd)
-   PARAM += -DPHYSICS=1
+   PARAM += -DPHYSICS=HD
 endif
 ifeq (\$(PHY),rhd)
-   PARAM += -DPHYSICS=2
+   PARAM += -DPHYSICS=RHD
    metric = -EF
 endif
 
@@ -57,22 +57,22 @@ endif
 DIM = $dim
 
 ifeq (\$(DIM),1)
-   PARAM += -Ddim=1
+   PARAM += -DDIM=1
    PARAM += -Deq=3
    PARAM += -Dgraf=1
 endif
 ifeq (\$(DIM),2)
-   PARAM += -Ddim=2
+   PARAM += -DDIM=2
    PARAM += -Deq=4
    PARAM += -Dgraf=2
 endif
 ifeq (\$(DIM),4)
-   PARAM += -Ddim=2
+   PARAM += -DDIM=2
    PARAM += -Deq=5
    PARAM += -Dgraf=2
 endif
 ifeq (\$(DIM),3)
-   PARAM += -Ddim=3
+   PARAM += -DDIM=3
    PARAM += -Deq=5
    PARAM += -Dgraf=3
 endif
@@ -86,13 +86,13 @@ endif
 COORD = $coord
 
 ifeq (\$(COORD),cart)
-   PARAM += -Dalfa=0
+   PARAM += -DCOORDINATES=CARTESIAN
 endif
 ifeq (\$(COORD),cyl)
-   PARAM += -Dalfa=1
+   PARAM += -DCOORDINATES=CYLINDRICAL
 endif
 ifeq (\$(COORD),sph)
-   PARAM += -Dalfa=2
+   PARAM += -DCOORDINATES=SPHERICAL
 endif
 
 #####################################
@@ -106,6 +106,17 @@ AZTPATH = $aztekas_path
 #####################################
 # Integration method
 #####################################
+
+INT = standard
+
+ifeq (\$(INT),standard)
+   PARAM += -DINTEGRATION=STANDARD
+   INT = 
+endif
+ifeq (\$(INT),pvrs)
+   PARAM += -DINTEGRATION=PVRS
+   INT = -pvrs
+endif
 
 #####################################
 
@@ -143,7 +154,7 @@ SOURCES = \$(AZTPATH)/Src/main.c \\
 	  \$(AZTPATH)/Src/HD-\$(COORD)/hvector.c \\
 	  \$(AZTPATH)/Src/HD-\$(COORD)\$(grav)/svector.c \\
 	  \$(AZTPATH)/Src/HD-\$(COORD)\$(grav)/gauge.c \\
-	  ./extforce.c
+	  ./source.c
 endif 
 
 ifeq (\$(PHY),rhd)
@@ -176,7 +187,7 @@ SOURCES = \$(AZTPATH)/Src/main.c \\
 	  \$(AZTPATH)/Src/RHD-\$(COORD)/hvector.c \\
 	  \$(AZTPATH)/Src/RHD-\$(COORD)/svector.c \\
 	  \$(AZTPATH)/Src/RHD-\$(COORD)/gauge.c  
-	  ./extforce.c
+	  ./source.c
 endif
 
 #OBJS = \$(SOURCES:.c=.o)
@@ -337,7 +348,7 @@ cat << EOF > initial.c
 #include"main.h"
 #include"param.h"
 
-void INITIAL(double *dtprint)
+void Initial(double *dtprint)
 {
    int n, i, j, k, cell;
 
@@ -355,13 +366,9 @@ cat << EOF > boundaries.c
  *  Date of creation: $date
  *  author: $author 
  */
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
 #include"main.h"
-#include"param.h"
 
-int BOUNDARIES(double *B)
+int Boundaries(double *B)
 {
    int n, i, j, k, cell;
 
@@ -371,7 +378,7 @@ if [ $dim -eq 1 ]
 then
    if [[ $bound_x1max == "outflow" ]] || [[ $bound_x1min == "outflow" ]]
    then
-      BOUND="OUTFLOW"
+      BOUND="Outflow"
 
 cat << EOF >> boundaries.c
    $BOUND(B);
@@ -380,7 +387,7 @@ EOF
 
    if [[ $bound_x1max == "periodic" ]] || [[ $bound_x1min == "periodic" ]]
    then
-      BOUND="PERIODIC"
+      BOUND="Periodic"
 
 cat << EOF >> boundaries.c
    $BOUND(B);
@@ -389,7 +396,7 @@ EOF
 
    if [[ $bound_x1max == "reflective" ]] || [[ $bound_x1min == "reflective" ]]
    then
-      BOUND="REFLECTIVE"
+      BOUND="Reflection"
 
 cat << EOF >> boundaries.c
    $BOUND(B);
@@ -403,7 +410,7 @@ then
 
 
    then
-      BOUND="OUTFLOW"
+      BOUND="Outflow"
 
 cat << EOF >> boundaries.c
    $BOUND(B);
@@ -413,7 +420,7 @@ EOF
    if [[ $bound_x1max == "periodic" ]] || [[ $bound_x1min == "periodic"  ]] || [[ $bound_x2max == "periodic" ]] || [[ $bound_x2min == "periodic"  ]]
 
    then
-      BOUND="PERIODIC"
+      BOUND="Periodic"
 
 cat << EOF >> boundaries.c
    $BOUND(B);
@@ -422,7 +429,7 @@ EOF
 
    if [[ $bound_x1max == "reflective" ]] || [[ $bound_x1min == "reflective"  ]] || [[ $bound_x2max == "reflective" ]] || [[ $bound_x2min == "reflective"  ]]
    then
-      BOUND="REFLECTIVE"
+      BOUND="Reflection"
 
 cat << EOF >> boundaries.c
    $BOUND(B);
@@ -435,19 +442,15 @@ cat << EOF >> boundaries.c
 }
 EOF
 
-cat << EOF > extforce.c
+cat << EOF > source.c
 /* 
  *  aztekas boundaries module
  *  Date of creation: $date
  *  author: $author 
  */
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
 #include"main.h"
-#include"param.h"
 
-void EXTFORCE(double *a, double *uu)
+void User_Source_Term(double *a, double *uu)
 {
    int i;
    double n, p, u=0, v=0, w=0;
@@ -469,7 +472,7 @@ EOF
 if [[ $grav == 'n' ]] || [[ $phy == 'rhd'  ]]
 then
 
-cat << EOF >> extforce.c
+cat << EOF >> source.c
    a[0] = 0;
    a[1] = 0;
    a[2] = 0;
@@ -483,7 +486,7 @@ if [[ $grav == 'y' ]]
 then
 if [[ $coord == 'cart' ]]
 then
-cat << EOF >> extforce.c
+cat << EOF >> source.c
    double r = sqrt(x1*x1 + x2*x2 + x3*x3);
 
    a[0] = 0;
@@ -496,7 +499,7 @@ EOF
 fi
 if [[ $coord == 'cyl' ]]
 then
-cat << EOF >> extforce.c
+cat << EOF >> source.c
    double r = sqrt(x1*x1 + x2*x2);
 
    a[0] = 0;
@@ -509,7 +512,7 @@ EOF
 fi
 if [[ $coord == 'sph' ]]
 then
-cat << EOF >> extforce.c
+cat << EOF >> source.c
    double r = x1;
 
    a[0] = 0;

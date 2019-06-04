@@ -121,20 +121,20 @@ int read_parameters_file(char const *paramfile_name)
 
             if(strcmp(t_key,"x2max")==0)
             {
-#if alfa == 0 || alfa == 1
+               #if COORDINATES == CARTESIAN || COORDINATES == CYLINDRICAL
                x2max = atof(t_value);
-#elif alfa == 2
+               #elif COORDINATES == SPHERICAL
                x2max = M_PI*atof(t_value);
-#endif
+               #endif
             }
 
             if(strcmp(t_key,"x3max")==0)
             {
-#if alfa == 0 
+               #if COORDINATES == CARTESIAN 
                x3max = atof(t_value);
-#elif alfa == 1 || alfa == 2
+               #elif COORDINATES == CYLINDRICAL || COORDINATES == SPHERICAL
                x3max = M_PI*atof(t_value);
-#endif
+               #endif
             }
 
             if(strcmp(t_key,"x1min")==0)
@@ -144,11 +144,11 @@ int read_parameters_file(char const *paramfile_name)
 
             if(strcmp(t_key,"x2min")==0)
             {
-#if alfa == 0 || alfa == 1
+               #if COORDINATES == CARTESIAN || COORDINATES == CYLINDRICAL
                x2min = atof(t_value);
-#elif alfa == 2
+               #elif COORDINATES == SPHERICAL
                x2min = M_PI*atof(t_value);
-#endif
+               #endif
             }
 
             if(strcmp(t_key,"x3min")==0)

@@ -1,7 +1,3 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#include"../Headers/vector.h"
 #include"../Headers/main.h"
 
 int GAUGE(double *a, double g1, double g2, double g3)

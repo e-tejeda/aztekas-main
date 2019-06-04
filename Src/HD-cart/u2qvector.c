@@ -1,6 +1,3 @@
-#include<stdio.h>
-#include<math.h>
-#include"../Headers/vector.h"
 #include"../Headers/main.h"
     
 int funct_U2Q(double *a, double *uu)
@@ -8,7 +5,7 @@ int funct_U2Q(double *a, double *uu)
    int i, j, k;
    double n, p, u, v, w;
    
-#if dim == 1
+#if DIM == 1
 
    for(i = 0; i <= Nx1-0; i++)
    {
@@ -25,7 +22,7 @@ int funct_U2Q(double *a, double *uu)
       a[c1(4,i)] = n*w;
    }
 
-#elif dim == 2
+#elif DIM == 2
 
    for(i = 0; i <= Nx1-0; i++)
    {
@@ -45,7 +42,7 @@ int funct_U2Q(double *a, double *uu)
       }
    }
 
-#elif dim == 4
+#elif DIM == 4
 
    for(i = 0; i <= Nx1-0; i++)
    {
@@ -65,7 +62,7 @@ int funct_U2Q(double *a, double *uu)
       }
    }
 
-#elif dim == 3
+#elif DIM == 3
 
    for(i = 0; i <= Nx1; i++)
    {
