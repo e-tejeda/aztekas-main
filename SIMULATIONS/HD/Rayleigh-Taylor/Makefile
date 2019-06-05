@@ -70,6 +70,7 @@ COORD = cart
 
 ifeq ($(COORD),cart)
 	PARAM += -DCOORDINATES=CARTESIAN
+	PARAM += -Dalfa=0
 endif
 ifeq ($(COORD),cyl)
 	PARAM += -DCOORDINATES=CYLINDRICAL
@@ -143,7 +144,6 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
-	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \

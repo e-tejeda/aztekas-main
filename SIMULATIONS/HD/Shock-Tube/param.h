@@ -13,8 +13,8 @@
 #define outflow_x2max TRUE
 #define outflow_x2min TRUE
 
-#define RECONST         MC
-#define FLUX            HLL
+#define RECONST         WENO5
+#define FLUX            HLLC
 #define GRID            UNIFORM //(UNIFORM, LOGMESH)
 
 #define INTERFACE       DIAGONAL

@@ -89,7 +89,7 @@ int Reconst1D(double *u, lim_ *l, int *I)
 
 #elif DIM == 2 || DIM == 4
 
-void Reconst2D(double *u, lim_ *l, int *I)
+int Reconst2D(double *u, lim_ *l, int *I)
 {
    int n, i, j;
    int reconst;
@@ -193,6 +193,8 @@ void Reconst2D(double *u, lim_ *l, int *I)
          l->ux2p[1*eq + n] = u(n,i,j+1) - 0.5*l->sx2[2*eq + n];
       }
    }
+
+   return 0;
 }
 
 #elif DIM == 3
@@ -360,7 +362,7 @@ double Limiter(double A, double B, int reconst)
    return sig;
 }
 
-double MAXMOD(double A, double B)
+double Maxmod(double A, double B)
 {
    double sig;
 
@@ -411,23 +413,23 @@ double Mc(double A, double B)
    double sig;
    double C;
 
-   C = (A + B) / 2.0e+00;
+   C = (A + B) / 2.0;
 
    if(A*B < 0)
    {
-      sig = 0.0e+00;
+      sig = 0.0;
    }
    else if(A*B >= 0)
    {
-      if(fabs(A) < fabs(B) && 2.0e+00*fabs(A) < fabs(C))
+      if(fabs(A) < fabs(B) && 2.0*fabs(A) <= fabs(C))
       {
-         sig = 2.0e+00*A;
+         sig = 2.0*A;
       }
-      else if(fabs(A) > fabs(B) && 2.0e+00*fabs(B) < fabs(C))
+      else if(fabs(A) >= fabs(B) && 2.0*fabs(B) <= fabs(C))
       {
-         sig = 2.0e+00*B;
+         sig = 2.0*B;
       }
-      else if(fabs(C) < 2.0e+00*fabs(A) && fabs(C) < 2.0e+00*fabs(B))
+      else if(fabs(C) <= 2.0*fabs(A) && fabs(C) <= 2.0*fabs(B))
       {
          sig= C;
       }
@@ -445,7 +447,7 @@ double Superbee(double A, double B)
    sig1 = Minmod(2*A,B);
    sig2 = Minmod(A,2*B);
 
-   sig = MAXMOD(sig1,sig2);
+   sig = Maxmod(sig1,sig2);
    return sig;
 }
 
