@@ -37,7 +37,6 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
  
       for(n = 0; n < eq; n++)
       {
-      #if PHYSICS == HD
          #if COORDINATES == CARTESIAN
          F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
          vec.S[n];
@@ -48,12 +47,6 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
          F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
          vec.S[n];
          #endif
-      #elif PHYSICS == RHD
-         #if COORDINATES == CARTESIAN
-         F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
-         vec.S[n];
-         #endif
-      #endif
       }
 
 #if INTEGRATION == PVRS

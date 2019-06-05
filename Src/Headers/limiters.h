@@ -28,7 +28,7 @@ double Weno5(double v1, double v2, double v3, double v4, double v5);
 
 int Reconst1D(double *u, lim_ *l, int *I);
 
-int Reconst2D(double *u, lim_ *l, int *I);
+void Reconst2D(double *u, lim_ *l, int *I);
 
 int Reconst3D(double *u, lim_ *l, int *I);
 

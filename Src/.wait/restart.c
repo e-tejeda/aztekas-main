@@ -83,8 +83,8 @@ void Restart()
          {
             idum = fscanf(file,"%lf %lf %lf %lf %lf %lf %lf %lf\n",\
             &dum,&dum,&dum,\
-            &U(0,i,j,k),&U(1,i,j,k),\
-            &U(2,i,j,k),&U(3,i,j,k),&U(4,i,j,k));
+            &U[c3(0,i,j,k)],&U[c3(1,i,j,k)],\
+            &U[c3(2,i,j,k)],&U[c3(3,i,j,k)],&U[c3(4,i,j,k)]);
          }
       }
    }
@@ -273,15 +273,31 @@ void Restart_Bin()
    // Read rest of file and initialize variables      
    for(i = gc; i <= Nx1-gc; i++)
    {
+        ignore = fread(&U(0,i), sizeof dum, 1, file);
+        ignore = fread(&U(1,i), sizeof dum, 1, file);
+        ignore = fread(&U(2,i), sizeof dum, 1, file);         
+   }
+   for(i = gc; i <= Nx1-gc; i++)
+   {
+      for(j = gc; j <= Nx2-gc; j++)
+      {
+        ignore = fread(&U(0,i,j), sizeof dum, 1, file);
+        ignore = fread(&U(1,i,j), sizeof dum, 1, file);
+        ignore = fread(&U(2,i,j), sizeof dum, 1, file);
+        ignore = fread(&U(3,i,j), sizeof dum, 1, file);
+      }
+   }
+   for(i = gc; i <= Nx1-gc; i++)
+   {
       for(j = gc; j <= Nx2-gc; j++)
       {
          for(k = gc; k <= Nx3-gc; k++)
          {
-            ignore = fread(&U(0,i,j,k), sizeof dum, 1, file);
-            ignore = fread(&U(1,i,j,k), sizeof dum, 1, file);
-            ignore = fread(&U(2,i,j,k), sizeof dum, 1, file);
-            ignore = fread(&U(3,i,j,k), sizeof dum, 1, file);               
-            ignore = fread(&U(4,i,j,k), sizeof dum, 1, file);                 
+            ignore = fread(&U[c3(0,i,j,k)], sizeof dum, 1, file);
+            ignore = fread(&U[c3(1,i,j,k)], sizeof dum, 1, file);
+            ignore = fread(&U[c3(2,i,j,k)], sizeof dum, 1, file);
+            ignore = fread(&U[c3(3,i,j,k)], sizeof dum, 1, file);               
+            ignore = fread(&U[c3(4,i,j,k)], sizeof dum, 1, file);                 
          }
       }
    }

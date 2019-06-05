@@ -48,7 +48,7 @@ void Restart()
    for(i = gc; i <= Nx1-gc; i++)
    {
       idum = fscanf(file,"%lf %lf %lf %lf\n",&dum,\
-      &U(0,i),&U(1,i),&U(2,i));
+      &U[c1(0,i)],&U[c1(1,i)],&U[c1(2,i)]);
    }
 
 #elif DIM == 2
@@ -58,7 +58,7 @@ void Restart()
       for(j = gc; j <= Nx2-gc; j++)
       {
          idum = fscanf(file,"%lf %lf %lf %lf %lf %lf\n",&dum,&dum,\
-         &U(0,i,j),&U(1,i,j),&U(2,i,j),&U(3,i,j));
+         &U[c2(0,i,j)],&U[c2(1,i,j)],&U[c2(2,i,j)],&U[c2(3,i,j)]);
       }
    }
 
@@ -69,7 +69,7 @@ void Restart()
       for(j = gc; j <= Nx2-gc; j++)
       {
          idum = fscanf(file,"%lf %lf %lf %lf %lf %lf %lf\n",&dum,&dum,\
-         &U(0,i,j),&U(1,i,j),&U(2,i,j),&U(3,i,j),&U(4,i,j));
+         &U[c2(0,i,j)],&U[c2(1,i,j)],&U[c2(2,i,j)],&U[c2(3,i,j)],&U[c2(4,i,j)]);
       }
    }
 
@@ -83,8 +83,8 @@ void Restart()
          {
             idum = fscanf(file,"%lf %lf %lf %lf %lf %lf %lf %lf\n",\
             &dum,&dum,&dum,\
-            &U(0,i,j,k),&U(1,i,j,k),\
-            &U(2,i,j,k),&U(3,i,j,k),&U(4,i,j,k));
+            &U[c3(0,i,j,k)],&U[c3(1,i,j,k)],\
+            &U[c3(2,i,j,k)],&U[c3(3,i,j,k)],&U[c3(4,i,j,k)]);
          }
       }
    }
@@ -140,9 +140,9 @@ void Restart_Bin()
    // Read rest of file and initialize variables      
    for(i = gc; i <= Nx1-gc; i++)
    {
-        ignore = fread(&U(0,i), sizeof dum, 1, file);
-        ignore = fread(&U(1,i), sizeof dum, 1, file);
-        ignore = fread(&U(2,i), sizeof dum, 1, file);         
+        ignore = fread(&U[c1(0,i)], sizeof dum, 1, file);
+        ignore = fread(&U[c1(1,i)], sizeof dum, 1, file);
+        ignore = fread(&U[c1(2,i)], sizeof dum, 1, file);         
    }
     
 #elif DIM == 2 || dim == 4
@@ -194,12 +194,18 @@ void Restart_Bin()
    // Read rest of file and initialize variables      
    for(i = gc; i <= Nx1-gc; i++)
    {
+        ignore = fread(&U[c1(0,i)], sizeof dum, 1, file);
+        ignore = fread(&U[c1(1,i)], sizeof dum, 1, file);
+        ignore = fread(&U[c1(2,i)], sizeof dum, 1, file);         
+   }
+   for(i = gc; i <= Nx1-gc; i++)
+   {
       for(j = gc; j <= Nx2-gc; j++)
       {
-        ignore = fread(&U(0,i,j), sizeof dum, 1, file);
-        ignore = fread(&U(1,i,j), sizeof dum, 1, file);
-        ignore = fread(&U(2,i,j), sizeof dum, 1, file);
-        ignore = fread(&U(3,i,j), sizeof dum, 1, file);
+        ignore = fread(&U[c2(0,i,j)], sizeof dum, 1, file);
+        ignore = fread(&U[c2(1,i,j)], sizeof dum, 1, file);
+        ignore = fread(&U[c2(2,i,j)], sizeof dum, 1, file);
+        ignore = fread(&U[c2(3,i,j)], sizeof dum, 1, file);
       }
    }
     
@@ -273,15 +279,31 @@ void Restart_Bin()
    // Read rest of file and initialize variables      
    for(i = gc; i <= Nx1-gc; i++)
    {
+        ignore = fread(&U[c1(0,i)], sizeof dum, 1, file);
+        ignore = fread(&U[c1(1,i)], sizeof dum, 1, file);
+        ignore = fread(&U[c1(2,i)], sizeof dum, 1, file);         
+   }
+   for(i = gc; i <= Nx1-gc; i++)
+   {
+      for(j = gc; j <= Nx2-gc; j++)
+      {
+        ignore = fread(&U[c2(0,i,j)], sizeof dum, 1, file);
+        ignore = fread(&U[c2(1,i,j)], sizeof dum, 1, file);
+        ignore = fread(&U[c2(2,i,j)], sizeof dum, 1, file);
+        ignore = fread(&U[c2(3,i,j)], sizeof dum, 1, file);
+      }
+   }
+   for(i = gc; i <= Nx1-gc; i++)
+   {
       for(j = gc; j <= Nx2-gc; j++)
       {
          for(k = gc; k <= Nx3-gc; k++)
          {
-            ignore = fread(&U(0,i,j,k), sizeof dum, 1, file);
-            ignore = fread(&U(1,i,j,k), sizeof dum, 1, file);
-            ignore = fread(&U(2,i,j,k), sizeof dum, 1, file);
-            ignore = fread(&U(3,i,j,k), sizeof dum, 1, file);               
-            ignore = fread(&U(4,i,j,k), sizeof dum, 1, file);                 
+            ignore = fread(&U[c3(0,i,j,k)], sizeof dum, 1, file);
+            ignore = fread(&U[c3(1,i,j,k)], sizeof dum, 1, file);
+            ignore = fread(&U[c3(2,i,j,k)], sizeof dum, 1, file);
+            ignore = fread(&U[c3(3,i,j,k)], sizeof dum, 1, file);               
+            ignore = fread(&U[c3(4,i,j,k)], sizeof dum, 1, file);                 
          }
       }
    }

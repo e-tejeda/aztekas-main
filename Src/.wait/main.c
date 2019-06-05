@@ -90,6 +90,7 @@ int main(int argc, char* argv[])
    start = omp_get_wtime();
    while(time <= tmax)
    {
+      
       //In this part we compute the time step
       dt = TimeStep();
 

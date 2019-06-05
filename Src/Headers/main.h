@@ -23,23 +23,6 @@ double *X2p, *X2m;
 double *X3;
 double *X3p, *X3m;
 
-#if DIM == 1
-   #define U(n,i)  U[n*(Nx1+1) + i]
-   #define Q(n,i)  Q[n*(Nx1+1) + i]
-   #define B(n,i)  B[n*(Nx1+1) + i]
-   #define q(n,i)  q[n*(Nx1+1) + i]
-   #define q1(n,i) q1[n*(Nx1+1) + i]
-   #define q2(n,i) q2[n*(Nx1+1) + i]
-   #define u(n,i)  u[n*(Nx1+1) + i]
-#elif DIM == 2 || DIM == 4
-   #define U(n,i,j)  U[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-   #define Q(n,i,j)  Q[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-   #define B(n,i,j)  B[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-   #define q(n,i,j)  q[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-   #define q1(n,i,j) q1[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-   #define q2(n,i,j) q2[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-   #define u(n,i,j)  u[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
-#endif
 
 double x1, x2, x3;
 double dx1, dx2, dx3;
@@ -182,3 +165,36 @@ int c3(int n, int i, int j, int k);
 int MxV(double *M, double *V, double *L);
 
 void RoundGen(double *num);
+
+#if DIM == 1
+
+   #define  U(N,x)  U[(N)*(Nx1+1) + (x)]
+   #define  Q(N,x)  Q[(N)*(Nx1+1) + (x)]
+   #define  B(N,x)  B[(N)*(Nx1+1) + (x)]
+   #define  u(N,x)  u[(N)*(Nx1+1) + (x)]
+   #define  q(N,x)  q[(N)*(Nx1+1) + (x)]
+   #define q1(N,x) q1[(N)*(Nx1+1) + (x)]
+   #define q2(N,x) q2[(N)*(Nx1+1) + (x)]
+
+#elif DIM == 2 || DIM == 4
+
+   #define  U(N,x,y)  U[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+   #define  Q(N,x,y)  Q[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+   #define  B(N,x,y)  B[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+   #define  u(N,x,y)  u[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+   #define  q(N,x,y)  q[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+   #define q1(N,x,y) q1[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+   #define q2(N,x,y) q2[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
+
+#elif DIM == 3
+
+   #define  U(N,x,y,z)  U[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+   #define  Q(N,x,y,z)  Q[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+   #define  B(N,x,y,z)  B[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+   #define  u(N,x,y,z)  u[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+   #define  q(N,x,y,z)  q[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+   #define q1(N,x,y,z) q1[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+   #define q2(N,x,y,z) q2[(N)*(Nx1+1)*(Nx2+1)*(Nx3+1) + (x)*(Nx2+1)*(Nx3+1) + (y)*(Nx3+1) + (z)]
+
+#endif
+
