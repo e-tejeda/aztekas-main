@@ -8,8 +8,8 @@
 #define VERTICAL      1
 #define DIAGONAL      2
 
-#define outflow_x1max TRUE
-#define outflow_x1min TRUE
+#define outflow_x1max    TRUE
+#define outflow_x1min    TRUE
 #define outflow_x2max TRUE
 #define outflow_x2min TRUE
 
@@ -17,7 +17,7 @@
 #define FLUX            HLL
 #define GRID            UNIFORM //(UNIFORM, LOGMESH)
 
-#define INTERFACE       HORIZONTAL 
+#define INTERFACE       DIAGONAL
 
 double nr, pr, vx1r, vx2r, vx3r;
 double nl, pl, vx1l, vx2l, vx3l;

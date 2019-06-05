@@ -1,0 +1,171 @@
+#include"main.h"
+    
+void Prim2Cons_All(double *q, double *u)
+{
+   int i, j, k;
+   double rho, p, vx1, vx2, vx3, E;
+   double P[eq+1];
+   eos_ eos;
+   local_metric_ g;
+   double x[4];
+   
+#if DIM == 1
+
+   for(i = 0; i <= Nx1-0; i++)
+   {
+      x[0] = grid.time;
+      x[1] = grid.X1[i];
+      x[2] = 0.0;
+      x[3] = 0.0;
+      #if COORDINATES == SPHERICAL
+      x[2] = M_PI_2;
+      #endif
+    
+      rho = u(0,i);
+      p   = u(1,i);
+      vx1 = u(2,i);
+      vx2 = 0.0;
+      vx3 = 0.0;
+
+      P[0] = rho;
+      P[1] = p;
+
+      #if EOS == IDEAL
+      EoS_Ideal(&eos,P,x);
+      #endif
+
+      Metric_Components(&g,x);
+ 
+      E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
+                     + vx2*vx2/g.gamma[1][1] \
+                     + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
+
+      q(0,i) = rho;
+      q(1,i) = E;
+      q(2,i) = rho*vx1;
+      q(3,i) = rho*vx2;
+      q(4,i) = rho*vx3;
+   }
+
+#elif DIM == 2
+
+   for(i = 0; i <= Nx1-0; i++)
+   {
+      for(j = 0; j <= Nx2-0; j++)
+      {
+         x[0] = grid.time;
+         x[1] = grid.X1[i];
+         x[2] = grid.X2[j];
+         x[3] = 0.0;
+         #if POLAR == TRUE
+         x[2] = M_PI_2;
+         #endif
+       
+         rho = u(0,i,j);
+         p   = u(1,i,j);
+         vx1 = u(2,i,j);
+         vx2 = u(3,i,j);
+         vx3 = 0.0;
+
+         P[0] = rho;
+         P[1] = p;
+
+         #if EOS == IDEAL
+         EoS_Ideal(&eos,P,x);
+         #endif
+ 
+         Metric_Components(&g,x);
+
+         E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
+                        + vx2*vx2/g.gamma[1][1] \
+                        + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
+
+         q(0,i,j) = rho;
+         q(1,i,j) = E;
+         q(2,i,j) = rho*vx1;
+         q(3,i,j) = rho*vx2;
+         q(4,i,j) = rho*vx3;
+      }
+   }
+
+#elif DIM == 4
+
+   for(i = 0; i <= Nx1-0; i++)
+   {
+      for(j = 0; j <= Nx2-0; j++)
+      {
+         x[0] = grid.time;
+         x[1] = grid.X1[i];
+         x[2] = grid.X2[j];
+         x[3] = 0.0;
+       
+         rho = u(0,i,j);
+         p   = u(1,i,j);
+         vx1 = u(2,i,j);
+         vx2 = u(3,i,j);
+         vx3 = u(4,i,j);
+
+         P[0] = rho;
+         P[1] = p;
+
+         #if EOS == IDEAL
+         EoS_Ideal(&eos,P,x);
+         #endif
+
+         Metric_Components(&g,x)
+
+         E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
+                        + vx2*vx2/g.gamma[1][1] \
+                        + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
+ 
+         q(0,i,j) = rho;
+         q(1,i,j) = E;
+         q(2,i,j) = rho*vx1;
+         q(3,i,j) = rho*vx2;
+         q(4,i,j) = rho*vx3;
+      }
+   }
+
+#elif DIM == 3
+
+   for(i = 0; i <= Nx1; i++)
+   {
+      for(j = 0; j <= Nx2; j++)
+      {
+         for(k = 0; k <= Nx3; k++)
+         {
+            x[0] = grid.time;
+            x[1] = grid.X1[i];
+            x[2] = grid.X2[j];
+            x[3] = grid.X3[k];
+        
+            rho = u(0,i,j,k);
+            p   = u(1,i,j,k);
+            vx1 = u(2,i,j,k);
+            vx2 = u(3,i,j,k);
+            vx3 = u(4,i,j,k);
+
+            P[0] = rho;
+            P[1] = p;
+
+            #if EOS == IDEAL
+            EoS_Ideal(&eos,P,x);
+            #endif
+
+            Metric_Components(&g,x);
+
+            E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
+                           + vx2*vx2/g.gamma[1][1] \
+                           + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
+          
+            q(0,i,j,k) = rho;
+            q(1,i,j,k) = E;
+            q(2,i,j,k) = rho*vx1;
+            q(3,i,j,k) = rho*vx2;
+            q(4,i,j,k) = rho*vx3;
+         }
+      }
+   }
+
+#endif
+}

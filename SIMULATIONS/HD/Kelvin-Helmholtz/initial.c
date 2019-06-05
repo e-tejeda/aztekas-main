@@ -14,18 +14,14 @@
  */
 
 //Do not erase any of these libraries//
-#include<stdio.h>
-#include<math.h>
-#include<string.h>
 #include"main.h"
-#include"param.h"
 
-void INITIAL(double *dtprint)
+void Initial(double *dtprint)
 {
    int n, i, j, k, cell;
 
    //Initialize time
-   time = 0.0;
+   grid.time = 0.0;
 
    //Initialize dt
    dt = 0.0;
@@ -37,19 +33,19 @@ void INITIAL(double *dtprint)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         if(fabs(X2[j]) >= x_0)
+         if(fabs(grid.X2[j]) >= x_0)
          {
-            U[c2(0,i,j)] = nl;
-            U[c2(1,i,j)] = pl;
-            U[c2(2,i,j)] = vx1l*(1 + 0.01*cos(2*M_PI*X1[i])*sin(2*M_PI*X2[j])); 
-            U[c2(3,i,j)] = vx2l*(1 + 0.01*cos(2*M_PI*X1[i])*sin(2*M_PI*X2[j]));
+            U(0,i,j) = nl;
+            U(1,i,j) = pl;
+            U(2,i,j) = vx1l*(1 + 0.01*cos(2*M_PI*grid.X1[i])*sin(2*M_PI*grid.X2[j])); 
+            U(3,i,j) = vx2l*(1 + 0.01*cos(2*M_PI*grid.X1[i])*sin(2*M_PI*grid.X2[j]));
          }
-         else if(fabs(X2[j]) < x_0) 
+         else if(fabs(grid.X2[j]) < x_0) 
          {
-            U[c2(0,i,j)] = nr;
-            U[c2(1,i,j)] = pr;
-            U[c2(2,i,j)] = vx1r*(1 + 0.01*cos(2*M_PI*X1[i])*sin(2*M_PI*X2[j])); 
-            U[c2(3,i,j)] = vx2r*(1 + 0.01*cos(2*M_PI*X1[i])*sin(2*M_PI*X2[j]));
+            U(0,i,j) = nr;
+            U(1,i,j) = pr;
+            U(2,i,j) = vx1r*(1 + 0.01*cos(2*M_PI*grid.X1[i])*sin(2*M_PI*grid.X2[j])); 
+            U(3,i,j) = vx2r*(1 + 0.01*cos(2*M_PI*grid.X1[i])*sin(2*M_PI*grid.X2[j]));
          }
       }
    }

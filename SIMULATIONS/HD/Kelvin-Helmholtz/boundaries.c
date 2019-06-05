@@ -21,11 +21,11 @@
 #include"main.h"
 #include"param.h"
 
-int BOUNDARIES(double *B)
+int Boundaries(double *B)
 {
    int i, j, k, n, cell;
 
-   PERIODIC(B);
+   Periodic(B);
 
    for(n = 0; n < eq; n++)
    {
@@ -33,7 +33,7 @@ int BOUNDARIES(double *B)
       {
          for(j = 0; j <= Nx2; j++)
          {
-            roundgen(&B[c2(n,i,j)]);
+            RoundGen(&B(n,i,j));
          }
       }
    }

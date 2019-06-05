@@ -66,7 +66,7 @@ endif
 # Coordinates (cart,cyl,sph)
 #####################################
 
-COORD = sph
+COORD = cart
 
 ifeq ($(COORD),cart)
 	PARAM += -DCOORDINATES=CARTESIAN
@@ -135,7 +135,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/HD/svector.c \
 	  $(AZTPATH)/Src/HD/metric.c \
      $(AZTPATH)/Src/EOS/eos-ideal.c \
-	  ./source.c
+	  ./user_sources.c
 endif 
 
 ifeq ($(PHY),rhd)

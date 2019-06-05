@@ -39,6 +39,8 @@
 
 /* SIMPLE ARRAY */
 #if DIM == 1
+   #define  S1p(x)  grid.S1p[(x)]
+   #define  S1m(x)  grid.S1m[(x)]
 
    #define  U(N,x)  U[(N)*(Nx1+1) + (x)]
    #define  Q(N,x)  Q[(N)*(Nx1+1) + (x)]
@@ -49,6 +51,10 @@
    #define q2(N,x) q2[(N)*(Nx1+1) + (x)]
 
 #elif DIM == 2 || DIM == 4
+   #define  S1p(x,y)  grid.S1p[(x)*(Nx2+1) + (y)]
+   #define  S1m(x,y)  grid.S1m[(x)*(Nx2+1) + (y)]
+   #define  S2p(x,y)  grid.S2p[(x)*(Nx2+1) + (y)]
+   #define  S2m(x,y)  grid.S2m[(x)*(Nx2+1) + (y)]
 
    #define  U(N,x,y)  U[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]
    #define  Q(N,x,y)  Q[(N)*(Nx1+1)*(Nx2+1) + (x)*(Nx2+1) + (y)]

@@ -12,6 +12,7 @@ void Allocate_Array()
    grid.X1 = (double *)malloc((Nx1+1)*sizeof(double));
    grid.X1p = (double *)malloc((Nx1+1)*sizeof(double));
    grid.X1m = (double *)malloc((Nx1+1)*sizeof(double));
+
    grid.S1p = (double *)malloc((Nx1+1)*sizeof(double));
    grid.S1m = (double *)malloc((Nx1+1)*sizeof(double));
 
@@ -28,6 +29,12 @@ void Allocate_Array()
    grid.X2  = (double *)malloc((Nx2+1)*sizeof(double));
    grid.X2p = (double *)malloc((Nx2+1)*sizeof(double));
    grid.X2m = (double *)malloc((Nx2+1)*sizeof(double));
+
+   grid.S1p = (double *)malloc((Nx1+1)*(Nx2+1)*sizeof(double));
+   grid.S1m = (double *)malloc((Nx1+1)*(Nx2+1)*sizeof(double));
+   grid.S2p = (double *)malloc((Nx1+1)*(Nx2+1)*sizeof(double));
+   grid.S2m = (double *)malloc((Nx1+1)*(Nx2+1)*sizeof(double));
+
    U   = (double *)malloc((Nx1+1)*(Nx2+1)*(eq+1)*sizeof(double));
    U1  = (double *)malloc((Nx1+1)*(Nx2+1)*(eq+1)*sizeof(double));
    U2  = (double *)malloc((Nx1+1)*(Nx2+1)*(eq+1)*sizeof(double));

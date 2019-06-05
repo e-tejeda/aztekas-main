@@ -1,0 +1,194 @@
+#####################################
+#### define dimension parameters ####
+#####################################
+#----------------------------------------------------------------------
+# From the list below, please activate/deactivate the options that     
+# apply to your run. If you modify any of these options, make sure     
+# that you recompile the whole code by typing "make clean; make" 
+#----------------------------------------------------------------------
+
+#####################################
+# Ghost cells
+#####################################
+
+PARAM += -Dgc=3
+
+#####################################
+
+#####################################
+# Physics (rhd,hd,mhd,rmhd)
+#####################################
+
+PHY = hd
+ifeq ($(PHY),hd)
+        PARAM += -DPHYSICS=HD
+endif
+ifeq ($(PHY),rhd)
+        PARAM += -DPHYSICS=RHD
+endif
+
+#####################################
+
+#####################################
+# Equation of State
+#####################################
+
+eos = ideal
+ifeq ($(eos),ideal)
+		PARAM += -DEOS=IDEAL
+endif
+
+#####################################
+# Dimension
+#####################################
+
+DIM = 2
+
+ifeq ($(DIM),1)
+	PARAM += -DDIM=1
+	PARAM += -Deq=4
+	PARAM += -Dgraf=1
+endif
+ifeq ($(DIM),2)
+	PARAM += -DDIM=2
+	PARAM += -Deq=4
+	PARAM += -Dgraf=2
+endif
+ifeq ($(DIM),3)
+	PARAM += -DDIM=3
+	PARAM += -Deq=5
+	PARAM += -Dgraf=3
+endif
+
+#####################################
+
+#####################################
+# Coordinates (cart,cyl,sph)
+#####################################
+
+COORD = cart
+
+ifeq ($(COORD),cart)
+	PARAM += -DCOORDINATES=CARTESIAN
+	PARAM += -Dalfa=0
+endif
+ifeq ($(COORD),cyl)
+	PARAM += -DCOORDINATES=CYLINDRICAL
+endif
+ifeq ($(COORD),sph)
+	PARAM += -DCOORDINATES=SPHERICAL
+endif
+
+#####################################
+
+#####################################
+# PATH TO AZTEKAS
+#####################################
+AZTPATH = /home/aaguayoo/AZTEKAS/Github/aztekas-main/
+#####################################
+
+#####################################
+# Integration method
+#####################################
+
+INT = standard
+
+ifeq ($(INT),standard)
+	PARAM += -DINTEGRATION=STANDARD
+	INT = 
+endif
+ifeq ($(INT),pvrs)
+	PARAM += -DINTEGRATION=PVRS
+	INT = -pvrs
+endif
+
+#####################################
+
+#####################################
+# Compilation
+#####################################
+
+ifeq ($(PHY),hd)
+SOURCES = $(AZTPATH)/Src/main.c \
+	  $(AZTPATH)/Src/alloc.c \
+	  $(AZTPATH)/Src/array.c \
+	  $(AZTPATH)/Src/mesh.c \
+	  ./initial.c \
+	  $(AZTPATH)/Src/timestep.c \
+	  $(AZTPATH)/Src/input.c \
+	  $(AZTPATH)/Src/output.c \
+	  $(AZTPATH)/Src/integration$(INT).c \
+	  $(AZTPATH)/Src/flux.c \
+	  $(AZTPATH)/Src/rk-clas-$(COORD).c \
+	  $(AZTPATH)/Src/limiters.c \
+	  $(AZTPATH)/Src/vectors.c \
+	  $(AZTPATH)/Src/restart.c \
+	  $(AZTPATH)/Src/auxfunc.c \
+	  ./boundaries.c \
+	  $(AZTPATH)/Src/bound_cond.c \
+	  $(AZTPATH)/Src/HD/amatrix.c \
+	  $(AZTPATH)/Src/HD/q2uvector.c \
+	  $(AZTPATH)/Src/HD/u2qvector.c \
+	  $(AZTPATH)/Src/HD/qvector.c \
+	  $(AZTPATH)/Src/HD/fvector.c \
+	  $(AZTPATH)/Src/HD/gvector.c \
+	  $(AZTPATH)/Src/HD/hvector.c \
+	  $(AZTPATH)/Src/HD/svector.c \
+	  $(AZTPATH)/Src/HD/gauge.c \
+     $(AZTPATH)/Src/EOS/eos-ideal.c \
+	  ./source.c
+endif 
+
+ifeq ($(PHY),rhd)
+SOURCES = $(AZTPATH)/Src/main.c \
+	  $(AZTPATH)/Src/alloc.c \
+	  $(AZTPATH)/Src/array.c \
+	  $(AZTPATH)/Src/mesh.c \
+	  ./initial.c \
+	  $(AZTPATH)/Src/timestep.c \
+	  $(AZTPATH)/Src/input.c \
+	  $(AZTPATH)/Src/output.c \
+	  $(AZTPATH)/Src/integration$(INT).c \
+	  $(AZTPATH)/Src/flux.c \
+	  $(AZTPATH)/Src/rk-rel.c \
+	  $(AZTPATH)/Src/limiters.c \
+	  $(AZTPATH)/Src/vectors.c \
+	  $(AZTPATH)/Src/restart.c \
+	  $(AZTPATH)/Src/auxfunc.c \
+	  ./boundaries.c \
+	  $(AZTPATH)/Src/bound_cond.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/amatrix.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/dmmatrix.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/dnmatrix.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/domatrix.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/q2uvector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/u2qvector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/qvector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/fvector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/gvector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/hvector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/svector.c \
+	  $(AZTPATH)/Src/RHD-$(COORD)/gauge.c \
+	  ./source.c
+endif
+
+#OBJS = $(SOURCES:.c=.o)
+
+FLAGS = -Ofast -lm
+
+COMPILER = gcc
+AZT_HEAD = $(AZTPATH)/Src/Headers
+CFLAGS = -I$(AZT_HEAD) -I.
+EXEC = aztekas
+
+#####################################
+
+$(EXEC): $(SOURCES)
+	@echo ""
+	@echo "Compiling problem file ..."
+	$(COMPILER) $(PARAM) -fopenmp $(SOURCES) $(FLAGS) $(CFLAGS) -o $(EXEC)  
+	@echo "$(bla)"
+	@echo "aztekas compiled successfully"
+
+clean: 
+	rm -r $(EXEC)

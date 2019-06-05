@@ -1,13 +1,17 @@
+#include"macros.h"
+
 // Define boundaries TRUE = 1 , FALSE = 0
 // Set as cond_X whereas
 // cond : {outflow,reflective,periodic,inflow}
-// X : {x1max,x1min,x2max,x2min,x3max,x3min} for outflow, reflective and inflow
-// X : {x1,x2,x3} for periodic
-#define periodic_x1max 1
-#define periodic_x1min 1
-#define periodic_x2max 1
-#define periodic_x2min 1
+// X : {x1max,x1min,x2max,x2min,x3max,x3min}
+#define periodic_x1 TRUE
+#define periodic_x2 TRUE
 
-// Define reconstruction of primitive variables
-#define limiter 'W'
-#define riemann 1
+#define RECONST         MC
+#define FLUX            HLL
+#define GRID            UNIFORM //(UNIFORM, LOGMESH)
+
+double nr, pr, vx1r, vx2r, vx3r;
+double nl, pl, vx1l, vx2l, vx3l;
+
+double x_0;

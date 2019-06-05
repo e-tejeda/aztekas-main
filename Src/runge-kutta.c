@@ -39,20 +39,8 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
  
       for(n = 0; n < eq; n++)
       {
-         F[n] = (grid.S1p[i]*vec.Fp[n] - grid.S1m[i]*vec.Fm[n])/Dx1 - \
+         F[n] = (S1p(i)*vec.Fp[n] - S1m(i)*vec.Fm[n])/Dx1 - \
          vec.S[n];
-         /*
-         #if COORDINATES == CARTESIAN
-         F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
-         vec.S[n];
-         #elif COORDINATES == CYLINDRICAL
-         F[n] = (grid.X1p[i]*vec.Fp[n] - grid.X1m[i]*vec.Fm[n])/(grid.X1[i]*Dx1) - \
-         vec.S[n];
-         #elif COORDINATES == SPHERICAL
-         F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
-         vec.S[n];
-         #endif
-         */
       }
 
 #if INTEGRATION == PVRS
@@ -115,23 +103,9 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
          
          for(n = 0; n < eq; n++)
          {
-            F[n] = (grid.S1p[i]*vec.Fp[n] - grid.S1m[i]*vec.Fm[n])/Dx1 - \
-            vec.S[n];
-            /*
-            #if COORDINATES == CARTESIAN
-            F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
-            (vec.Gp[n] - vec.Gm[n])/(Dx2) - \
-            vec.S[n];
-            #elif COORDINATES == CYLINDRICAL
-            F[n] = (grid.X1p[i]*vec.Fp[n] - grid.X1m[i]*vec.Fm[n])/(grid.X1[i]*Dx1) - \
-            (vec.Gp[n] - vec.Gm[n])/(Dx2) - \
-            vec.S[n];
-            #elif COORDINATES == SPHERICAL
-            F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
-            (vec.Gp[n] - vec.Gm[n])/(grid.X1[i]*Dx2) - \
-            vec.S[n];
-            #endif
-            */
+            F[n] = (S1p(i,j)*vec.Fp[n] - S1m(i,j)*vec.Fm[n])/Dx1 + \
+                   (S2p(i,j)*vec.Gp[n] - S2m(i,j)*vec.Gm[n])/Dx2 - \
+                   vec.S[n];
          }
 
 #if INTEGRATION == PVRS

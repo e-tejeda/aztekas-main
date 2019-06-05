@@ -70,7 +70,6 @@ COORD = cart
 
 ifeq ($(COORD),cart)
 	PARAM += -DCOORDINATES=CARTESIAN
-	PARAM += -Dalfa=0
 endif
 ifeq ($(COORD),cyl)
 	PARAM += -DCOORDINATES=CYLINDRICAL
@@ -111,15 +110,15 @@ endif
 ifeq ($(PHY),hd)
 SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
-	  $(AZTPATH)/Src/array.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
+	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \
 	  $(AZTPATH)/Src/integration$(INT).c \
 	  $(AZTPATH)/Src/flux.c \
-	  $(AZTPATH)/Src/rk-clas-$(COORD).c \
+	  $(AZTPATH)/Src/runge-kutta.c \
 	  $(AZTPATH)/Src/limiters.c \
 	  $(AZTPATH)/Src/vectors.c \
 	  $(AZTPATH)/Src/restart.c \
@@ -134,17 +133,17 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/HD/gvector.c \
 	  $(AZTPATH)/Src/HD/hvector.c \
 	  $(AZTPATH)/Src/HD/svector.c \
-	  $(AZTPATH)/Src/HD/gauge.c \
+	  $(AZTPATH)/Src/HD/metric.c \
      $(AZTPATH)/Src/EOS/eos-ideal.c \
-	  ./source.c
+	  ./user_sources.c
 endif 
 
 ifeq ($(PHY),rhd)
 SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
-	  $(AZTPATH)/Src/array.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
+	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \

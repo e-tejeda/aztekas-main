@@ -1,5 +1,5 @@
 % OUTPUT FILE AND DIRECTORY
-outputdirectory = ./Kelvin-Helmholtz-02/
+outputdirectory = ./Kelvin-Helmholtz-01/
 outputfile      = kh_
 
 % RESTART SIMULATION (1 -> true, 0 -> false)
@@ -8,8 +8,8 @@ restartfile = ./Kelvin-Helmholtz-01/kh_67.dat
 restart_filecount = 67
 
 % Define mesh
-Nx1 = 600
-Nx2 = 600
+Nx1 = 150
+Nx2 = 150
 Nx3 = 0
 
 % Define domain limits

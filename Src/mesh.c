@@ -44,10 +44,17 @@ int Mesh()
       grid.X1p[i] = x1min + exp(log((x1max - x1min + 1.0))*(i+0.5-gc)/(Nx1-2*gc)) - 1;
       grid.X1m[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-0.5-gc)/(Nx1-2*gc)) - 1;
       #endif
-
-      grid.S1p[i] = dety(grid.X1p[i],M_PI_2,0)/dety(grid.X1[i],M_PI_2,0);
-      grid.S1m[i] = dety(grid.X1m[i],M_PI_2,0)/dety(grid.X1[i],M_PI_2,0);
    }
+
+   #if PHYSICS == HD
+   Surface_Volume();
+   #elif PHYSICS == RHD
+   for(i = 0; i <= Nx1; i++)
+   {
+      S1p(i) = dety(grid.X1p[i],M_PI_2,0)/dety(grid.X1[i],M_PI_2,0);
+      S1m(i) = dety(grid.X1m[i],M_PI_2,0)/dety(grid.X1[i],M_PI_2,0);
+   }
+   #endif
    
 #elif DIM == 2  || DIM == 4
    
@@ -71,6 +78,21 @@ int Mesh()
       grid.X2m[j] = x2min + (j-0.5-gc)*(dx2);
    }
    
+   #if PHYSICS == HD
+   Surface_Volume();
+   #elif PHYSICS == RHD
+   for(i = 0; i <= Nx1; i++)
+   {
+      for(j = 0; j <= Nx2; j++)
+      {
+         S1p(i,j) = dety(grid.X1p[i],grid.X2[j],0)/dety(grid.X1[i],grid.X2[j],0);
+         S1m(i,j) = dety(grid.X1m[i],grid.X2[j],0)/dety(grid.X1[i],grid.X2[j],0);
+         S2p(i,j) = dety(grid.X1[i],grid.X2p[j],0)/dety(grid.X1[i],grid.X2[j],0);
+         S2m(i,j) = dety(grid.X1[i],grid.X2m[j],0)/dety(grid.X1[i],grid.X2[j],0);
+      }
+   }
+   #endif
+
 #elif DIM == 3 
    
    for(i = 0; i <= Nx1; i++)

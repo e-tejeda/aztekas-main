@@ -53,9 +53,8 @@ void Outflow(double *B)
          for(n = 0; n < eq; n++)
          {
          // r = 0 boundary in cylindrical and spherical coordinates
-         #if COORDINATES != CARTESIAN && outflow_x1min == TRUE
-            if(x1min == 0.0) 
-                B(n,gc,j) = B(n,gc+1,j);
+         #if COORDINATES == SPHERICAL && outflow_x1min == TRUE
+            B(n,gc,j)   = B(n,gc+1,j);
          #endif
 
          #if outflow_x1max == TRUE
@@ -221,7 +220,6 @@ void Reflection(double *B)
             else
             {
                B(n,i,Nx2-cell) = B(n,i,Nx2-2*gc+cell+1);
-             
             }
          #endif
          }

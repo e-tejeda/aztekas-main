@@ -23,19 +23,66 @@ void Metric_Components(local_metric_ *g, double *x)
 #endif
 }
 
-double dety(double x1, double x2, double x3)
+void Surface_Volume()
 {
-#if COORDINATES == CARTESIAN
+   int i, j, k;
 
-   return 1;
+#if DIM == 1
 
-#elif COORDINATES == CYLINDRICAL
+   for(i = 0; i <= Nx1; i++)
+   {
+      #if COORDINATES == CARTESIAN
+      S1p(i) = 1.0;
+      S1m(i) = 1.0;
+      #elif COORDINATES == CYLINDRICAL
+      S1p(i) = grid.X1p[i]/grid.X1[i];
+      S1m(i) = grid.X1m[i]/grid.X1[i];
+      #elif COORDINATES == SPHERICAL
+      S1p(i) = 1.0;
+      S1m(i) = 1.0;
+      #endif
+   }
+   
+#elif DIM == 2 || DIM == 4
 
-   return x1;
-
-#elif COORDINATES == SPHERICAL
-
-   return x1*x1*sin(x2)*sin(x2);
+   for(i = 0; i <= Nx1; i++)
+   {
+      for(j = 0; j <= Nx2; j++)
+      {
+         #if COORDINATES == CARTESIAN
+         S1p(i,j) = 1.0;
+         S1m(i,j) = 1.0;
+         S2p(i,j) = 1.0;
+         S2m(i,j) = 1.0;
+         #elif COORDINATES == CYLINDRICAL
+         S1p(i,j) = grid.X1p[i]/grid.X1[i];
+         S1m(i,j) = grid.X1m[i]/grid.X1[i];
+         S2p(i,j) = 1.0;
+         S2m(i,j) = 1.0;
+         #elif COORDINATES == SPHERICAL
+         S1p(i,j) = 1.0;
+         S1m(i,j) = 1.0;
+         S2p(i,j) = 1.0/grid.X1[i];
+         S2m(i,j) = 1.0/grid.X1[i];
+         #endif
+         }
+   }
+#elif DIM == 3
+   for(i = 0; i <= Nx1; i++)
+   {
+      for(j = 0; j <= Nx2; j++)
+      {
+         for(k = 0; k <= Nx3; k++)
+         {
+            S1p(i,j,k) = 1.0;
+            S1m(i,j,k) = 1.0;
+            S2p(i,j,k) = 1.0;
+            S2m(i,j,k) = 1.0;
+            S3p(i,j,k) = 1.0;
+            S3m(i,j,k) = 1.0;
+         }
+      }
+   }
 
 #endif
 }
