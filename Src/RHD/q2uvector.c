@@ -15,9 +15,9 @@ int funct_Q2U(double *u, double *q)
 
    for(i = 0; i <= Nx1-0; i++)
    {
-      D     = q[c1(0,i)];
-      t     = q[c1(1,i)];
-      sd[0] = q[c1(2,i)];
+      D     = q(0,i);
+      t     = q(1,i);
+      sd[0] = q(2,i);
       sd[1] = 0;
       sd[2] = 0;
 
@@ -39,7 +39,7 @@ int funct_Q2U(double *u, double *q)
          }
       }
 
-      theta_0 = U[c1(1,i)]/U[c1(0,i)];
+      theta_0 = U(1,i)/U(0,i);
       f = 1.0;      
 
       while (fabs(f) > 0.0000001)
@@ -63,9 +63,9 @@ int funct_Q2U(double *u, double *q)
       W = sqrt(1.0 + SS / pow(D*h,2.0));
       SS = 0;
 
-      u[c1(0,i)] = D / W;
-      u[c1(1,i)] = D*h*W - t - D;
-      u[c1(2,i)] = sd[0] / (D * h * W);
+      u(0,i) = D / W;
+      u(1,i) = D*h*W - t - D;
+      u(2,i) = sd[0] / (D * h * W);
    }
 
 #elif DIM == 2
@@ -74,10 +74,10 @@ int funct_Q2U(double *u, double *q)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         D     = q[c2(0,i,j)];
-         t     = q[c2(1,i,j)];
-         sd[0] = q[c2(2,i,j)];
-         sd[1] = q[c2(3,i,j)];
+         D     = q(0,i,j);
+         t     = q(1,i,j);
+         sd[0] = q(2,i,j);
+         sd[1] = q(3,i,j);
          sd[2] = 0;
 
          x[0] = time;
@@ -98,7 +98,7 @@ int funct_Q2U(double *u, double *q)
             }
          }
 
-         theta_0 = U[c2(1,i,j)]/U[c2(0,i,j)];
+         theta_0 = U(1,i,j)/U(0,i,j);
          f = 1.0;
 
          while (fabs(f) > 0.0000001)
@@ -122,10 +122,10 @@ int funct_Q2U(double *u, double *q)
          W = sqrt(1.0 + SS / pow(D*h,2.0));
          SS = 0;
 
-         u[c2(0,i,j)] = D / W;
-         u[c2(1,i,j)] = D*h*W - t - D;
-         u[c2(2,i,j)] = sd[0] / (D * h * W);
-         u[c2(3,i,j)] = sd[1] / (D * h * W);
+         u(0,i,j) = D / W;
+         u(1,i,j) = D*h*W - t - D;
+         u(2,i,j) = sd[0] / (D * h * W);
+         u(3,i,j) = sd[1] / (D * h * W);
       }
    }
 
@@ -135,11 +135,11 @@ int funct_Q2U(double *u, double *q)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         D     = q[c2(0,i,j)];
-         t     = q[c2(1,i,j)];
-         sd[0] = q[c2(2,i,j)];
-         sd[1] = q[c2(3,i,j)];
-         sd[2] = q[c2(4,i,j)];
+         D     = q(0,i,j);
+         t     = q(1,i,j);
+         sd[0] = q(2,i,j);
+         sd[1] = q(3,i,j);
+         sd[2] = q(4,i,j);
 
          x[0] = time;
          x[1] = X1[i];
@@ -159,7 +159,7 @@ int funct_Q2U(double *u, double *q)
             }
          }
 
-         theta_0 = U[c2(1,i,j)]/U[c2(0,i,j)];
+         theta_0 = U(1,i,j)/U(0,i,j);
          f = 1.0;
 
          while (fabs(f) > 0.0000001)
@@ -183,11 +183,11 @@ int funct_Q2U(double *u, double *q)
          W = sqrt(1.0 + SS / pow(D*h,2.0));
          SS = 0;
 
-         u[c2(0,i,j)] = D / W;
-         u[c2(1,i,j)] = D*h*W - t - D;
-         u[c2(2,i,j)] = sd[0] / (D * h * W);
-         u[c2(3,i,j)] = sd[1] / (D * h * W);
-         u[c2(4,i,j)] = sd[2] / (D * h * W);
+         u(0,i,j) = D / W;
+         u(1,i,j) = D*h*W - t - D;
+         u(2,i,j) = sd[0] / (D * h * W);
+         u(3,i,j) = sd[1] / (D * h * W);
+         u(4,i,j) = sd[2] / (D * h * W);
       }
    }
 
@@ -199,11 +199,11 @@ int funct_Q2U(double *u, double *q)
       {
          for(k = 0; k <= Nx3; k++)
          {
-            D     = q[c3(0,i,j,k)];
-            t     = q[c3(1,i,j,k)];
-            sd[0] = q[c3(2,i,j,k)];
-            sd[1] = q[c3(3,i,j,k)];
-            sd[2] = q[c3(4,i,j,k)];
+            D     = q(0,i,j,k);
+            t     = q(1,i,j,k);
+            sd[0] = q(2,i,j,k);
+            sd[1] = q(3,i,j,k);
+            sd[2] = q(4,i,j,k);
           
             x[0] = time;
             x[1] = X1[i];
@@ -220,7 +220,7 @@ int funct_Q2U(double *u, double *q)
                }
             }
           
-            theta_0 = U[c3(1,i,j,k)]/U[c3(0,i,j,k)];
+            theta_0 = U(1,i,j,k)/U(0,i,j,k);
             f = 1.0;
           
             while (fabs(f) > 0.0000001)
@@ -244,11 +244,11 @@ int funct_Q2U(double *u, double *q)
             W = sqrt(1.0 + SS / pow(D*h,2.0));
             SS = 0;
           
-            u[c3(0,i,j,k)] = D / W;
-            u[c3(1,i,j,k)] = D*h*W - t - D;
-            u[c3(2,i,j,k)] = sd[0] / (D * h * W);
-            u[c3(3,i,j,k)] = sd[1] / (D * h * W);
-            u[c3(4,i,j,k)] = sd[2] / (D * h * W);
+            u(0,i,j,k) = D / W;
+            u(1,i,j,k) = D*h*W - t - D;
+            u(2,i,j,k) = sd[0] / (D * h * W);
+            u(3,i,j,k) = sd[1] / (D * h * W);
+            u(4,i,j,k) = sd[2] / (D * h * W);
          }
       }
    }

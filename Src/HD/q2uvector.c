@@ -76,19 +76,19 @@ int funct_Q2U(double *u, double *q)
       {
          for(k = 0; k <= Nx3; k++)
          {
-            D  = q[c3(0,i,j,k)];
-            E  = q[c3(1,i,j,k)];
-            S1 = q[c3(2,i,j,k)];
-            S2 = q[c3(3,i,j,k)];
-            S3 = q[c3(4,i,j,k)];
+            D  = q(0,i,j,k);
+            E  = q(1,i,j,k);
+            S1 = q(2,i,j,k);
+            S2 = q(3,i,j,k);
+            S3 = q(4,i,j,k);
  
-            u[c3(0,i,j,k)] = D;
+            u(0,i,j,k) = D;
             #if EOS == IDEAL
-            u[c3(1,i,j,k)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+            u(1,i,j,k) = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
             #endif
-            u[c3(2,i,j,k)] = S1/D;
-            u[c3(3,i,j,k)] = S2/D;
-            u[c3(4,i,j,k)] = S3/D;
+            u(2,i,j,k) = S1/D;
+            u(3,i,j,k) = S2/D;
+            u(4,i,j,k) = S3/D;
          }
       }
    }

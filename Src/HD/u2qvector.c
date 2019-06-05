@@ -120,11 +120,11 @@ void Prim2Cons_All(double *q, double *u)
             x[2] = X2[j];
             x[3] = X3[k];
         
-            rho = u[c3(0,i,j,k)];
-            p   = u[c3(1,i,j,k)];
-            vx1 = u[c3(2,i,j,k)];
-            vx2 = u[c3(3,i,j,k)];
-            vx3 = u[c3(4,i,j,k)];
+            rho = u(0,i,j,k);
+            p   = u(1,i,j,k);
+            vx1 = u(2,i,j,k);
+            vx2 = u(3,i,j,k);
+            vx3 = u(4,i,j,k);
 
             P[0] = rho;
             P[1] = p;
@@ -133,11 +133,11 @@ void Prim2Cons_All(double *q, double *u)
             EoS_Ideal(&eos,P,x);
             #endif
           
-            q[c3(0,i,j,k)] = rho;
-            q[c3(1,i,j,k)] = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
-            q[c3(2,i,j,k)] = rho*vx1;
-            q[c3(3,i,j,k)] = rho*vx2;
-            q[c3(4,i,j,k)] = rho*vx3;
+            q(0,i,j,k) = rho;
+            q(1,i,j,k) = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
+            q(2,i,j,k) = rho*vx1;
+            q(3,i,j,k) = rho*vx2;
+            q(4,i,j,k) = rho*vx3;
          }
       }
    }

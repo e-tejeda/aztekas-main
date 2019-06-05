@@ -204,15 +204,15 @@ int RK3D(double *u, double *q, double *q1, double *q2, int order)
                   case 1:
                      for(n = 0; n < eq; n++)
                      {
-                        q1[c3(n,i,j,k)] = q[c3(n,i,j,k)] - (Dt)*L[n];
+                        q1(n,i,j,k) = q(n,i,j,k) - (Dt)*L[n];
                      }
                   break;
 
                   case 2:
                      for(n = 0; n < eq; n++)
                      {
-                        q2[c3(n,i,j,k)] = 0.5*(q1[c3(n,i,j,k)] + \
-                        q[c3(n,i,j,k)] - (Dt)*L[n]);
+                        q2(n,i,j,k) = 0.5*(q1(n,i,j,k) + \
+                        q(n,i,j,k) - (Dt)*L[n]);
                      }
                   break;
                }

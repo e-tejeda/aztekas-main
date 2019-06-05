@@ -15,9 +15,9 @@ void Prim2Cons_All(double *q, double *u)
 
    for(i = 0; i <= Nx1; i++)
    {
-      rho   = u[c1(0,i)];
-      p     = u[c1(1,i)];
-      vd[0] = u[c1(2,i)];
+      rho   = u(0,i);
+      p     = u(1,i);
+      vd[0] = u(2,i);
       vd[1] = 0;
       vd[2] = 0;
 
@@ -60,16 +60,16 @@ void Prim2Cons_All(double *q, double *u)
          Sd[a] = rho * h * W * W * vd[a];
       }
 
-      q[c1(0,i)] = D;
-      q[c1(1,i)] = tau;
-      q[c1(2,i)] = Sd[0];
+      q(0,i) = D;
+      q(1,i) = tau;
+      q(2,i) = Sd[0];
 
       W = 1/sqrt((-pow(vd[2],2.0))-pow(vd[1],2.0)-pow(vd[0],2.0)+1);
       h = (K*p+(K-1)*rho)/((K-1)*rho);
 
-      q[c1(0,i)] = W*rho;
-      q[c1(1,i)] = (pow(W,2.0)*h-W)*rho-p;
-      q[c1(2,i)] = pow(W,2.0)*h*rho*vd[0];
+      q(0,i) = W*rho;
+      q(1,i) = (pow(W,2.0)*h-W)*rho-p;
+      q(2,i) = pow(W,2.0)*h*rho*vd[0];
    }
 
 #elif DIM == 2
@@ -78,10 +78,10 @@ void Prim2Cons_All(double *q, double *u)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         rho   = u[c2(0,i,j)];
-         p     = u[c2(1,i,j)];
-         vd[0] = u[c2(2,i,j)];
-         vd[1] = u[c2(3,i,j)];
+         rho   = u(0,i,j);
+         p     = u(1,i,j);
+         vd[0] = u(2,i,j);
+         vd[1] = u(3,i,j);
          vd[2] = 0;
 
          x[0] = time;
@@ -103,7 +103,7 @@ void Prim2Cons_All(double *q, double *u)
          h = 1.0 + eos.e + p/rho;
 
          /* Lorentz factor */
-         Metric_Components(&m,x)
+         Metric_Components(&m,x);
 
          for(a = 0; a < 3; a++)
          {
@@ -123,10 +123,10 @@ void Prim2Cons_All(double *q, double *u)
             Sd[a] = rho * h * W * W * vd[a];
          }
 
-         q[c2(0,i,j)] = D;
-         q[c2(1,i,j)] = tau;
-         q[c2(2,i,j)] = Sd[0];
-         q[c2(3,i,j)] = Sd[1];
+         q(0,i,j) = D;
+         q(1,i,j) = tau;
+         q(2,i,j) = Sd[0];
+         q(3,i,j) = Sd[1];
       }
    }
    
@@ -136,11 +136,11 @@ void Prim2Cons_All(double *q, double *u)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         rho   = u[c2(0,i,j)];
-         p     = u[c2(1,i,j)];
-         vd[0] = u[c2(2,i,j)];
-         vd[1] = u[c2(3,i,j)];
-         vd[2] = u[c2(4,i,j)];
+         rho   = u(0,i,j);
+         p     = u(1,i,j);
+         vd[0] = u(2,i,j);
+         vd[1] = u(3,i,j);
+         vd[2] = u(4,i,j);
 
          x[0] = time;
          x[1] = X1[i];
@@ -158,7 +158,7 @@ void Prim2Cons_All(double *q, double *u)
          h = 1.0 + eos.e + p/rho;
 
          /* Lorentz factor */
-         Metric_Components(&m,x)
+         Metric_Components(&m,x);
 
          for(a = 0; a < 3; a++)
          {
@@ -178,11 +178,11 @@ void Prim2Cons_All(double *q, double *u)
             Sd[a] = rho * h * W * W * vd[a];
          }
 
-         q[c2(0,i,j)] = D;
-         q[c2(1,i,j)] = tau;
-         q[c2(2,i,j)] = Sd[0];
-         q[c2(3,i,j)] = Sd[1];
-         q[c2(4,i,j)] = Sd[2];
+         q(0,i,j) = D;
+         q(1,i,j) = tau;
+         q(2,i,j) = Sd[0];
+         q(3,i,j) = Sd[1];
+         q(4,i,j) = Sd[2];
       }
    }
    
@@ -194,11 +194,11 @@ void Prim2Cons_All(double *q, double *u)
       {
          for(k = 0; k <= Nx3; k+)
          {
-            rho   = u[c2(0,i,j)];
-            p     = u[c2(1,i,j)];
-            vd[0] = u[c2(2,i,j)];
-            vd[1] = u[c2(3,i,j)];
-            vd[2] = u[c2(4,i,j)];
+            rho   = u(0,i,j,k);
+            p     = u(1,i,j,k);
+            vd[0] = u(2,i,j,k);
+            vd[1] = u(3,i,j,k);
+            vd[2] = u(4,i,j,k);
           
             x[0] = time;
             x[1] = X1[i];
@@ -216,7 +216,7 @@ void Prim2Cons_All(double *q, double *u)
             h = 1.0 + eos.e + p/rho;
           
             /* Lorentz factor */
-            Metric_Components(&m,x)
+            Metric_Components(&m,x);
           
             for(a = 0; a < 3; a++)
             {
@@ -235,11 +235,11 @@ void Prim2Cons_All(double *q, double *u)
                Sd[a] = rho * h * W * W * vd[a];
             }
           
-            q[c3(0,i,j,k)] = D;
-            q[c3(1,i,j,k)] = tau;
-            q[c3(2,i,j,k)] = Sd[0];
-            q[c3(3,i,j,k)] = Sd[1];
-            q[c3(4,i,j,k)] = Sd[2];
+            q(0,i,j,k) = D;
+            q(1,i,j,k) = tau;
+            q(2,i,j,k) = Sd[0];
+            q(3,i,j,k) = Sd[1];
+            q(4,i,j,k) = Sd[2];
          }
       }
    }

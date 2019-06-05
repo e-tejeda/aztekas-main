@@ -36,15 +36,15 @@ void Initial(double *dtprint)
    {
       if(X1[i] < x_0)
       {
-         U[c1(0,i)] = nl;
-         U[c1(1,i)] = pl;
-         U[c1(2,i)] = vx1l;
+         U(0,i) = nl;
+         U(1,i) = pl;
+         U(2,i) = vx1l;
       }
       else
       {
-         U[c1(0,i)] = nr;
-         U[c1(1,i)] = pr;
-         U[c1(2,i)] = vx1r;
+         U(0,i) = nr;
+         U(1,i) = pr;
+         U(2,i) = vx1r;
       }
    }
 
@@ -61,17 +61,17 @@ void Initial(double *dtprint)
       {
          if(X1[i] < x_0)
          {
-            U[c2(0,i,j)] = nl;
-            U[c2(1,i,j)] = pl;
-            U[c2(2,i,j)] = vx1l;
-            U[c2(3,i,j)] = vx2l;
+            U(0,i,j) = nl;
+            U(1,i,j) = pl;
+            U(2,i,j) = vx1l;
+            U(3,i,j) = vx2l;
          }
          else 
          {
-            U[c2(0,i,j)] = nr;
-            U[c2(1,i,j)] = pr;
-            U[c2(2,i,j)] = vx1r;
-            U[c2(3,i,j)] = vx2r;
+            U(0,i,j) = nr;
+            U(1,i,j) = pr;
+            U(2,i,j) = vx1r;
+            U(3,i,j) = vx2r;
          }
       }
    }
@@ -84,17 +84,17 @@ void Initial(double *dtprint)
       {
          if(X2[j] > x_0)
          {
-            U[c2(0,i,j)] = nl;
-            U[c2(1,i,j)] = pl;
-            U[c2(2,i,j)] = vx1l;
-            U[c2(3,i,j)] = vx2l;
+            U(0,i,j) = nl;
+            U(1,i,j) = pl;
+            U(2,i,j) = vx1l;
+            U(3,i,j) = vx2l;
          }
          else 
          {
-            U[c2(0,i,j)] = nr;
-            U[c2(1,i,j)] = pr;
-            U[c2(2,i,j)] = vx1r;
-            U[c2(3,i,j)] = vx2r;
+            U(0,i,j) = nr;
+            U(1,i,j) = pr;
+            U(2,i,j) = vx1r;
+            U(3,i,j) = vx2r;
          }
       }
    }
@@ -107,17 +107,17 @@ void Initial(double *dtprint)
       {
          if(X1[i] + X2[j] - 1 < 0.0)
          {
-            U[c2(0,i,j)] = nl;
-            U[c2(1,i,j)] = pl;
-            U[c2(2,i,j)] = vx1l;
-            U[c2(3,i,j)] = vx2l;
+            U(0,i,j) = nl;
+            U(1,i,j) = pl;
+            U(2,i,j) = vx1l;
+            U(3,i,j) = vx2l;
          }
          else 
          {
-            U[c2(0,i,j)] = nr;
-            U[c2(1,i,j)] = pr;
-            U[c2(2,i,j)] = vx1r;
-            U[c2(3,i,j)] = vx2r;
+            U(0,i,j) = nr;
+            U(1,i,j) = pr;
+            U(2,i,j) = vx1r;
+            U(3,i,j) = vx2r;
          }
       }
    }

@@ -43,7 +43,7 @@ endif
 # Dimension
 #####################################
 
-DIM = 1
+DIM = 2
 
 ifeq ($(DIM),1)
 	PARAM += -DDIM=1
@@ -116,7 +116,6 @@ endif
 ifeq ($(PHY),hd)
 SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
-	  $(AZTPATH)/Src/array.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
 	  $(AZTPATH)/Src/timestep.c \
@@ -147,7 +146,6 @@ endif
 ifeq ($(PHY),rhd)
 SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
-	  $(AZTPATH)/Src/array.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
 	  $(AZTPATH)/Src/timestep.c \

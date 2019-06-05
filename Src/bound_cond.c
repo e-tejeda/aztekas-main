@@ -26,14 +26,14 @@ void Outflow(double *B)
          // r = 0 boundary in cylindrical and spherical coordinates
       #if COORDINATES != CARTESIAN && outflow_x1min == TRUE
          if(x1min == 0.0)
-            B(n,gc) = B[c1(n,gc+1)];
+            B(n,gc) = B(n,gc+1);
       #endif
 
       #if outflow_x1max == TRUE
-         B(n,Nx1-cell) = B[c1(n,Nx1-gc)]; //x1max
+         B(n,Nx1-cell) = B(n,Nx1-gc); //x1max
       #endif
       #if outflow_x1min == TRUE
-         B(n,cell) = B[c1(n,gc)]; //x1min
+         B(n,cell) = B(n,gc); //x1min
       #endif
       }
    }
@@ -121,10 +121,10 @@ void Reflection(double *B)
    #if reflective_x1max == TRUE
       for(n = 0; n < eq; n++)
       {
-         B(n,Nx1-cell) = B[c1(n,Nx1-2*gc+cell+1)];
+         B(n,Nx1-cell) = B(n,Nx1-2*gc+cell+1);
       }
 
-      B(2,Nx1-cell) = -B[c1(2,Nx1-2*gc+cell+1)];
+      B(2,Nx1-cell) = -B(2,Nx1-2*gc+cell+1);
       
    #endif
 
@@ -133,17 +133,17 @@ void Reflection(double *B)
       for(n = 0; n < eq; n++)
       {
       #if COORDINATES == CARTESIAN
-         B(n,cell) = B[c1(n,2*gc-cell-1)];
+         B(n,cell) = B(n,2*gc-cell-1);
       #elif COORDINATES != CARTESIAN
-         B(n,cell) = B[c1(n,2*gc-cell)];
-         B(n,gc) = B[c1(n,gc+1)];
+         B(n,cell) = B(n,2*gc-cell);
+         B(n,gc) = B(n,gc+1);
       #endif
       }
 
       #if COORDINATES == CARTESIAN
-      B(2,cell) = -B[c1(2,2*gc-cell-1)];
+      B(2,cell) = -B(2,2*gc-cell-1);
       #elif COORDINATES != CARTESIAN
-      B(2,cell) = -B[c1(2,2*gc-cell)];
+      B(2,cell) = -B(2,2*gc-cell);
       B(2,gc) = 0.0;
       #endif
 
@@ -301,8 +301,8 @@ void Periodic(double *B)
    {
       for(cell = 0; cell <= gc; cell++)
       {
-         B(n,Nx1-cell) = B[c1(n,2*gc-cell)];
-         B(n,cell) = B[c1(n,Nx1-2*gc+cell)];
+         B(n,Nx1-cell) = B(n,2*gc-cell);
+         B(n,cell) = B(n,Nx1-2*gc+cell);
       }
    }
    #endif

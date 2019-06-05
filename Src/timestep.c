@@ -58,10 +58,10 @@ double TimeStep()
       {
          for(k = gc; k <= Nx3-gc; k++)
          {
-            c = sqrt(K*U[c3(1,i,j,k)] / (U[c3(0,i,j,k)]));
-            dtmin = MIN(dx1/(fabs(U[c3(2,i,j,k)]) + fabs(c)),dtmin);
-            dtmin = MIN(dx2/(fabs(U[c3(3,i,j,k)]) + fabs(c)),dtmin);
-            dtmin = MIN(dx3/(fabs(U[c3(4,i,j,k)]) + fabs(c)),dtmin);
+            c = sqrt(K*U(1,i,j,k) / (U(0,i,j,k)));
+            dtmin = MIN(dx1/(fabs(U(2,i,j,k)) + fabs(c)),dtmin);
+            dtmin = MIN(dx2/(fabs(U(3,i,j,k)) + fabs(c)),dtmin);
+            dtmin = MIN(dx3/(fabs(U(4,i,j,k)) + fabs(c)),dtmin);
          }
       }
    }
