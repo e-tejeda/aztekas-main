@@ -30,19 +30,19 @@ int funct_Q2U(double *u, double *q)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         D  = q[c2(0,i,j)];
-         E  = q[c2(1,i,j)];
-         S1 = q[c2(2,i,j)];
-         S2 = q[c2(3,i,j)];
+         D  = q(0,i,j);
+         E  = q(1,i,j);
+         S1 = q(2,i,j);
+         S2 = q(3,i,j);
          S3 = 0;
  
-         u[c2(0,i,j)] = D;
+         u(0,i,j) = D;
          #if EOS == IDEAL
-         u[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+         u(1,i,j) = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
          #endif
-         u[c2(2,i,j)] = S1/D;
-         u[c2(3,i,j)] = S2/D;
-         u[c2(4,i,j)] = S3/D;
+         u(2,i,j) = S1/D;
+         u(3,i,j) = S2/D;
+         u(4,i,j) = S3/D;
       }
    }
 
@@ -52,19 +52,19 @@ int funct_Q2U(double *u, double *q)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         D  = q[c2(0,i,j)];
-         E  = q[c2(1,i,j)];
-         S1 = q[c2(2,i,j)];
-         S2 = q[c2(3,i,j)];
-         S3 = q[c2(4,i,j)];
+         D  = q(0,i,j);
+         E  = q(1,i,j);
+         S1 = q(2,i,j);
+         S2 = q(3,i,j);
+         S3 = q(4,i,j);
  
-         u[c2(0,i,j)] = D;
+         u(0,i,j) = D;
          #if EOS == IDEAL
-         u[c2(1,i,j)] = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
+         u(1,i,j) = ((2.0*K-2.0)*D*E+(1.0-K)*pow(S3,2.0)+(1.0-K)*pow(S2,2.0)+(1.0-K)*pow(S1,2.0))/(2.0*D);
          #endif
-         u[c2(2,i,j)] = S1/D;
-         u[c2(3,i,j)] = S2/D;
-         u[c2(4,i,j)] = S3/D;
+         u(2,i,j) = S1/D;
+         u(3,i,j) = S2/D;
+         u(4,i,j) = S3/D;
       }
    }
 

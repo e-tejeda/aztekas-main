@@ -51,6 +51,7 @@ double TimeStep()
    }
   
 #elif DIM == 3
+
    for(i = gc; i <= Nx1-gc; i++)
    {
       for(j = gc; j <= Nx2-gc; j++)

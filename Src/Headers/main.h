@@ -31,7 +31,7 @@ double *X3p, *X3m;
    #define q1(n,i) q1[n*(Nx1+1) + i]
    #define q2(n,i) q2[n*(Nx1+1) + i]
    #define u(n,i)  u[n*(Nx1+1) + i]
-#elif DIM == 2
+#elif DIM == 2 || DIM == 4
    #define U(n,i,j)  U[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
    #define Q(n,i,j)  Q[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
    #define B(n,i,j)  B[n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j]
