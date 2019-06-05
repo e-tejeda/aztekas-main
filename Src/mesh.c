@@ -44,6 +44,9 @@ int Mesh()
       grid.X1p[i] = x1min + exp(log((x1max - x1min + 1.0))*(i+0.5-gc)/(Nx1-2*gc)) - 1;
       grid.X1m[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-0.5-gc)/(Nx1-2*gc)) - 1;
       #endif
+
+      grid.S1p[i] = dety(grid.X1p[i],M_PI_2,0)/dety(grid.X1[i],M_PI_2,0);
+      grid.S1m[i] = dety(grid.X1m[i],M_PI_2,0)/dety(grid.X1[i],M_PI_2,0);
    }
    
 #elif DIM == 2  || DIM == 4

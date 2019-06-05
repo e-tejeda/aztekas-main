@@ -42,7 +42,7 @@ endif
 # Dimension
 #####################################
 
-DIM = 1
+DIM = 2
 
 ifeq ($(DIM),1)
 	PARAM += -DDIM=1
@@ -133,7 +133,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/HD/gvector.c \
 	  $(AZTPATH)/Src/HD/hvector.c \
 	  $(AZTPATH)/Src/HD/svector.c \
-	  $(AZTPATH)/Src/HD/gauge.c \
+	  $(AZTPATH)/Src/HD/metric.c \
      $(AZTPATH)/Src/EOS/eos-ideal.c \
 	  ./source.c
 endif 

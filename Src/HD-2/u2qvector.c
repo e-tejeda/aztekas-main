@@ -3,10 +3,9 @@
 void Prim2Cons_All(double *q, double *u)
 {
    int i, j, k;
-   double rho, p, vx1, vx2, vx3, E;
+   double rho, p, vx1, vx2, vx3;
    double P[eq+1];
    eos_ eos;
-   local_metric_ g;
    double x[4];
    
 #if DIM == 1
@@ -33,15 +32,9 @@ void Prim2Cons_All(double *q, double *u)
       #if EOS == IDEAL
       EoS_Ideal(&eos,P,x);
       #endif
-
-      Metric_Components(&g,x);
  
-      E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
-                     + vx2*vx2/g.gamma[1][1] \
-                     + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
-
       q(0,i) = rho;
-      q(1,i) = E;
+      q(1,i) = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
       q(2,i) = rho*vx1;
       q(3,i) = rho*vx2;
       q(4,i) = rho*vx3;
@@ -74,14 +67,8 @@ void Prim2Cons_All(double *q, double *u)
          EoS_Ideal(&eos,P,x);
          #endif
  
-         Metric_Components(&g,x);
-
-         E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
-                        + vx2*vx2/g.gamma[1][1] \
-                        + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
-
          q(0,i,j) = rho;
-         q(1,i,j) = E;
+         q(1,i,j) = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
          q(2,i,j) = rho*vx1;
          q(3,i,j) = rho*vx2;
          q(4,i,j) = rho*vx3;
@@ -111,15 +98,9 @@ void Prim2Cons_All(double *q, double *u)
          #if EOS == IDEAL
          EoS_Ideal(&eos,P,x);
          #endif
-
-         Metric_Components(&g,x)
-
-         E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
-                        + vx2*vx2/g.gamma[1][1] \
-                        + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
  
          q(0,i,j) = rho;
-         q(1,i,j) = E;
+         q(1,i,j) = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
          q(2,i,j) = rho*vx1;
          q(3,i,j) = rho*vx2;
          q(4,i,j) = rho*vx3;
@@ -151,15 +132,9 @@ void Prim2Cons_All(double *q, double *u)
             #if EOS == IDEAL
             EoS_Ideal(&eos,P,x);
             #endif
-
-            Metric_Components(&g,x);
-
-            E = 0.5 * rho * (vx1*vx1/g.gamma[0][0] \
-                           + vx2*vx2/g.gamma[1][1] \
-                           + vx3*vx3/g.gamma[2][2]) + rho * eos.e;
           
             q(0,i,j,k) = rho;
-            q(1,i,j,k) = E;
+            q(1,i,j,k) = 0.5*rho*(vx1*vx1 + vx2*vx2 + vx3*vx3) + rho*eos.e;
             q(2,i,j,k) = rho*vx1;
             q(3,i,j,k) = rho*vx2;
             q(4,i,j,k) = rho*vx3;

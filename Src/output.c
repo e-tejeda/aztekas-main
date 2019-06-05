@@ -170,7 +170,7 @@ int Output2(int *itprint)
 	 {
       for(j = gc; j <= Nx2-gc; j++)
       {
-         fprintf(file,"%e %e %e %e %e %e\n",grid.X1[i],X2[j],U(0,i,j),\
+         fprintf(file,"%e %e %e %e %e %e\n",grid.X1[i],grid.X2[j],U(0,i,j),\
          U(1,i,j),\
          U(2,i,j),\
          U(3,i,j));
@@ -181,7 +181,7 @@ int Output2(int *itprint)
 	 {
       for(j = gc; j <= Nx2-gc; j++)
       {
-         fprintf(file,"%e %e %e %e %e %e %e\n",grid.X1[i],X2[j],U(0,i,j),\
+         fprintf(file,"%e %e %e %e %e %e %e\n",grid.X1[i],grid.X2[j],U(0,i,j),\
          U(1,i,j),\
          U(2,i,j),\
          U(3,i,j),\
@@ -222,8 +222,8 @@ int Output2_bin(int *itprint)
    fwrite(&size_X2, sizeof size_X2, 1, file);
    fwrite(&grid.X1[gc], sizeof grid.X1[gc], 1, file);
    fwrite(&grid.X1[Nx1-gc], sizeof grid.X1[gc], 1, file);   
-   fwrite(&X2[gc], sizeof X2[gc], 1, file);
-   fwrite(&X2[Nx2-gc], sizeof X2[gc], 1, file);  
+   fwrite(&grid.X2[gc], sizeof grid.X2[gc], 1, file);
+   fwrite(&grid.X2[Nx2-gc], sizeof grid.X2[gc], 1, file);  
          
 #if DIM == 2
    for(i = gc; i <= Nx1-gc; i++)
@@ -289,7 +289,7 @@ int Output3(int *itprint)
       {
          for(k = Nx3/2; k <= Nx3/2; k++)
          {
-            fprintf(file,"%f %f %f %f %f %f %f %f\n",grid.X1[i],X2[j],X3[k],\
+            fprintf(file,"%f %f %f %f %f %f %f %f\n",grid.X1[i],grid.X2[j],X3[k],\
             U(0,i,j,k),\
             U(1,i,j,k),\
             U(2,i,j,k),\
@@ -333,8 +333,8 @@ int Output3_bin(int *itprint)
    fwrite(&size_X3, sizeof size_X3, 1, file);
    fwrite(&grid.X1[gc], sizeof grid.X1[gc], 1, file);
    fwrite(&grid.X1[Nx1-gc], sizeof grid.X1[gc], 1, file);   
-   fwrite(&X2[gc], sizeof X2[gc], 1, file);
-   fwrite(&X2[Nx2-gc], sizeof X2[gc], 1, file);  
+   fwrite(&grid.X2[gc], sizeof grid.X2[gc], 1, file);
+   fwrite(&grid.X2[Nx2-gc], sizeof grid.X2[gc], 1, file);  
    fwrite(&X3[gc], sizeof X3[gc], 1, file);
    fwrite(&X3[Nx3-gc], sizeof X3[gc], 1, file);  
          

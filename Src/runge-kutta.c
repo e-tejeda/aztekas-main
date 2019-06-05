@@ -39,6 +39,9 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
  
       for(n = 0; n < eq; n++)
       {
+         F[n] = (grid.S1p[i]*vec.Fp[n] - grid.S1m[i]*vec.Fm[n])/Dx1 - \
+         vec.S[n];
+         /*
          #if COORDINATES == CARTESIAN
          F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
          vec.S[n];
@@ -49,6 +52,7 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
          F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
          vec.S[n];
          #endif
+         */
       }
 
 #if INTEGRATION == PVRS
@@ -111,6 +115,9 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
          
          for(n = 0; n < eq; n++)
          {
+            F[n] = (grid.S1p[i]*vec.Fp[n] - grid.S1m[i]*vec.Fm[n])/Dx1 - \
+            vec.S[n];
+            /*
             #if COORDINATES == CARTESIAN
             F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
             (vec.Gp[n] - vec.Gm[n])/(Dx2) - \
@@ -124,6 +131,7 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
             (vec.Gp[n] - vec.Gm[n])/(grid.X1[i]*Dx2) - \
             vec.S[n];
             #endif
+            */
          }
 
 #if INTEGRATION == PVRS

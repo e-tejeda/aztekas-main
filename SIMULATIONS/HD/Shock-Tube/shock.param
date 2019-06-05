@@ -8,7 +8,7 @@ restartfile = ./prueba/prueba_1.dat
 restart_filecount = 1
 
 % Define mesh
-Nx1 = 400
+Nx1 = 100
 Nx2 = 100
 Nx3 = 0
 
