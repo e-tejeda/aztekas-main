@@ -16,12 +16,12 @@
 //Do not erase any of these libraries//
 #include"main.h"
 
-void Initial(double *dtprint)
+void Initial()
 {
    int n, i, j, k, cell;
 
    //Initialize time
-   time = 0.0;
+   grid.time = 0.0;
 
    //Initialize dt
    dt = 0.0;
@@ -34,7 +34,7 @@ void Initial(double *dtprint)
 
    for(i = 0; i <= Nx1; i++)
    {
-      if(X1[i] < x_0)
+      if(grid.X1[i] < x_0)
       {
          U(0,i) = nl;
          U(1,i) = pl;
@@ -59,7 +59,7 @@ void Initial(double *dtprint)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         if(X1[i] < x_0)
+         if(grid.X1[i] < x_0)
          {
             U(0,i,j) = nl;
             U(1,i,j) = pl;
@@ -82,7 +82,7 @@ void Initial(double *dtprint)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         if(X2[j] > x_0)
+         if(grid.X2[j] > x_0)
          {
             U(0,i,j) = nl;
             U(1,i,j) = pl;
@@ -105,7 +105,7 @@ void Initial(double *dtprint)
    {
       for(j = 0; j <= Nx2; j++)
       {
-         if(X1[i] + X2[j] - 1 < 0.0)
+         if(grid.X1[i] + grid.X2[j] - 1 < 0.0)
          {
             U(0,i,j) = nl;
             U(1,i,j) = pl;

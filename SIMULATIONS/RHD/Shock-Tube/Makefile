@@ -118,6 +118,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
+	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \
@@ -148,6 +149,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
+	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \

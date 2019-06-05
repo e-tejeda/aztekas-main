@@ -12,8 +12,8 @@ void Prim2Cons_All(double *q, double *u)
 
    for(i = 0; i <= Nx1-0; i++)
    {
-      x[0] = time;
-      x[1] = X1[i];
+      x[0] = grid.time;
+      x[1] = grid.X1[i];
       x[2] = 0.0;
       x[3] = 0.0;
       #if COORDINATES == SPHERICAL
@@ -46,9 +46,9 @@ void Prim2Cons_All(double *q, double *u)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         x[0] = time;
-         x[1] = X1[i];
-         x[2] = X2[j];
+         x[0] = grid.time;
+         x[1] = grid.X1[i];
+         x[2] = grid.X2[j];
          x[3] = 0.0;
          #if POLAR == TRUE
          x[2] = M_PI_2;
@@ -81,9 +81,9 @@ void Prim2Cons_All(double *q, double *u)
    {
       for(j = 0; j <= Nx2-0; j++)
       {
-         x[0] = time;
-         x[1] = X1[i];
-         x[2] = X2[j];
+         x[0] = grid.time;
+         x[1] = grid.X1[i];
+         x[2] = grid.X2[j];
          x[3] = 0.0;
        
          rho = u(0,i,j);
@@ -115,10 +115,10 @@ void Prim2Cons_All(double *q, double *u)
       {
          for(k = 0; k <= Nx3; k++)
          {
-            x[0] = time;
-            x[1] = X1[i];
-            x[2] = X2[j];
-            x[3] = X3[k];
+            x[0] = grid.time;
+            x[1] = grid.X1[i];
+            x[2] = grid.X2[j];
+            x[3] = grid.X3[k];
         
             rho = u(0,i,j,k);
             p   = u(1,i,j,k);

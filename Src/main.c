@@ -24,13 +24,7 @@
  */
 
 //Do not erase any of these libraries//
-#include<stdio.h>
-#include<omp.h>
-#include<math.h>
-#include<stdlib.h>
-#include<string.h>
 #include"main.h"
-#include"param.h"
 
 int main(int argc, char* argv[])
 {
@@ -47,7 +41,8 @@ int main(int argc, char* argv[])
 
    strcpy(paramfile_name, argv[1]);
    
-   read_parameters_file(paramfile_name);   
+   Read_Parameters_File(paramfile_name);   
+   User_Parameters(paramfile_name);   
       
 	// create output directory
    char create_dir[] = "mkdir -p ";	
@@ -77,7 +72,7 @@ int main(int argc, char* argv[])
          Restart();
       }
 
-      tprint = time;
+      tprint = grid.time;
       itprint = restart_filecount;
    }
    else
@@ -88,7 +83,7 @@ int main(int argc, char* argv[])
    }
 
    start = omp_get_wtime();
-   while(time <= tmax)
+   while(grid.time <= tmax)
    {
       //In this part we compute the time step
       dt = TimeStep();
@@ -99,7 +94,7 @@ int main(int argc, char* argv[])
       //In here we set the integration method (Finite volume method)
       Integration();
 
-      printf("Time = %e, dt = %e\r",time,dt);
+      printf("Time = %e, dt = %e\r",grid.time,dt);
       fflush(stdout); 
    }
 
@@ -108,9 +103,9 @@ int main(int argc, char* argv[])
    delta = omp_get_wtime() - start;
    printf("Delta %.4g seconds with %d threads\n",delta,1);
 
-   free(X1);
-   free(X2);
-   free(X3);
+   free(grid.X1);
+   free(grid.X2);
+   free(grid.X3);
 
    return 0;
 }

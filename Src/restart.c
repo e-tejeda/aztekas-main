@@ -30,15 +30,13 @@ void Restart()
    idum = fscanf(file,"%s\n",line) ;
 
    // Read time
-   idum = fscanf(file,"%lf\n",&time) ;
+   idum = fscanf(file,"%lf\n",&grid.time) ;
 
    // Read Nx1
    idum = fscanf(file,"%d\n",&dum) ;
 
    // Read Nx2
    idum = fscanf(file,"%d\n",&dum) ;
-
-   printf("%i %f\n",idum,time) ;
 
    // Skip third line   
    idum = fscanf(file,"%s\n",line) ;
@@ -110,7 +108,7 @@ void Restart_Bin()
    file = fopen(restartfile,"rb");
 
    // Read time
-   ignore = fread(&time, sizeof time, 1, file);
+   ignore = fread(&grid.time, sizeof grid.time, 1, file);
 
 #if DIM == 1
 
@@ -125,13 +123,13 @@ void Restart_Bin()
 
    // check domain limits
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X1[gc]) 
+   if (dum != grid.X1[gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X1[Nx1-gc]) 
+   if (dum != grid.X1[Nx1-gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
@@ -167,25 +165,25 @@ void Restart_Bin()
 
    // check domain limits
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X1[gc]) 
+   if (dum != grid.X1[gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X1[Nx1-gc]) 
+   if (dum != grid.X1[Nx1-gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X2[gc]) 
+   if (dum != grid.X2[gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X2[Nx2-gc]) 
+   if (dum != grid.X2[Nx2-gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
@@ -234,37 +232,37 @@ void Restart_Bin()
 
    // check domain limits
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X1[gc]) 
+   if (dum != grid.X1[gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X1[Nx1-gc]) 
+   if (dum != grid.X1[Nx1-gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X2[gc]) 
+   if (dum != grid.X2[gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X2[Nx2-gc]) 
+   if (dum != grid.X2[Nx2-gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }   
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X3[gc]) 
+   if (dum != grid.X3[gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);
    }     
    ignore = fread(&dum, sizeof dum, 1, file);
-   if (dum != X3[Nx3-gc]) 
+   if (dum != grid.X3[Nx3-gc]) 
    {
       printf("Domain size incompatible with simulation parameters!\n");
       exit(EXIT_FAILURE);

@@ -22,36 +22,8 @@ int Sources(double *u, vec_ *v, int *I)
    double x[4];
    double default_S[eq + 1], user_S[eq + 1];
 
-   x[0] = time;
-
-#if DIM == 1
-
-   x[1] = X1[I[0]];
-   x[2] = 0.0;
-   x[3] = 0.0;
-   #if COORDINATES == SPHERICAL
-   x[2] = M_PI_2;
-   #endif
-
-#elif DIM == 2 || DIM == 4
-
-   x[1] = X1[I[0]];
-   x[2] = X2[I[1]];
-   x[3] = 0.0;
-   #if POLAR == TRUE
-   x[2] = M_PI_2;
-   #endif
-
-#elif DIM == 3
-
-   x[1] = X1[I[0]];
-   x[2] = X2[I[1]];
-   x[3] = X3[I[2]];
-
-#endif 
-
-   Source_Terms(default_S,u,x);
-   User_Source_Terms(user_S,u,x);
+   Source_Terms(default_S,u,I);
+   User_Source_Terms(user_S,u,I);
 
 #if integration == 1
    funct_A(v->A,u,x);
@@ -79,11 +51,11 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
    double dum[eq + 1];
    double x[4];
 
-   x[0] = time;
+   x[0] = grid.time;
 
 #if DIM == 1
 
-   x[1] = X1[I[0]];
+   x[1] = grid.X1[I[0]];
    x[2] = 0.0;
    x[3] = 0.0;
    #if COORDINATES == SPHERICAL
@@ -92,8 +64,8 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 
 #elif DIM == 2 || DIM == 4
 
-   x[1] = X1[I[0]];
-   x[2] = X2[I[1]];
+   x[1] = grid.X1[I[0]];
+   x[2] = grid.X2[I[1]];
    x[3] = 0.0;
    #if POLAR == TRUE
    x[2] = M_PI_2;
@@ -101,9 +73,9 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 
 #elif DIM == 3
 
-   x[1] = X1[I[0]];
-   x[2] = X2[I[1]];
-   x[3] = X3[I[2]];
+   x[1] = grid.X1[I[0]];
+   x[2] = grid.X2[I[1]];
+   x[3] = grid.X3[I[2]];
 
 #endif 
 
@@ -113,17 +85,17 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
       {
          case 'f':
             u = l->ux1p;
-            x[1] = X1p[I[0]];
+            x[1] = grid.X1p[I[0]];
          break;
 
          case 'g':
             u = l->ux2p;
-            x[2] = X2p[I[1]];
+            x[2] = grid.X2p[I[1]];
          break;
 
          case 'h':
             u = l->ux3p;
-            x[3] = X3p[I[2]];
+            x[3] = grid.X3p[I[2]];
          break;
       }
    }
@@ -133,17 +105,17 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
       {
          case 'f':
             u = l->ux1m;
-            x[1] = X1m[I[0]];
+            x[1] = grid.X1m[I[0]];
          break;
 
          case 'g':
             u = l->ux2m;
-            x[2] = X2m[I[1]];
+            x[2] = grid.X2m[I[1]];
          break;
 
          case 'h':
             u = l->ux3m;
-            x[3] = X3m[I[2]];
+            x[3] = grid.X3m[I[2]];
          break;
       }
    }

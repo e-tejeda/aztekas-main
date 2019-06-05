@@ -35,14 +35,14 @@ int Mesh()
    
    for(i = 0; i <= Nx1; i++)
    {
-      X1[i] = x1min + (i-gc)*(dx1);
-      X1p[i] = x1min + (i+0.5-gc)*(dx1);
-      X1m[i] = x1min + (i-0.5-gc)*(dx1);
+      grid.X1[i] = x1min + (i-gc)*(dx1);
+      grid.X1p[i] = x1min + (i+0.5-gc)*(dx1);
+      grid.X1m[i] = x1min + (i-0.5-gc)*(dx1);
 
       #if GRID == LOGMESH
-      X1[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-gc)/(Nx1-2*gc)) - 1;
-      X1p[i] = x1min + exp(log((x1max - x1min + 1.0))*(i+0.5-gc)/(Nx1-2*gc)) - 1;
-      X1m[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-0.5-gc)/(Nx1-2*gc)) - 1;
+      grid.X1[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-gc)/(Nx1-2*gc)) - 1;
+      grid.X1p[i] = x1min + exp(log((x1max - x1min + 1.0))*(i+0.5-gc)/(Nx1-2*gc)) - 1;
+      grid.X1m[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-0.5-gc)/(Nx1-2*gc)) - 1;
       #endif
    }
    
@@ -50,45 +50,45 @@ int Mesh()
    
    for(i = 0; i <= Nx1; i++)
    {
-      X1[i]  = x1min + (i-gc)*(dx1);
-      X1p[i] = x1min + (i+0.5-gc)*(dx1);
-      X1m[i] = x1min + (i-0.5-gc)*(dx1);
+      grid.X1[i]  = x1min + (i-gc)*(dx1);
+      grid.X1p[i] = x1min + (i+0.5-gc)*(dx1);
+      grid.X1m[i] = x1min + (i-0.5-gc)*(dx1);
 
       #if GRID == LOGMESH
-      X1[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-gc)/(Nx1-2*gc)) - 1;
-      X1p[i] = x1min + exp(log((x1max - x1min + 1.0))*(i+0.5-gc)/(Nx1-2*gc)) - 1;
-      X1m[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-0.5-gc)/(Nx1-2*gc)) - 1;
+      grid.X1[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-gc)/(Nx1-2*gc)) - 1;
+      grid.X1p[i] = x1min + exp(log((x1max - x1min + 1.0))*(i+0.5-gc)/(Nx1-2*gc)) - 1;
+      grid.X1m[i] = x1min + exp(log((x1max - x1min + 1.0))*(i-0.5-gc)/(Nx1-2*gc)) - 1;
       #endif
    }
 
    for(j = 0; j <= Nx2; j++)
    {
-      X2[j]  = x2min + (j-gc)*(dx2);
-      X2p[j] = x2min + (j+0.5-gc)*(dx2);
-      X2m[j] = x2min + (j-0.5-gc)*(dx2);
+      grid.X2[j]  = x2min + (j-gc)*(dx2);
+      grid.X2p[j] = x2min + (j+0.5-gc)*(dx2);
+      grid.X2m[j] = x2min + (j-0.5-gc)*(dx2);
    }
    
 #elif DIM == 3 
    
    for(i = 0; i <= Nx1; i++)
    {
-      X1[i]  = x1min + (i-gc)*(dx1);
-      X1p[i] = x1min + (i+0.5-gc)*(dx1);
-      X1m[i] = x1min + (i-0.5-gc)*(dx1);
+      grid.X1[i]  = x1min + (i-gc)*(dx1);
+      grid.X1p[i] = x1min + (i+0.5-gc)*(dx1);
+      grid.X1m[i] = x1min + (i-0.5-gc)*(dx1);
    }
 
    for(j = 0; j <= Nx2; j++)
    {
-      X2[j]  = x2min + (j-gc)*(dx2);
-      X2p[j] = x2min + (j+0.5-gc)*(dx2);
-      X2m[j] = x2min + (j-0.5-gc)*(dx2);
+      grid.X2[j]  = x2min + (j-gc)*(dx2);
+      grid.X2p[j] = x2min + (j+0.5-gc)*(dx2);
+      grid.X2m[j] = x2min + (j-0.5-gc)*(dx2);
    }
 
    for(k = 0; k <= Nx3; k++)
    {
-      X3[k]  = x3min + (k-gc)*(dx3);
-      X3p[k] = x3min + (k+0.5-gc)*(dx3);
-      X3m[k] = x3min + (k-0.5-gc)*(dx3);
+      grid.X3[k]  = x3min + (k-gc)*(dx3);
+      grid.X3p[k] = x3min + (k+0.5-gc)*(dx3);
+      grid.X3m[k] = x3min + (k-0.5-gc)*(dx3);
    }
 
 #endif

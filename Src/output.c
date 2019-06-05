@@ -17,9 +17,9 @@ int PrintValues(double *tprint, double *dtprint, int *itprint)
 {
    int n, i, j, k;
 
-   if(time >= *tprint)
+   if(grid.time >= *tprint)
    {
-      printf("Time = %e, dt = %e\n",time,dt);
+      printf("Time = %e, dt = %e\n",grid.time,dt);
       if(graf == 1)
       {
          if(binary == 1)
@@ -58,7 +58,7 @@ int PrintValues(double *tprint, double *dtprint, int *itprint)
       ++*itprint;
    }
 
-   time = time + dt;
+   grid.time = grid.time + dt;
    return 0;
 }
 
@@ -83,13 +83,13 @@ int Output1(int *itprint)
    file = fopen(archivo,"w");   
 
    fprintf(file,"###############PARAM###############\n");
-   fprintf(file,"%e \n",time);
+   fprintf(file,"%e \n",grid.time);
    fprintf(file,"%d \n",Nx1-2*gc+1);
    fprintf(file,"###################################\n");
 
    for(i = gc; i <= Nx1-gc; i++)
    {
-      fprintf(file,"%e %e %e %e\n",X1[i],\
+      fprintf(file,"%e %e %e %e\n",grid.X1[i],\
       U(0,i),\
       U(1,i),\
       U(2,i));
@@ -121,10 +121,10 @@ int Output1_bin(int *itprint)
    strcat(archivo,ext);
    file = fopen(archivo,"wb");
 
-   fwrite(&time, sizeof time, 1, file);
+   fwrite(&grid.time, sizeof grid.time, 1, file);
    fwrite(&size_X1, sizeof size_X1, 1, file);
-   fwrite(&X1[gc], sizeof X1[gc], 1, file);
-   fwrite(&X1[Nx1-gc], sizeof X1[gc], 1, file);   
+   fwrite(&grid.X1[gc], sizeof grid.X1[gc], 1, file);
+   fwrite(&grid.X1[Nx1-gc], sizeof grid.X1[gc], 1, file);   
          
    for(i = gc; i <= Nx1-gc; i++)
 	{
@@ -160,7 +160,7 @@ int Output2(int *itprint)
    file = fopen(archivo,"w");
 
    fprintf(file,"###############PARAM###############\n");
-   fprintf(file,"%e \n",time);
+   fprintf(file,"%e \n",grid.time);
    fprintf(file,"%d \n",Nx1-2*gc+1);
    fprintf(file,"%d \n",Nx2-2*gc+1);
    fprintf(file,"###################################\n");
@@ -170,7 +170,7 @@ int Output2(int *itprint)
 	 {
       for(j = gc; j <= Nx2-gc; j++)
       {
-         fprintf(file,"%e %e %e %e %e %e\n",X1[i],X2[j],U(0,i,j),\
+         fprintf(file,"%e %e %e %e %e %e\n",grid.X1[i],X2[j],U(0,i,j),\
          U(1,i,j),\
          U(2,i,j),\
          U(3,i,j));
@@ -181,7 +181,7 @@ int Output2(int *itprint)
 	 {
       for(j = gc; j <= Nx2-gc; j++)
       {
-         fprintf(file,"%e %e %e %e %e %e %e\n",X1[i],X2[j],U(0,i,j),\
+         fprintf(file,"%e %e %e %e %e %e %e\n",grid.X1[i],X2[j],U(0,i,j),\
          U(1,i,j),\
          U(2,i,j),\
          U(3,i,j),\
@@ -217,11 +217,11 @@ int Output2_bin(int *itprint)
    strcat(archivo,ext);
    file = fopen(archivo,"wb");
 
-   fwrite(&time, sizeof time, 1, file);
+   fwrite(&grid.time, sizeof grid.time, 1, file);
    fwrite(&size_X1, sizeof size_X1, 1, file);
    fwrite(&size_X2, sizeof size_X2, 1, file);
-   fwrite(&X1[gc], sizeof X1[gc], 1, file);
-   fwrite(&X1[Nx1-gc], sizeof X1[gc], 1, file);   
+   fwrite(&grid.X1[gc], sizeof grid.X1[gc], 1, file);
+   fwrite(&grid.X1[Nx1-gc], sizeof grid.X1[gc], 1, file);   
    fwrite(&X2[gc], sizeof X2[gc], 1, file);
    fwrite(&X2[Nx2-gc], sizeof X2[gc], 1, file);  
          
@@ -277,7 +277,7 @@ int Output3(int *itprint)
    file = fopen(archivo,"w");
 
    fprintf(file,"###############PARAM###############\n");
-   fprintf(file,"%e \n",time);
+   fprintf(file,"%e \n",grid.time);
    fprintf(file,"%d \n",Nx1-2*gc+1);
    fprintf(file,"%d \n",Nx2-2*gc+1);
    fprintf(file,"%d \n",Nx3-2*gc+1);
@@ -289,7 +289,7 @@ int Output3(int *itprint)
       {
          for(k = Nx3/2; k <= Nx3/2; k++)
          {
-            fprintf(file,"%f %f %f %f %f %f %f %f\n",X1[i],X2[j],X3[k],\
+            fprintf(file,"%f %f %f %f %f %f %f %f\n",grid.X1[i],X2[j],X3[k],\
             U(0,i,j,k),\
             U(1,i,j,k),\
             U(2,i,j,k),\
@@ -327,12 +327,12 @@ int Output3_bin(int *itprint)
    strcat(archivo,ext);
    file = fopen(archivo,"wb");
 
-   fwrite(&time, sizeof time, 1, file);
+   fwrite(&grid.time, sizeof grid.time, 1, file);
    fwrite(&size_X1, sizeof size_X1, 1, file);
    fwrite(&size_X2, sizeof size_X2, 1, file);
    fwrite(&size_X3, sizeof size_X3, 1, file);
-   fwrite(&X1[gc], sizeof X1[gc], 1, file);
-   fwrite(&X1[Nx1-gc], sizeof X1[gc], 1, file);   
+   fwrite(&grid.X1[gc], sizeof grid.X1[gc], 1, file);
+   fwrite(&grid.X1[Nx1-gc], sizeof grid.X1[gc], 1, file);   
    fwrite(&X2[gc], sizeof X2[gc], 1, file);
    fwrite(&X2[Nx2-gc], sizeof X2[gc], 1, file);  
    fwrite(&X3[gc], sizeof X3[gc], 1, file);

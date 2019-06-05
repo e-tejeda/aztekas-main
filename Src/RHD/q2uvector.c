@@ -21,8 +21,8 @@ int funct_Q2U(double *u, double *q)
       sd[1] = 0;
       sd[2] = 0;
 
-      x[0] = time;
-      x[1] = X1[i];
+      x[0] = grid.time;
+      x[1] = grid.X1[i];
       x[2] = 0;
       x[3] = 0;
       #if COORDINATES == TRUE
@@ -80,9 +80,9 @@ int funct_Q2U(double *u, double *q)
          sd[1] = q(3,i,j);
          sd[2] = 0;
 
-         x[0] = time;
-         x[1] = X1[i];
-         x[2] = X2[j];
+         x[0] = grid.time;
+         x[1] = grid.X1[i];
+         x[2] = grid.X2[j];
          x[3] = 0;
          #if POLAR == TRUE
          x[2] = M_PI_2;
@@ -141,9 +141,9 @@ int funct_Q2U(double *u, double *q)
          sd[1] = q(3,i,j);
          sd[2] = q(4,i,j);
 
-         x[0] = time;
-         x[1] = X1[i];
-         x[2] = X2[j];
+         x[0] = grid.time;
+         x[1] = grid.X1[i];
+         x[2] = grid.X2[j];
          x[3] = 0;
          #if POLAR == TRUE
          x[2] = M_PI_2;
@@ -205,10 +205,10 @@ int funct_Q2U(double *u, double *q)
             sd[1] = q(3,i,j,k);
             sd[2] = q(4,i,j,k);
           
-            x[0] = time;
-            x[1] = X1[i];
-            x[2] = X2[j];
-            x[3] = X3[k];
+            x[0] = grid.time;
+            x[1] = grid.X1[i];
+            x[2] = grid.X2[j];
+            x[3] = grid.X3[k];
           
             Metric_Components(&m,x);
           

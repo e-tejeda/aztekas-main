@@ -61,11 +61,11 @@ void Prim2FluxH(double *f, double *v, double *u, double *x)
       Sd[i] = rho * h * W * W * vd[i];
    }
 
-   f[0] = D * V;
-   f[1] = tau * V + p * vu[2];
-   f[2] = Sd[0] * V;
-   f[3] = Sd[1] * V;
-   f[4] = Sd[2] * V + p;
+   f[0] = g.lapse*(D * V);
+   f[1] = g.lapse*(tau * V + p * vu[2]);
+   f[2] = g.lapse*(Sd[0] * V);
+   f[3] = g.lapse*(Sd[1] * V);
+   f[4] = g.lapse*(Sd[2] * V + p);
 
    double term1, term2, term3, root;
 

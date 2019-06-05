@@ -42,7 +42,7 @@ endif
 # Dimension
 #####################################
 
-DIM = 2
+DIM = 1
 
 ifeq ($(DIM),1)
 	PARAM += -DDIM=1
@@ -66,7 +66,7 @@ endif
 # Coordinates (cart,cyl,sph)
 #####################################
 
-COORD = cart
+COORD = sph
 
 ifeq ($(COORD),cart)
 	PARAM += -DCOORDINATES=CARTESIAN
@@ -112,6 +112,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
+	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \
@@ -142,6 +143,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/alloc.c \
 	  $(AZTPATH)/Src/mesh.c \
 	  ./initial.c \
+	  ./user_input.c \
 	  $(AZTPATH)/Src/timestep.c \
 	  $(AZTPATH)/Src/input.c \
 	  $(AZTPATH)/Src/output.c \

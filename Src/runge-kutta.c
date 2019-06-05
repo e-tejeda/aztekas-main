@@ -43,7 +43,7 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
          F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
          vec.S[n];
          #elif COORDINATES == CYLINDRICAL
-         F[n] = (X1p[i]*vec.Fp[n] - X1m[i]*vec.Fm[n])/(X1[i]*Dx1) - \
+         F[n] = (grid.X1p[i]*vec.Fp[n] - grid.X1m[i]*vec.Fm[n])/(grid.X1[i]*Dx1) - \
          vec.S[n];
          #elif COORDINATES == SPHERICAL
          F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
@@ -116,12 +116,12 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
             (vec.Gp[n] - vec.Gm[n])/(Dx2) - \
             vec.S[n];
             #elif COORDINATES == CYLINDRICAL
-            F[n] = (X1p[i]*vec.Fp[n] - X1m[i]*vec.Fm[n])/(X1[i]*Dx1) - \
+            F[n] = (grid.X1p[i]*vec.Fp[n] - grid.X1m[i]*vec.Fm[n])/(grid.X1[i]*Dx1) - \
             (vec.Gp[n] - vec.Gm[n])/(Dx2) - \
             vec.S[n];
             #elif COORDINATES == SPHERICAL
             F[n] = (vec.Fp[n] - vec.Fm[n])/(Dx1) - \
-            (vec.Gp[n] - vec.Gm[n])/(X1[i]*Dx2) - \
+            (vec.Gp[n] - vec.Gm[n])/(grid.X1[i]*Dx2) - \
             vec.S[n];
             #endif
          }
