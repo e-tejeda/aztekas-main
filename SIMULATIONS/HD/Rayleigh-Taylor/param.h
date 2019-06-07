@@ -9,8 +9,8 @@
 #define reflective_x2max  TRUE
 #define reflective_x2min  TRUE
 
-#define RECONST   MC
-#define FLUX      HLLC
+#define RECONST   WENO5
+#define FLUX      HLL
 #define GRID      UNIFORM
 
 double nl, pl, vx1l, vx2l, vx3l;
