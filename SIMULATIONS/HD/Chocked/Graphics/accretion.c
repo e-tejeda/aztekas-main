@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
    in = 0.0;
    out = 0.0;
    double rho, W, VV, r, th, thm, vr, vt;
-   double gamma = 1.00000000001;
+   double gamma = 1.0001;
    double Mb = 0.25*pow(2.0/(5.0 - 3.0*gamma),(5.0 - 3.0*gamma)/(2.0*(gamma - 1.0)));
 
    for(i = 10; i < Nx1-10; i++)
@@ -67,7 +67,8 @@ int main(int argc, char* argv[])
          vt = VelTheta[i*Nx2 + j];
          rho = Density[i*Nx2 + j];
 
-         acc = acc - rho*vr*r*r*sin(th)*(M_PI_2/(Nx2))/(Mb);
+         //acc = acc - rho*vr*r*r*sin(th)*(M_PI_2/(Nx2))/(Mb);
+         acc = acc - rho*vr*r*r/(Mb*Nx2);
 
          if(i == Nx1-11 && vr <= 0)
          {
@@ -79,7 +80,6 @@ int main(int argc, char* argv[])
             out = out + rho*vr*r*r*sin(th)*(M_PI_2/(Nx2))/(Mb);
          }
       }
-      //printf("%e %e\n",r,acc);
       acc_sum[i] = acc;
       acc = 0.0;
    }

@@ -1,6 +1,6 @@
 % OUTPUT FILE AND DIRECTORY
-outputdirectory = ./Bondi-03/
-outputfile      = bondi_
+outputdirectory = ./Bondi-01/
+outputfile      = bondi100_
 
 % RESTART SIMULATION (1 -> true, 0 -> false)
 restart_simulation = 0
@@ -8,8 +8,8 @@ restartfile = ./prueba/prueba_1.dat
 restart_filecount = 1
 
 % Define mesh
-Nx1 = 144
-Nx2 = 144
+Nx1 = 100
+Nx2 = 0
 Nx3 = 0
 
 % Define domain limits
@@ -21,15 +21,15 @@ x2min = 0.0
 x3min = 0.0
 
 % Time parameters
-tmax = 1000
-timefile = 10.0
+tmax = 2000
+timefile = 1500.0
 cou = 0.25
 
 % Polytorpic index
-K = 1.6666666666666666666666666
+%K = 1.6666666666666666666666666
 %K = 1.4
 %K = 1.33333333333333333333333333
-K = 1.0001
+K = 1.0000001
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Boundary conditions %%%%%%

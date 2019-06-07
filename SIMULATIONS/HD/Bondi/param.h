@@ -12,7 +12,7 @@
 //#define x1min_exc TRUE
 
 #define RECONST         WENO5
-#define FLUX            HLL
+#define FLUX            HLLC
 #define GRID            UNIFORM //(UNIFORM, LOGMESH)
 
 double density_0, pressure_0, velocity_0;

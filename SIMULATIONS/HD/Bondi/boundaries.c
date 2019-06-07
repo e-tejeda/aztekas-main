@@ -26,17 +26,9 @@ int Boundaries(double *B)
 
    for(cell = 0; cell <= gc; cell++)
    {
-      U(0,Nx1-cell) = density_0;
-      U(1,Nx1-cell) = pressure_0;
-      U(2,Nx1-cell) = velocity_0;
-   }
-
-   for(i = 0; i <= Nx1; i++)
-   {
-      for(n = 0; n < eq; n++)
-      {
-         RoundGen(&B(n,i));
-      }
+      B(0,Nx1-cell) = density_0;
+      B(1,Nx1-cell) = pow(B(0,Nx1-cell),K)/K;
+      B(2,Nx1-cell) = B(2,Nx1-gc);
    }
 
 #elif DIM == 2
@@ -48,21 +40,10 @@ int Boundaries(double *B)
    {
       for(cell = 0; cell <= gc; cell++)
       {
-         U(0,Nx1-cell,j) = density_0;
-         U(1,Nx1-cell,j) = pressure_0;
-         U(2,Nx1-cell,j) = velocity_0;
-         U(3,Nx1-cell,j) = 0.0;
-      }
-   }
-
-   for(i = 0; i <= Nx1; i++)
-   {
-      for(j = 0; j <= Nx2; j++)
-      {
-         for(n = 0; n < eq; n++)
-         {
-            RoundGen(&B(n,i,j));
-         }
+         B(0,Nx1-cell,j) = density_0;
+         B(1,Nx1-cell,j) = pow(B(0,Nx1-cell,j),K)/K;
+         B(2,Nx1-cell,j) = B(2,Nx1-gc,j);
+         B(3,Nx1-cell,j) = B(3,Nx1-gc,j);
       }
    }
 
@@ -75,11 +56,11 @@ int Boundaries(double *B)
    {
       for(cell = 0; cell <= gc; cell++)
       {
-         U(0,Nx1-cell,j) = density_0;
-         U(1,Nx1-cell,j) = pressure_0;
-         U(2,Nx1-cell,j) = velocity_0;
-         U(3,Nx1-cell,j) = 0.0;
-         U(4,Nx1-cell,j) = 0.0;
+         B(0,Nx1-cell,j) = density_0;
+         B(1,Nx1-cell,j) = pow(B(0,Nx1-cell,j),K)/K;
+         B(2,Nx1-cell,j) = B(2,Nx1-gc,j);
+         B(3,Nx1-cell,j) = B(3,Nx1-gc,j);
+         B(4,Nx1-cell,j) = B(4,Nx1-gc,j);
       }
    }
 
