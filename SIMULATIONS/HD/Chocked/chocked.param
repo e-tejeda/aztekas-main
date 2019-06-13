@@ -1,6 +1,8 @@
 % OUTPUT FILE AND DIRECTORY
-outputdirectory = ./Chocked-g1/d0/
-outputfile      = chocked144_
+%outputdirectory = ./Chocked-g4_3/d0/
+outputdirectory = ./prueba/
+%outputfile      = chocked100_
+outputfile      = prueba_
 
 % RESTART SIMULATION (1 -> true, 0 -> false)
 restart_simulation = 0
@@ -8,8 +10,8 @@ restartfile = ./Chocked-g1/d0/chocked_144.dat
 restart_filecount = 144
 
 % Define mesh
-Nx1 = 144
-Nx2 = 144
+Nx1 = 100
+Nx2 = 2
 Nx3 = 0
 
 % Define domain limits
@@ -21,15 +23,15 @@ x2min = 0.0
 x3min = 0.0
 
 % Time parameters
-tmax = 2000
-timefile = 250.0
+tmax = 10000
+timefile = 100.0
 cou = 0.25
 
 % Polytorpic index
 %K = 1.6666666666666666666666666
 %K = 1.4
-%K = 1.33333333333333333333333333
-K = 1.0000001
+K = 1.33333333333333333333333333
+%K = 1.0000001
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Boundary conditions %%%%%%
@@ -38,14 +40,14 @@ K = 1.0000001
 rho_atm = 1.0
 
 % BONDI ACCRETION (Gamma = 1, r0 = 10 r_B)
-density_0 =  1.1051141194928027
-pressure_0 = 1.1051141194928027
-velocity_0 = -0.010138520971017357
+%density_0 =  1.1051141194928027
+%pressure_0 = 1.1051141194928027
+%velocity_0 = -0.010138520971017357
 
 % BONDI ACCRETION (Gamma = 4/3, r0 = 10 r_B)
-%density_0 =  1.1033484
-%pressure_0 = 0.8550893
-%velocity_0 = -0.0064087 
+density_0 =  1.1033484
+pressure_0 = 0.8550893
+velocity_0 = -0.0064087 
 
 % BONDI ACCRETION (Gamma = 1.4, r0 = 10 r_B)
 %density_0  = 1.103003 

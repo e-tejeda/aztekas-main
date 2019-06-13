@@ -13,6 +13,6 @@
 
 #define RECONST         WENO5
 #define FLUX            HLLC
-#define GRID            UNIFORM //(UNIFORM, LOGMESH)
+#define GRID            LOGMESH //(UNIFORM, LOGMESH)
 
 double density_0, pressure_0, velocity_0;

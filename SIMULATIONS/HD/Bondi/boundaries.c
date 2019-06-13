@@ -28,7 +28,7 @@ int Boundaries(double *B)
    {
       B(0,Nx1-cell) = density_0;
       B(1,Nx1-cell) = pow(B(0,Nx1-cell),K)/K;
-      B(2,Nx1-cell) = B(2,Nx1-gc);
+      B(2,Nx1-cell) = velocity_0;
    }
 
 #elif DIM == 2
@@ -42,8 +42,8 @@ int Boundaries(double *B)
       {
          B(0,Nx1-cell,j) = density_0;
          B(1,Nx1-cell,j) = pow(B(0,Nx1-cell,j),K)/K;
-         B(2,Nx1-cell,j) = B(2,Nx1-gc,j);
-         B(3,Nx1-cell,j) = B(3,Nx1-gc,j);
+         B(2,Nx1-cell,j) = velocity_0;
+         B(3,Nx1-cell,j) = 0.0;
       }
    }
 
@@ -58,20 +58,9 @@ int Boundaries(double *B)
       {
          B(0,Nx1-cell,j) = density_0;
          B(1,Nx1-cell,j) = pow(B(0,Nx1-cell,j),K)/K;
-         B(2,Nx1-cell,j) = B(2,Nx1-gc,j);
-         B(3,Nx1-cell,j) = B(3,Nx1-gc,j);
-         B(4,Nx1-cell,j) = B(4,Nx1-gc,j);
-      }
-   }
-
-   for(i = 0; i <= Nx1; i++)
-   {
-      for(j = 0; j <= Nx2; j++)
-      {
-         for(n = 0; n < eq; n++)
-         {
-            RoundGen(&B(n,i,j));
-         }
+         B(2,Nx1-cell,j) = velocity_0;
+         B(3,Nx1-cell,j) = 0.0;
+         B(4,Nx1-cell,j) = 0.0;
       }
    }
 

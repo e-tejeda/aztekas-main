@@ -9,10 +9,8 @@
 #define reflective_x2max TRUE
 #define reflective_x2min TRUE
 
-//#define x1min_exc TRUE
-
-#define RECONST         WENO5
-#define FLUX            HLLC
+#define RECONST         MC
+#define FLUX            HLL
 #define GRID            UNIFORM //(UNIFORM, LOGMESH)
 
 double gtheta(double th);

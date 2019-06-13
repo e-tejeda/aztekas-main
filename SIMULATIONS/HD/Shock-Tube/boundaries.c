@@ -23,29 +23,10 @@ int Boundaries(double *B)
 #if DIM == 1
    Outflow(B);
 
-   for(i = 0; i <= Nx1; i++)
-   {
-      for(n = 0; n < eq; n++)
-      {
-         RoundGen(&B(n,i));
-      }
-   }
-
 #elif DIM == 2
 
    Outflow(B);
    Reflection(B);
-
-   for(i = 0; i <= Nx1; i++)
-   {
-      for(j = 0; j <= Nx2; j++)
-      {
-         for(n = 0; n < eq; n++)
-         {
-            RoundGen(&B(n,i,j));
-         }
-      }
-   }
 
 /*
    // Linear extrapolation. Important for the diagonal shock tube

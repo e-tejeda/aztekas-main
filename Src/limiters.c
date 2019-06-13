@@ -470,7 +470,7 @@ double Weno5(double v1, double v2, double v3, double v4, double v5)
    double fs1, fs2, fs3;
    double bs1, bs2, bs3;
 
-   double ep = 0.0000000000000000000000000000000000000001;
+   double ep = 0.000001;
 
    double P1, P2, P3;
    double s1, s2, s3;

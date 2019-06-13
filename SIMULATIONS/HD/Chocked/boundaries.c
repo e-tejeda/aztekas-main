@@ -31,8 +31,6 @@ int Boundaries(double *B)
       {
          B(0,Nx1-cell,j) = density_0*gtheta(grid.X2[j]);
          B(1,Nx1-cell,j) = pow(B(0,Nx1-cell,j),K)/K;
-         B(2,Nx1-cell,j) = B(2,Nx1-gc,j);
-         B(3,Nx1-cell,j) = B(3,Nx1-gc,j);
       }
    }
 
@@ -47,9 +45,6 @@ int Boundaries(double *B)
       {
          B(0,Nx1-cell,j) = density_0*gtheta(grid.X2[j]);
          B(1,Nx1-cell,j) = pow(B(0,Nx1-cell,j),K)/K;
-         B(2,Nx1-cell,j) = B(2,Nx1-gc,j);
-         B(3,Nx1-cell,j) = B(3,Nx1-gc,j);
-         B(4,Nx1-cell,j) = B(4,Nx1-gc,j);
       }
    }
 

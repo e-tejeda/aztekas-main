@@ -14,7 +14,7 @@
 #define outflow_x2min TRUE
 
 #define RECONST         WENO5
-#define FLUX            HLLC
+#define FLUX            HLL
 #define GRID            UNIFORM //(UNIFORM, LOGMESH)
 
 #define INTERFACE       DIAGONAL
