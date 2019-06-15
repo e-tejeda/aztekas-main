@@ -39,8 +39,8 @@ x3min = 0.0
 %%%%%%%%%%%%%%%%%%%
 % TIME PARAMETERS %
 %%%%%%%%%%%%%%%%%%%
-tmax     = 1.0
-timefile = 0.0000000000000000001
+tmax     = 100.0
+timefile = 1.0
 
 %%%%%%%%%%%%%%%%%%
 % COURANT FACTOR %
