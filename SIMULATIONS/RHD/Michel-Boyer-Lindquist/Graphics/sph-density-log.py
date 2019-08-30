@@ -177,11 +177,25 @@ if vector == 1:
 stream = 0
 
 if stream == 1:
-    uu = np.nan_to_num(u)
-    vv = np.nan_to_num(v)
+    a     = 0.9
+    M     = 1.0
+    Delta = r*r - 2*M*r + a*a
+    rho2  = r*r
+    Sigma = (r**2 + a**2)**2 - a**2*Delta
 
-    uu = u
-    vv = v/(r*r)
+    lapse = np.sqrt(rho2*Delta/Sigma)
+    beta  = -2*M*a*r/Sigma
+
+    yrr = Delta/rho2;
+    ypp = 1.0/rho2;
+
+    W  = 1/np.sqrt(1 - yrr*u*u - ypp*v*v)
+    vr = yrr*u
+    vp = ypp*v
+
+    uu = W*vr
+    vv = W*(vp - beta/lapse)
+
     ur = uu*X1/r + X2*vv
     uz = uu*X2/r - X1*vv
 
