@@ -68,29 +68,30 @@ $(function() {
 
 <p>Numerical flux computing and implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;main.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8eb7926c8e9e2b294555910b4aff88a3"><td class="memItemLeft" align="right" valign="top"><a id="a8eb7926c8e9e2b294555910b4aff88a3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Flux1D</b> (vec_ *v, lim_ *l, int *I)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Flux1D</b> (<a class="el" href="structvec__.html">vec_</a> *v, <a class="el" href="structlim__.html">lim_</a> *l, int *I)</td></tr>
 <tr class="separator:a8eb7926c8e9e2b294555910b4aff88a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a709ab4f4d10df6c5c8c0522a569b3f15"><td class="memItemLeft" align="right" valign="top"><a id="a709ab4f4d10df6c5c8c0522a569b3f15"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Flux2D</b> (vec_ *v, lim_ *l, int *I)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Flux2D</b> (<a class="el" href="structvec__.html">vec_</a> *v, <a class="el" href="structlim__.html">lim_</a> *l, int *I)</td></tr>
 <tr class="separator:a709ab4f4d10df6c5c8c0522a569b3f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e7907f7b7c6053f59caffc77565625"><td class="memItemLeft" align="right" valign="top"><a id="a14e7907f7b7c6053f59caffc77565625"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Flux3D</b> (vec_ *v, lim_ *l, int *I)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Flux3D</b> (<a class="el" href="structvec__.html">vec_</a> *v, <a class="el" href="structlim__.html">lim_</a> *l, int *I)</td></tr>
 <tr class="separator:a14e7907f7b7c6053f59caffc77565625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44d66c1f5030fb2bdcb4908798fb3446"><td class="memItemLeft" align="right" valign="top"><a id="a44d66c1f5030fb2bdcb4908798fb3446"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Hll</b> (double *F, flx_ *f, int x)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Hll</b> (double *F, <a class="el" href="structflx__.html">flx_</a> *f, int x)</td></tr>
 <tr class="separator:a44d66c1f5030fb2bdcb4908798fb3446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa50749ad1caa29532a374b684d3802fe"><td class="memItemLeft" align="right" valign="top"><a id="aa50749ad1caa29532a374b684d3802fe"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Hllc</b> (double *F, flx_ *f, int x)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Hllc</b> (double *F, <a class="el" href="structflx__.html">flx_</a> *f, int x)</td></tr>
 <tr class="separator:aa50749ad1caa29532a374b684d3802fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Numerical flux computing and implementation. </p>
-<dl class="section author"><dt>Author</dt><dd>Alejandro Aguayo-Ortiz </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Alejandro Aguayo-Ortiz</dd></dl>
+<p>The functions receives as an argument the structures <b><a class="el" href="structvec__.html">vec_</a></b> and <b><a class="el" href="structlim__.html">lim_</a></b> and the integer vector <b>I</b>. The structures carries the values of the Numerical Fluxes, e.g. <b>Fp</b> = <img class="formulaInl" alt="$\mathcal{F}_{i + 1/2}$" src="form_2.png"/>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

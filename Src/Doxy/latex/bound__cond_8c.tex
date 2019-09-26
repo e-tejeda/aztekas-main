@@ -2,27 +2,46 @@
 \label{bound__cond_8c}\index{bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}}
 
 
-Standard boundary conditions.  
+Standard boundary conditions. Outflow, Periodic and Reflection.  
 
 
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}\label{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}} 
-void {\bfseries Outflow} (double $\ast$B)
+void \hyperlink{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}{Outflow} (double $\ast$B)
 \item 
-\mbox{\Hypertarget{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}\label{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}} 
-void {\bfseries Reflection} (double $\ast$B)
+void \hyperlink{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}{Reflection} (double $\ast$B)
 \item 
-\mbox{\Hypertarget{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}\label{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}} 
-void {\bfseries Periodic} (double $\ast$B)
+void \hyperlink{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}{Periodic} (double $\ast$B)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Standard boundary conditions. 
+Standard boundary conditions. Outflow, Periodic and Reflection. 
 
 \begin{DoxyAuthor}{Author}
 Alejandro Aguayo-\/\+Ortiz 
 \end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}\label{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}} 
+\index{bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}!Outflow@{Outflow}}
+\index{Outflow@{Outflow}!bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}}
+\subsubsection{\texorpdfstring{Outflow()}{Outflow()}}
+{\footnotesize\ttfamily void Outflow (\begin{DoxyParamCaption}\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+The function {\bfseries \hyperlink{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}{Outflow()}}, receives the vector solution as an parameter {\bfseries B}. It fills the value of the ghost cells in the specified direction using the value of the last computed cell of the domain. \mbox{\Hypertarget{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}\label{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}} 
+\index{bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}!Periodic@{Periodic}}
+\index{Periodic@{Periodic}!bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}}
+\subsubsection{\texorpdfstring{Periodic()}{Periodic()}}
+{\footnotesize\ttfamily void Periodic (\begin{DoxyParamCaption}\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+The function {\bfseries \hyperlink{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}{Periodic()}}, receives the vector solution as an parameter {\bfseries B}. It fills the value of the ghost cells with the values of the correspondent other side of the domain. \mbox{\Hypertarget{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}\label{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}} 
+\index{bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}!Reflection@{Reflection}}
+\index{Reflection@{Reflection}!bound\+\_\+cond.\+c@{bound\+\_\+cond.\+c}}
+\subsubsection{\texorpdfstring{Reflection()}{Reflection()}}
+{\footnotesize\ttfamily void Reflection (\begin{DoxyParamCaption}\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+The function {\bfseries \hyperlink{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}{Reflection()}}, receives the vector solution as an parameter {\bfseries B}. It fills the value of the ghost cells in the specified direction using the value of the mirrored cells, and for the velocity it changes sign. 

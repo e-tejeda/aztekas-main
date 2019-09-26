@@ -1,21 +1,27 @@
 var indexSectionsWithContent =
 {
-  0: "abfimort",
-  1: "abfimort",
-  2: "a"
+  0: "abcdefghilmopqrtv",
+  1: "defglv",
+  2: "abcefghilmoqrt",
+  3: "aopr",
+  4: "a"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "pages"
+  1: "classes",
+  2: "files",
+  3: "functions",
+  4: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Files",
-  2: "Pages"
+  1: "Classes",
+  2: "Files",
+  3: "Functions",
+  4: "Pages"
 };
 

@@ -10,19 +10,19 @@ Numerical flux computing and implementation.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{flux_8c_a8eb7926c8e9e2b294555910b4aff88a3}\label{flux_8c_a8eb7926c8e9e2b294555910b4aff88a3}} 
-int {\bfseries Flux1D} (vec\+\_\+ $\ast$v, lim\+\_\+ $\ast$l, int $\ast$I)
+int {\bfseries Flux1D} (\hyperlink{structvec__}{vec\+\_\+} $\ast$v, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
 \item 
 \mbox{\Hypertarget{flux_8c_a709ab4f4d10df6c5c8c0522a569b3f15}\label{flux_8c_a709ab4f4d10df6c5c8c0522a569b3f15}} 
-int {\bfseries Flux2D} (vec\+\_\+ $\ast$v, lim\+\_\+ $\ast$l, int $\ast$I)
+int {\bfseries Flux2D} (\hyperlink{structvec__}{vec\+\_\+} $\ast$v, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
 \item 
 \mbox{\Hypertarget{flux_8c_a14e7907f7b7c6053f59caffc77565625}\label{flux_8c_a14e7907f7b7c6053f59caffc77565625}} 
-int {\bfseries Flux3D} (vec\+\_\+ $\ast$v, lim\+\_\+ $\ast$l, int $\ast$I)
+int {\bfseries Flux3D} (\hyperlink{structvec__}{vec\+\_\+} $\ast$v, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
 \item 
 \mbox{\Hypertarget{flux_8c_a44d66c1f5030fb2bdcb4908798fb3446}\label{flux_8c_a44d66c1f5030fb2bdcb4908798fb3446}} 
-int {\bfseries Hll} (double $\ast$F, flx\+\_\+ $\ast$f, int x)
+int {\bfseries Hll} (double $\ast$F, \hyperlink{structflx__}{flx\+\_\+} $\ast$f, int x)
 \item 
 \mbox{\Hypertarget{flux_8c_aa50749ad1caa29532a374b684d3802fe}\label{flux_8c_aa50749ad1caa29532a374b684d3802fe}} 
-int {\bfseries Hllc} (double $\ast$F, flx\+\_\+ $\ast$f, int x)
+int {\bfseries Hllc} (double $\ast$F, \hyperlink{structflx__}{flx\+\_\+} $\ast$f, int x)
 \end{DoxyCompactItemize}
 
 
@@ -30,5 +30,6 @@ int {\bfseries Hllc} (double $\ast$F, flx\+\_\+ $\ast$f, int x)
 Numerical flux computing and implementation. 
 
 \begin{DoxyAuthor}{Author}
-Alejandro Aguayo-\/\+Ortiz 
+Alejandro Aguayo-\/\+Ortiz
 \end{DoxyAuthor}
+The functions receives as an argument the structures {\bfseries \hyperlink{structvec__}{vec\+\_\+}} and {\bfseries \hyperlink{structlim__}{lim\+\_\+}} and the integer vector {\bfseries I}. The structures carries the values of the Numerical Fluxes, e.\+g. {\bfseries Fp} = $\mathcal{F}_{i + 1/2}$. 

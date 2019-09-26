@@ -1,0 +1,53 @@
+\hypertarget{limiters_8h}{}\section{Headers/limiters.h File Reference}
+\label{limiters_8h}\index{Headers/limiters.\+h@{Headers/limiters.\+h}}
+
+
+Reconstruction variables and functions definitions.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structlim__}{lim\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{limiters_8h_a57285b56bc2b01118ec5b73c2f2dde13}\label{limiters_8h_a57285b56bc2b01118ec5b73c2f2dde13}} 
+double {\bfseries Limiter} (double A, double B, int r)
+\item 
+\mbox{\Hypertarget{limiters_8h_a21452fdb1b42a501de5eaf8708496c84}\label{limiters_8h_a21452fdb1b42a501de5eaf8708496c84}} 
+double {\bfseries Godunov} (double A, double B)
+\item 
+\mbox{\Hypertarget{limiters_8h_ada3b770c377e9fc5181f086d2547643b}\label{limiters_8h_ada3b770c377e9fc5181f086d2547643b}} 
+double {\bfseries Maxmod} (double A, double B)
+\item 
+\mbox{\Hypertarget{limiters_8h_a9fae6595b98c24324c2f1c37fd7f0447}\label{limiters_8h_a9fae6595b98c24324c2f1c37fd7f0447}} 
+double {\bfseries Minmod} (double A, double B)
+\item 
+\mbox{\Hypertarget{limiters_8h_a6ba059a34fa97dd299831e35dd59259e}\label{limiters_8h_a6ba059a34fa97dd299831e35dd59259e}} 
+double {\bfseries Mc} (double A, double B)
+\item 
+\mbox{\Hypertarget{limiters_8h_a013143acf639241995f5488bf577fa62}\label{limiters_8h_a013143acf639241995f5488bf577fa62}} 
+double {\bfseries Superbee} (double A, double B)
+\item 
+\mbox{\Hypertarget{limiters_8h_aa4f3b3e57ab276d350c01b1f2eec9d47}\label{limiters_8h_aa4f3b3e57ab276d350c01b1f2eec9d47}} 
+double {\bfseries Weno5} (double v1, double v2, double v3, double v4, double v5)
+\item 
+\mbox{\Hypertarget{limiters_8h_a03864e2629b29ff67a6b96998d081b82}\label{limiters_8h_a03864e2629b29ff67a6b96998d081b82}} 
+int {\bfseries Reconst1D} (double $\ast$u, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+\mbox{\Hypertarget{limiters_8h_a5421dea888d133169afe9fbd6c1f70cd}\label{limiters_8h_a5421dea888d133169afe9fbd6c1f70cd}} 
+int {\bfseries Reconst2D} (double $\ast$u, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+\mbox{\Hypertarget{limiters_8h_a22a3113d439d447676d93a245a8ccb39}\label{limiters_8h_a22a3113d439d447676d93a245a8ccb39}} 
+int {\bfseries Reconst3D} (double $\ast$u, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Reconstruction variables and functions definitions. 
+
+\begin{DoxyAuthor}{Author}
+Alejandro Aguayo-\/\+Ortiz 
+\end{DoxyAuthor}

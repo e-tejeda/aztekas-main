@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_2ec',['main.c',['../main_8c.html',1,'']]]
+  ['eos_2ec',['eos.c',['../eos_8c.html',1,'']]],
+  ['eos_5f',['eos_',['../structeos__.html',1,'']]]
 ];

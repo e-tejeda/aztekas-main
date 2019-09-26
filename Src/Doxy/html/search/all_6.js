@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['restart_2ec',['restart.c',['../restart_8c.html',1,'']]]
+  ['gauge_5f',['gauge_',['../structgauge__.html',1,'']]],
+  ['grid_5f',['grid_',['../structgrid__.html',1,'']]],
+  ['gvector_2ec',['gvector.c',['../HD_2gvector_8c.html',1,'']]]
 ];

@@ -1,0 +1,163 @@
+\hypertarget{main_8h}{}\section{Headers/main.h File Reference}
+\label{main_8h}\index{Headers/main.\+h@{Headers/main.\+h}}
+
+
+Main function, headers and variable declaration.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8h_af294b550613b2085798c10af3b7934e5}{Allocate\+\_\+\+Array} ()
+\item 
+\mbox{\Hypertarget{main_8h_a8c861c2a6e7ee66afbf8d6a1d7357d90}\label{main_8h_a8c861c2a6e7ee66afbf8d6a1d7357d90}} 
+void {\bfseries New\+\_\+\+Size} ()
+\item 
+\mbox{\Hypertarget{main_8h_a0407c4603acc61cdfffddbabc5fbf40a}\label{main_8h_a0407c4603acc61cdfffddbabc5fbf40a}} 
+void {\bfseries Initial} ()
+\item 
+\mbox{\Hypertarget{main_8h_ac6b067b154d25e61d3ed167edd0abbf0}\label{main_8h_ac6b067b154d25e61d3ed167edd0abbf0}} 
+int {\bfseries Boundaries} (double $\ast$B)
+\item 
+\mbox{\Hypertarget{main_8h_a80b26b9109815a3fb6f403e4a9551b4b}\label{main_8h_a80b26b9109815a3fb6f403e4a9551b4b}} 
+void {\bfseries Integration} ()
+\item 
+\mbox{\Hypertarget{main_8h_a686fb89623e93743169754983fe702ea}\label{main_8h_a686fb89623e93743169754983fe702ea}} 
+int {\bfseries R\+K1D} (double $\ast$u, double $\ast$q, double $\ast$q1, double $\ast$q2, int order)
+\item 
+\mbox{\Hypertarget{main_8h_a9a74430854a224a12086f8caf3ec3ca7}\label{main_8h_a9a74430854a224a12086f8caf3ec3ca7}} 
+int {\bfseries R\+K2D} (double $\ast$u, double $\ast$q, double $\ast$q1, double $\ast$q2, int order)
+\item 
+\mbox{\Hypertarget{main_8h_a45d54071681dc33a453854906deac5cc}\label{main_8h_a45d54071681dc33a453854906deac5cc}} 
+int {\bfseries R\+K3D} (double $\ast$u, double $\ast$q, double $\ast$q1, double $\ast$q2, int order)
+\item 
+\mbox{\Hypertarget{main_8h_a8eb7926c8e9e2b294555910b4aff88a3}\label{main_8h_a8eb7926c8e9e2b294555910b4aff88a3}} 
+int {\bfseries Flux1D} (\hyperlink{structvec__}{vec\+\_\+} $\ast$v, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_a709ab4f4d10df6c5c8c0522a569b3f15}\label{main_8h_a709ab4f4d10df6c5c8c0522a569b3f15}} 
+int {\bfseries Flux2D} (\hyperlink{structvec__}{vec\+\_\+} $\ast$v, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_a14e7907f7b7c6053f59caffc77565625}\label{main_8h_a14e7907f7b7c6053f59caffc77565625}} 
+int {\bfseries Flux3D} (\hyperlink{structvec__}{vec\+\_\+} $\ast$v, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_a44d66c1f5030fb2bdcb4908798fb3446}\label{main_8h_a44d66c1f5030fb2bdcb4908798fb3446}} 
+int {\bfseries Hll} (double $\ast$F, \hyperlink{structflx__}{flx\+\_\+} $\ast$f, int x)
+\item 
+\mbox{\Hypertarget{main_8h_aa50749ad1caa29532a374b684d3802fe}\label{main_8h_aa50749ad1caa29532a374b684d3802fe}} 
+int {\bfseries Hllc} (double $\ast$F, \hyperlink{structflx__}{flx\+\_\+} $\ast$f, int x)
+\item 
+\mbox{\Hypertarget{main_8h_a2e8d1ea6331a382b62005ba9bae051fc}\label{main_8h_a2e8d1ea6331a382b62005ba9bae051fc}} 
+int {\bfseries A\+M\+A\+T\+R\+I\+X1D} (double $\ast$u, \hyperlink{structvec__}{vec\+\_\+} $\ast$v, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_a1ff5d3230a5d3f94a4906bda5ff494b2}\label{main_8h_a1ff5d3230a5d3f94a4906bda5ff494b2}} 
+int {\bfseries A\+M\+A\+T\+R\+I\+X2D} (double $\ast$u, \hyperlink{structvec__}{vec\+\_\+} $\ast$v, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_a664c85c0524d2ca6263269e993d140d9}\label{main_8h_a664c85c0524d2ca6263269e993d140d9}} 
+int {\bfseries A\+M\+A\+T\+R\+I\+X3D} (double $\ast$u, \hyperlink{structvec__}{vec\+\_\+} $\ast$v, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_ae888cf43069d4e8ef3225a0c1d00cc12}\label{main_8h_ae888cf43069d4e8ef3225a0c1d00cc12}} 
+int {\bfseries V\+E\+C\+T\+OR} (int pm, char flux, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, \hyperlink{structflx__}{flx\+\_\+} $\ast$f, int $\ast$I)
+\item 
+\mbox{\Hypertarget{main_8h_aa06479ffc4b9586bc45bde8506dcfb96}\label{main_8h_aa06479ffc4b9586bc45bde8506dcfb96}} 
+int {\bfseries MxV} (double $\ast$M, double $\ast$V, double $\ast$L)
+\item 
+\mbox{\Hypertarget{main_8h_a64afb5fa2db6752c6e40a368f6aeb3e1}\label{main_8h_a64afb5fa2db6752c6e40a368f6aeb3e1}} 
+void {\bfseries Round\+Gen} (double $\ast$num)
+\item 
+\mbox{\Hypertarget{main_8h_a6dd3bfc286a4edf62790809eda6c52d0}\label{main_8h_a6dd3bfc286a4edf62790809eda6c52d0}} 
+void {\bfseries Check\+Sim\+Parameters} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8h_af3f499ac6a681c13abaaad7231a7b6d0}\label{main_8h_af3f499ac6a681c13abaaad7231a7b6d0}} 
+double $\ast$ {\bfseries U0}
+\item 
+\mbox{\Hypertarget{main_8h_aa4eca6bbf61516707d8c0fb8cae547bb}\label{main_8h_aa4eca6bbf61516707d8c0fb8cae547bb}} 
+double $\ast$ {\bfseries U}
+\item 
+\mbox{\Hypertarget{main_8h_a66114ee0a7b8903c66894ea7031d58b0}\label{main_8h_a66114ee0a7b8903c66894ea7031d58b0}} 
+double $\ast$ {\bfseries U1}
+\item 
+\mbox{\Hypertarget{main_8h_a067ed61dda7389c59b0af0b4965f0b2b}\label{main_8h_a067ed61dda7389c59b0af0b4965f0b2b}} 
+double $\ast$ {\bfseries U2}
+\item 
+\mbox{\Hypertarget{main_8h_a5f36cbe2f1d720a025530ef1b76ce354}\label{main_8h_a5f36cbe2f1d720a025530ef1b76ce354}} 
+double $\ast$ {\bfseries U3}
+\item 
+\mbox{\Hypertarget{main_8h_a15734b088280482d64321de94c6431bd}\label{main_8h_a15734b088280482d64321de94c6431bd}} 
+double $\ast$ {\bfseries Q}
+\item 
+\mbox{\Hypertarget{main_8h_a80242e5cf3c30ccb0326a49569a75961}\label{main_8h_a80242e5cf3c30ccb0326a49569a75961}} 
+double $\ast$ {\bfseries Q1}
+\item 
+\mbox{\Hypertarget{main_8h_a604a576350a1b3d2b9ba6bcee6ce4e9e}\label{main_8h_a604a576350a1b3d2b9ba6bcee6ce4e9e}} 
+double $\ast$ {\bfseries Q2}
+\item 
+\mbox{\Hypertarget{main_8h_a424c2c8d20285acb848239b5784a3f50}\label{main_8h_a424c2c8d20285acb848239b5784a3f50}} 
+double $\ast$ {\bfseries Q3}
+\item 
+\mbox{\Hypertarget{main_8h_a45314566a84a31f43e6435d1eb24d4ec}\label{main_8h_a45314566a84a31f43e6435d1eb24d4ec}} 
+double {\bfseries start}
+\item 
+\mbox{\Hypertarget{main_8h_a9ea1a8f5ef3e6d20b362385e1288c72c}\label{main_8h_a9ea1a8f5ef3e6d20b362385e1288c72c}} 
+double {\bfseries delta}
+\item 
+\mbox{\Hypertarget{main_8h_a74b45da7676e23dd8ec974cfc04c0137}\label{main_8h_a74b45da7676e23dd8ec974cfc04c0137}} 
+double {\bfseries K}
+\item 
+\mbox{\Hypertarget{main_8h_a656eaa85698e4461f9786872b015f165}\label{main_8h_a656eaa85698e4461f9786872b015f165}} 
+int {\bfseries Nx1}
+\item 
+\mbox{\Hypertarget{main_8h_a4aa94c472b4ee6e225c2fb086ca1ab4c}\label{main_8h_a4aa94c472b4ee6e225c2fb086ca1ab4c}} 
+int {\bfseries Nx2}
+\item 
+\mbox{\Hypertarget{main_8h_ada33576df4d2f431220936026060c2ce}\label{main_8h_ada33576df4d2f431220936026060c2ce}} 
+int {\bfseries Nx3}
+\item 
+\mbox{\Hypertarget{main_8h_a87692ca8ba98f2e3333ceb3e781fab99}\label{main_8h_a87692ca8ba98f2e3333ceb3e781fab99}} 
+double {\bfseries x1max}
+\item 
+\mbox{\Hypertarget{main_8h_a7767c7592adcecdf7b6b204fa5f4a4e8}\label{main_8h_a7767c7592adcecdf7b6b204fa5f4a4e8}} 
+double {\bfseries x2max}
+\item 
+\mbox{\Hypertarget{main_8h_a4454e0b00bea18da6e759280e2238745}\label{main_8h_a4454e0b00bea18da6e759280e2238745}} 
+double {\bfseries x3max}
+\item 
+\mbox{\Hypertarget{main_8h_a933155bfa605d33fe1ccec903341975f}\label{main_8h_a933155bfa605d33fe1ccec903341975f}} 
+double {\bfseries x1min}
+\item 
+\mbox{\Hypertarget{main_8h_a648bc10c468fe409a98696cae418f1e5}\label{main_8h_a648bc10c468fe409a98696cae418f1e5}} 
+double {\bfseries x2min}
+\item 
+\mbox{\Hypertarget{main_8h_a4e2849b81f14c848d911b344ef127f91}\label{main_8h_a4e2849b81f14c848d911b344ef127f91}} 
+double {\bfseries x3min}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main function, headers and variable declaration. 
+
+\begin{DoxyAuthor}{Author}
+Alejandro Aguayo-\/\+Ortiz
+\end{DoxyAuthor}
+\#include$<$stdio.\+h$>$ \#include$<$stdlib.\+h$>$ \#include$<$string.\+h$>$ \#include$<$math.\+h$>$ \#include$<$omp.\+h$>$
+
+\#include\char`\"{}physics.\+h\char`\"{}
+
+\#include\char`\"{}boundaries.\+h\char`\"{} \#include\char`\"{}limiters.\+h\char`\"{}
+
+\#include\char`\"{}const.\+h\char`\"{} \#include\char`\"{}macros.\+h\char`\"{} \#include\char`\"{}io.\+h\char`\"{} \#include\char`\"{}user\+\_\+param.\+h\char`\"{}
+
+N\+AN int C\+H\+E\+C\+K\+\_\+\+N\+AN;
+
+/$\ast$ Define pointers 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8h_af294b550613b2085798c10af3b7934e5}\label{main_8h_af294b550613b2085798c10af3b7934e5}} 
+\index{main.\+h@{main.\+h}!Allocate\+\_\+\+Array@{Allocate\+\_\+\+Array}}
+\index{Allocate\+\_\+\+Array@{Allocate\+\_\+\+Array}!main.\+h@{main.\+h}}
+\subsubsection{\texorpdfstring{Allocate\+\_\+\+Array()}{Allocate\_Array()}}
+{\footnotesize\ttfamily void Allocate\+\_\+\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function allocates the space in memory for all the vectors used in {\itshape aztekas}. 
