@@ -1,0 +1,46 @@
+\hypertarget{boundaries_8h}{}\section{Headers/boundaries.h File Reference}
+\label{boundaries_8h}\index{Headers/boundaries.\+h@{Headers/boundaries.\+h}}
+
+
+Boundary condition functions definitions.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{boundaries_8h_a9a2b79fd050d4206506113b2eb13d579}{Outflow} (double $\ast$B)
+\item 
+void \hyperlink{boundaries_8h_acf52b9f98d8fba3c7326728e6d2086eb}{Periodic} (double $\ast$B)
+\item 
+void \hyperlink{boundaries_8h_aef002842f9b5f4e7d15801a09f1362aa}{Reflection} (double $\ast$B)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Boundary condition functions definitions. 
+
+\begin{DoxyAuthor}{Author}
+Alejandro Aguayo-\/\+Ortiz 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{boundaries_8h_a9a2b79fd050d4206506113b2eb13d579}\label{boundaries_8h_a9a2b79fd050d4206506113b2eb13d579}} 
+\index{boundaries.\+h@{boundaries.\+h}!Outflow@{Outflow}}
+\index{Outflow@{Outflow}!boundaries.\+h@{boundaries.\+h}}
+\subsubsection{\texorpdfstring{Outflow()}{Outflow()}}
+{\footnotesize\ttfamily void Outflow (\begin{DoxyParamCaption}\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+The function {\bfseries \hyperlink{bound__cond_8c_a9a2b79fd050d4206506113b2eb13d579}{Outflow()}}, receives the vector solution as an parameter {\bfseries B}. It fills the value of the ghost cells in the specified direction using the value of the last computed cell of the domain. \mbox{\Hypertarget{boundaries_8h_acf52b9f98d8fba3c7326728e6d2086eb}\label{boundaries_8h_acf52b9f98d8fba3c7326728e6d2086eb}} 
+\index{boundaries.\+h@{boundaries.\+h}!Periodic@{Periodic}}
+\index{Periodic@{Periodic}!boundaries.\+h@{boundaries.\+h}}
+\subsubsection{\texorpdfstring{Periodic()}{Periodic()}}
+{\footnotesize\ttfamily void Periodic (\begin{DoxyParamCaption}\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+The function {\bfseries \hyperlink{bound__cond_8c_acf52b9f98d8fba3c7326728e6d2086eb}{Periodic()}}, receives the vector solution as an parameter {\bfseries B}. It fills the value of the ghost cells with the values of the correspondent other side of the domain. \mbox{\Hypertarget{boundaries_8h_aef002842f9b5f4e7d15801a09f1362aa}\label{boundaries_8h_aef002842f9b5f4e7d15801a09f1362aa}} 
+\index{boundaries.\+h@{boundaries.\+h}!Reflection@{Reflection}}
+\index{Reflection@{Reflection}!boundaries.\+h@{boundaries.\+h}}
+\subsubsection{\texorpdfstring{Reflection()}{Reflection()}}
+{\footnotesize\ttfamily void Reflection (\begin{DoxyParamCaption}\item[{double $\ast$}]{B }\end{DoxyParamCaption})}
+
+The function {\bfseries \hyperlink{bound__cond_8c_aef002842f9b5f4e7d15801a09f1362aa}{Reflection()}}, receives the vector solution as an parameter {\bfseries B}. It fills the value of the ghost cells in the specified direction using the value of the mirrored cells, and for the velocity it changes sign. 
