@@ -1,16 +1,7 @@
 /*
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * aztekas boundaries module
+ * Date of creation/modification: 26-09-19 11:33:21
+ * author: Alejandro Aguayo-Ortiz
  */
 
 //Do not erase any of these libraries//
@@ -43,10 +34,10 @@ int Boundaries(double *B)
       {
          if(i >= Nx1-gc)
          {
-            B(0,i,j) = density_0;
-            B(1,i,j) = pressure_0;
-            B(2,i,j) = velocity_0;
-            B(3,i,j) = 0.0;
+            B(RHO,i,j) = density_0;
+            B(PRE,i,j) = pressure_0;
+            B(VX1,i,j) = velocity_0;
+            B(VX2,i,j) = 0.0;
          }
       }
    }
@@ -59,11 +50,11 @@ int Boundaries(double *B)
       {
          if(i >= Nx1-gc)
          {
-            B(0,i,j) = density_0;
-            B(1,i,j) = pressure_0;
-            B(2,i,j) = velocity_0;
-            B(3,i,j) = 0.0;
-            B(4,i,j) = 0.0;
+            B(RHO,i,j) = density_0;
+            B(PRE,i,j) = pressure_0;
+            B(VX1,i,j) = velocity_0;
+            B(VX2,i,j) = 0.0;
+            B(VX3,i,j) = 0.0;
          }
       }
    }

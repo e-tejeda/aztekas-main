@@ -7,22 +7,55 @@
 # that you recompile the whole code by typing "make clean; make" 
 #----------------------------------------------------------------------
 
-#####################################
+###############################################
+# PATH TO AZTEKAS
+###############################################
+
+AZTPATH = ../../../
+
+###############################################
+# Physics (hd, mhd, rhd, rmhd)
+###############################################
+
+PHY = rhd
+
+########################################################################################
+# Metric (Minkowski, Schwarzschild, Eddington-Finkelstein, Boyer-Lindquist, Kerr-Schild)
+########################################################################################
+
+METRIC = Kerr-Schild
+
+###############################################
+# Equation of State (ideal, dust, stiff)
+###############################################
+
+eos = stiff
+
+###############################################
+# Dimension (1, 2 or 3. Enter 4 for 2.5)
+###############################################
+
+DIM = 4
+
+###############################################
+# Coordinates (cartesian,cylindrical,spherical)
+###############################################
+
+COORD = spherical
+
+###############################################
+# Integration method
+###############################################
+
+INT = standard
+
+###############################################
 # Ghost cells
-#####################################
+###############################################
 
 PARAM += -Dgc=3
 
-#####################################
-
-#####################################
-# Physics (rhd,hd,mhd,rmhd)
-#####################################
-
-PHY    = rhd
-
-# Metric (Minkowski, Schwarzschild, Eddington-Finkelstein, Kerr-Schild)
-METRIC = Kerr-Schild
+###############################################
 
 ifeq ($(PHY),hd)
         PARAM += -DPHYSICS=HD
@@ -31,7 +64,8 @@ ifeq ($(PHY),rhd)
         PARAM += -DPHYSICS=RHD
 endif
 
-eos = stiff
+#####################################
+
 ifeq ($(eos),ideal)
         PARAM += -DEOS=IDEAL
 endif
@@ -39,16 +73,10 @@ ifeq ($(eos),dust)
         PARAM += -DEOS=DUST
 endif
 ifeq ($(eos),stiff)
-        PARAM += -DEOS=STIFF
+        PARAM += -DEOS=STIFF	
 endif
 
 #####################################
-
-#####################################
-# Dimension
-#####################################
-
-DIM = 4
 
 ifeq ($(DIM),1)
 	PARAM += -DDIM=1
@@ -60,48 +88,30 @@ ifeq ($(DIM),2)
 	PARAM += -Deq=4
 	PARAM += -Dgraf=2
 endif
-ifeq ($(DIM),4)
-	PARAM += -DDIM=4
-	PARAM += -Deq=5
-	PARAM += -Dgraf=2
-endif
 ifeq ($(DIM),3)
 	PARAM += -DDIM=3
 	PARAM += -Deq=5
 	PARAM += -Dgraf=3
 endif
+ifeq ($(DIM),4)
+	PARAM += -DDIM=4
+	PARAM += -Deq=5
+	PARAM += -Dgraf=2
+endif
 
 #####################################
 
-#####################################
-# Coordinates (cart,cyl,sph)
-#####################################
-
-COORD = sph
-
-ifeq ($(COORD),cart)
+ifeq ($(COORD),cartesian)
 	PARAM += -DCOORDINATES=CARTESIAN
 endif
-ifeq ($(COORD),cyl)
+ifeq ($(COORD),cylindrical)
 	PARAM += -DCOORDINATES=CYLINDRICAL
 endif
-ifeq ($(COORD),sph)
+ifeq ($(COORD),spherical)
 	PARAM += -DCOORDINATES=SPHERICAL
 endif
 
 #####################################
-
-#####################################
-# PATH TO AZTEKAS
-#####################################
-AZTPATH = ../../../
-#####################################
-
-#####################################
-# Integration method
-#####################################
-
-INT = standard
 
 ifeq ($(INT),standard)
 	PARAM += -Dintegration=0
@@ -142,7 +152,7 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  $(AZTPATH)/Src/HD/gvector.c \
 	  $(AZTPATH)/Src/HD/hvector.c \
 	  $(AZTPATH)/Src/HD/svector.c \
-	  $(AZTPATH)/Src/HD/metric.c \
+	  $(AZTPATH)/Src/HD/surface.c \
 	  $(AZTPATH)/Src/EOS/eos.c \
 	  ./user_sources.c \
 	  ./user_input.c
@@ -179,21 +189,21 @@ SOURCES = $(AZTPATH)/Src/main.c \
 	  ./user_input.c
 endif
 
-#OBJS = $(SOURCES:.c=.o)
-
+OBJS = $(SOURCES:.c=.o)
 FLAGS = -Ofast -lm
 
 COMPILER = gcc
 AZT_HEAD = $(AZTPATH)/Src/Headers
-CFLAGS = -I$(AZT_HEAD) -I.
+CFLAGS = -g -I$(AZT_HEAD) -I.
+DEPS = user_param.h
 EXEC = aztekas
 
 #####################################
 
-$(EXEC): $(SOURCES)
+all: $(SOURCES)
 	@echo ""
 	@echo "Compiling problem file ..."
-	$(COMPILER) $(PARAM) -fopenmp $(SOURCES) $(FLAGS) $(CFLAGS) -o $(EXEC)  
+	$(COMPILER) $(PARAM) -fopenmp $(SOURCES) $(FLAGS) $(CFLAGS) -o $(EXEC)
 	@echo "$(bla)"
 	@echo "aztekas compiled successfully"
 	
