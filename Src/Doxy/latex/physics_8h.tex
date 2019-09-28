@@ -1,0 +1,154 @@
+\hypertarget{physics_8h}{}\section{Headers/physics.h File Reference}
+\label{physics_8h}\index{Headers/physics.\+h@{Headers/physics.\+h}}
+{\ttfamily \#include $<$mesh.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structflx__}{flx\+\_\+}
+\item 
+struct \hyperlink{structvec__}{vec\+\_\+}
+\item 
+struct \hyperlink{structeos__}{eos\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{physics_8h_af01ecd1c244746e08a3b7faff2d09d0c}{funct\+\_\+A} (double $\ast$a, double $\ast$uu)
+\item 
+int \hyperlink{physics_8h_a129d454bd4c5614d779fa1547b88114e}{Cons2\+Prim} (double $\ast$q, double $\ast$u)
+\item 
+void \hyperlink{physics_8h_a7a32c6521b6a631ba0254c5a959879bc}{Prim2\+Cons\+\_\+\+All} (double $\ast$u, double $\ast$q)
+\item 
+void \hyperlink{physics_8h_afdefd31121c485fba4e2939cfeb9f6d7}{Prim2\+Cons} (double $\ast$q, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_a8a5d28e80678827b32dda260e3add6a7}{Prim2\+FluxF} (double $\ast$f, double $\ast$v, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_aed3e1c4b601084b73b19f42def45d8c4}{Prim2\+FluxG} (double $\ast$f, double $\ast$v, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_a5ab91e9633a4dffd5f18cab09f900f0d}{Prim2\+FluxH} (double $\ast$f, double $\ast$v, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_adc28fdaa824eb2702ac8071f14d59336}{Sources} (double $\ast$u, \hyperlink{structvec__}{vec\+\_\+} $\ast$v, int $\ast$I)
+\item 
+void \hyperlink{physics_8h_a5c4375c0cb1f9e6a83d35932a0949085}{Source\+\_\+\+Terms} (double $\ast$s, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_ad115ec9faf93cc0e7e92cbf3cfdde2b1}{User\+\_\+\+Source\+\_\+\+Terms} (double $\ast$s, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_a2a4d37c500f228f5cb662b46f9d71e04}{EoS} (\hyperlink{structeos__}{eos\+\_\+} $\ast$e, double $\ast$u, \hyperlink{structgauge__}{gauge\+\_\+} local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_a18642caac9855aeac797fbaba90b64d1}{Get\+\_\+\+Metric\+\_\+\+Components} (\hyperlink{structgauge__}{gauge\+\_\+} $\ast$local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_afd567a147123bb7e7618da4b0263fefe}{Gauge\+\_\+\+Derivatives} (\hyperlink{structder__gauge__}{der\+\_\+gauge\+\_\+} $\ast$der, \hyperlink{structgauge__}{gauge\+\_\+} $\ast$local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_ab48e98cff6b8d14e5211e3f470c1cbe4}{Scalar\+\_\+\+Contraction\+\_\+\+Range1} (double $\ast$scalar, double $\ast$cov, double $\ast$con)
+\item 
+void \hyperlink{physics_8h_ab0744adde00af3ef3862ccaf9ec25a4a}{Raise\+\_\+\+Index\+\_\+\+Range1} (double $\ast$con, double $\ast$cov, \hyperlink{structgauge__}{gauge\+\_\+} $\ast$local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_a53e963cead4de67924763c24273f0f2a}{Low\+\_\+\+Index\+\_\+\+Range1} (double $\ast$cov, double $\ast$con, \hyperlink{structgauge__}{gauge\+\_\+} $\ast$local\+\_\+grid)
+\item 
+void \hyperlink{physics_8h_ab16afad2dd17c19f3a5a2e7bdf10dd4b}{Low\+\_\+\+Index\+\_\+\+Range2} (double $\ast$$\ast$diag, double $\ast$$\ast$con, \hyperlink{structgauge__}{gauge\+\_\+} $\ast$local\+\_\+grid)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{physics_8h_a129d454bd4c5614d779fa1547b88114e}\label{physics_8h_a129d454bd4c5614d779fa1547b88114e}} 
+\index{physics.\+h@{physics.\+h}!Cons2\+Prim@{Cons2\+Prim}}
+\index{Cons2\+Prim@{Cons2\+Prim}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Cons2\+Prim()}{Cons2Prim()}}
+{\footnotesize\ttfamily int Cons2\+Prim (\begin{DoxyParamCaption}\item[{double $\ast$}]{q,  }\item[{double $\ast$}]{u }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a2a4d37c500f228f5cb662b46f9d71e04}\label{physics_8h_a2a4d37c500f228f5cb662b46f9d71e04}} 
+\index{physics.\+h@{physics.\+h}!EoS@{EoS}}
+\index{EoS@{EoS}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Eo\+S()}{EoS()}}
+{\footnotesize\ttfamily void EoS (\begin{DoxyParamCaption}\item[{\hyperlink{structeos__}{eos\+\_\+} $\ast$}]{e,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_af01ecd1c244746e08a3b7faff2d09d0c}\label{physics_8h_af01ecd1c244746e08a3b7faff2d09d0c}} 
+\index{physics.\+h@{physics.\+h}!funct\+\_\+A@{funct\+\_\+A}}
+\index{funct\+\_\+A@{funct\+\_\+A}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{funct\+\_\+\+A()}{funct\_A()}}
+{\footnotesize\ttfamily int funct\+\_\+A (\begin{DoxyParamCaption}\item[{double $\ast$}]{a,  }\item[{double $\ast$}]{uu }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_afd567a147123bb7e7618da4b0263fefe}\label{physics_8h_afd567a147123bb7e7618da4b0263fefe}} 
+\index{physics.\+h@{physics.\+h}!Gauge\+\_\+\+Derivatives@{Gauge\+\_\+\+Derivatives}}
+\index{Gauge\+\_\+\+Derivatives@{Gauge\+\_\+\+Derivatives}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Gauge\+\_\+\+Derivatives()}{Gauge\_Derivatives()}}
+{\footnotesize\ttfamily void Gauge\+\_\+\+Derivatives (\begin{DoxyParamCaption}\item[{\hyperlink{structder__gauge__}{der\+\_\+gauge\+\_\+} $\ast$}]{der,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+} $\ast$}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a18642caac9855aeac797fbaba90b64d1}\label{physics_8h_a18642caac9855aeac797fbaba90b64d1}} 
+\index{physics.\+h@{physics.\+h}!Get\+\_\+\+Metric\+\_\+\+Components@{Get\+\_\+\+Metric\+\_\+\+Components}}
+\index{Get\+\_\+\+Metric\+\_\+\+Components@{Get\+\_\+\+Metric\+\_\+\+Components}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Get\+\_\+\+Metric\+\_\+\+Components()}{Get\_Metric\_Components()}}
+{\footnotesize\ttfamily void Get\+\_\+\+Metric\+\_\+\+Components (\begin{DoxyParamCaption}\item[{\hyperlink{structgauge__}{gauge\+\_\+} $\ast$}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a53e963cead4de67924763c24273f0f2a}\label{physics_8h_a53e963cead4de67924763c24273f0f2a}} 
+\index{physics.\+h@{physics.\+h}!Low\+\_\+\+Index\+\_\+\+Range1@{Low\+\_\+\+Index\+\_\+\+Range1}}
+\index{Low\+\_\+\+Index\+\_\+\+Range1@{Low\+\_\+\+Index\+\_\+\+Range1}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Low\+\_\+\+Index\+\_\+\+Range1()}{Low\_Index\_Range1()}}
+{\footnotesize\ttfamily void Low\+\_\+\+Index\+\_\+\+Range1 (\begin{DoxyParamCaption}\item[{double $\ast$}]{cov,  }\item[{double $\ast$}]{con,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+} $\ast$}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_ab16afad2dd17c19f3a5a2e7bdf10dd4b}\label{physics_8h_ab16afad2dd17c19f3a5a2e7bdf10dd4b}} 
+\index{physics.\+h@{physics.\+h}!Low\+\_\+\+Index\+\_\+\+Range2@{Low\+\_\+\+Index\+\_\+\+Range2}}
+\index{Low\+\_\+\+Index\+\_\+\+Range2@{Low\+\_\+\+Index\+\_\+\+Range2}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Low\+\_\+\+Index\+\_\+\+Range2()}{Low\_Index\_Range2()}}
+{\footnotesize\ttfamily void Low\+\_\+\+Index\+\_\+\+Range2 (\begin{DoxyParamCaption}\item[{double $\ast$$\ast$}]{diag,  }\item[{double $\ast$$\ast$}]{con,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+} $\ast$}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_afdefd31121c485fba4e2939cfeb9f6d7}\label{physics_8h_afdefd31121c485fba4e2939cfeb9f6d7}} 
+\index{physics.\+h@{physics.\+h}!Prim2\+Cons@{Prim2\+Cons}}
+\index{Prim2\+Cons@{Prim2\+Cons}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Prim2\+Cons()}{Prim2Cons()}}
+{\footnotesize\ttfamily void Prim2\+Cons (\begin{DoxyParamCaption}\item[{double $\ast$}]{q,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a7a32c6521b6a631ba0254c5a959879bc}\label{physics_8h_a7a32c6521b6a631ba0254c5a959879bc}} 
+\index{physics.\+h@{physics.\+h}!Prim2\+Cons\+\_\+\+All@{Prim2\+Cons\+\_\+\+All}}
+\index{Prim2\+Cons\+\_\+\+All@{Prim2\+Cons\+\_\+\+All}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Prim2\+Cons\+\_\+\+All()}{Prim2Cons\_All()}}
+{\footnotesize\ttfamily void Prim2\+Cons\+\_\+\+All (\begin{DoxyParamCaption}\item[{double $\ast$}]{u,  }\item[{double $\ast$}]{q }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a8a5d28e80678827b32dda260e3add6a7}\label{physics_8h_a8a5d28e80678827b32dda260e3add6a7}} 
+\index{physics.\+h@{physics.\+h}!Prim2\+FluxF@{Prim2\+FluxF}}
+\index{Prim2\+FluxF@{Prim2\+FluxF}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Prim2\+Flux\+F()}{Prim2FluxF()}}
+{\footnotesize\ttfamily void Prim2\+FluxF (\begin{DoxyParamCaption}\item[{double $\ast$}]{f,  }\item[{double $\ast$}]{v,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_aed3e1c4b601084b73b19f42def45d8c4}\label{physics_8h_aed3e1c4b601084b73b19f42def45d8c4}} 
+\index{physics.\+h@{physics.\+h}!Prim2\+FluxG@{Prim2\+FluxG}}
+\index{Prim2\+FluxG@{Prim2\+FluxG}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Prim2\+Flux\+G()}{Prim2FluxG()}}
+{\footnotesize\ttfamily void Prim2\+FluxG (\begin{DoxyParamCaption}\item[{double $\ast$}]{f,  }\item[{double $\ast$}]{v,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a5ab91e9633a4dffd5f18cab09f900f0d}\label{physics_8h_a5ab91e9633a4dffd5f18cab09f900f0d}} 
+\index{physics.\+h@{physics.\+h}!Prim2\+FluxH@{Prim2\+FluxH}}
+\index{Prim2\+FluxH@{Prim2\+FluxH}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Prim2\+Flux\+H()}{Prim2FluxH()}}
+{\footnotesize\ttfamily void Prim2\+FluxH (\begin{DoxyParamCaption}\item[{double $\ast$}]{f,  }\item[{double $\ast$}]{v,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_ab0744adde00af3ef3862ccaf9ec25a4a}\label{physics_8h_ab0744adde00af3ef3862ccaf9ec25a4a}} 
+\index{physics.\+h@{physics.\+h}!Raise\+\_\+\+Index\+\_\+\+Range1@{Raise\+\_\+\+Index\+\_\+\+Range1}}
+\index{Raise\+\_\+\+Index\+\_\+\+Range1@{Raise\+\_\+\+Index\+\_\+\+Range1}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Raise\+\_\+\+Index\+\_\+\+Range1()}{Raise\_Index\_Range1()}}
+{\footnotesize\ttfamily void Raise\+\_\+\+Index\+\_\+\+Range1 (\begin{DoxyParamCaption}\item[{double $\ast$}]{con,  }\item[{double $\ast$}]{cov,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+} $\ast$}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_ab48e98cff6b8d14e5211e3f470c1cbe4}\label{physics_8h_ab48e98cff6b8d14e5211e3f470c1cbe4}} 
+\index{physics.\+h@{physics.\+h}!Scalar\+\_\+\+Contraction\+\_\+\+Range1@{Scalar\+\_\+\+Contraction\+\_\+\+Range1}}
+\index{Scalar\+\_\+\+Contraction\+\_\+\+Range1@{Scalar\+\_\+\+Contraction\+\_\+\+Range1}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Scalar\+\_\+\+Contraction\+\_\+\+Range1()}{Scalar\_Contraction\_Range1()}}
+{\footnotesize\ttfamily void Scalar\+\_\+\+Contraction\+\_\+\+Range1 (\begin{DoxyParamCaption}\item[{double $\ast$}]{scalar,  }\item[{double $\ast$}]{cov,  }\item[{double $\ast$}]{con }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_a5c4375c0cb1f9e6a83d35932a0949085}\label{physics_8h_a5c4375c0cb1f9e6a83d35932a0949085}} 
+\index{physics.\+h@{physics.\+h}!Source\+\_\+\+Terms@{Source\+\_\+\+Terms}}
+\index{Source\+\_\+\+Terms@{Source\+\_\+\+Terms}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Source\+\_\+\+Terms()}{Source\_Terms()}}
+{\footnotesize\ttfamily void Source\+\_\+\+Terms (\begin{DoxyParamCaption}\item[{double $\ast$}]{s,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_adc28fdaa824eb2702ac8071f14d59336}\label{physics_8h_adc28fdaa824eb2702ac8071f14d59336}} 
+\index{physics.\+h@{physics.\+h}!Sources@{Sources}}
+\index{Sources@{Sources}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{Sources()}{Sources()}}
+{\footnotesize\ttfamily void Sources (\begin{DoxyParamCaption}\item[{double $\ast$}]{u,  }\item[{\hyperlink{structvec__}{vec\+\_\+} $\ast$}]{v,  }\item[{int $\ast$}]{I }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{physics_8h_ad115ec9faf93cc0e7e92cbf3cfdde2b1}\label{physics_8h_ad115ec9faf93cc0e7e92cbf3cfdde2b1}} 
+\index{physics.\+h@{physics.\+h}!User\+\_\+\+Source\+\_\+\+Terms@{User\+\_\+\+Source\+\_\+\+Terms}}
+\index{User\+\_\+\+Source\+\_\+\+Terms@{User\+\_\+\+Source\+\_\+\+Terms}!physics.\+h@{physics.\+h}}
+\subsubsection{\texorpdfstring{User\+\_\+\+Source\+\_\+\+Terms()}{User\_Source\_Terms()}}
+{\footnotesize\ttfamily void User\+\_\+\+Source\+\_\+\+Terms (\begin{DoxyParamCaption}\item[{double $\ast$}]{s,  }\item[{double $\ast$}]{u,  }\item[{\hyperlink{structgauge__}{gauge\+\_\+}}]{local\+\_\+grid }\end{DoxyParamCaption})}
+

@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['s',['S',['../structvec__.html#af0d36a2478a5b41460ac10e7a1a57f66',1,'vec_']]],
+  ['s1m',['S1m',['../structgrid__.html#a53a83f9d1be868b6a8597d9299c28b0a',1,'grid_']]],
+  ['s1p',['S1p',['../structgrid__.html#aeefa72e863cfef36bd44af3197c249c7',1,'grid_']]],
+  ['s2m',['S2m',['../structgrid__.html#a55583121a699e4ba6c293f587526b535',1,'grid_']]],
+  ['s2p',['S2p',['../structgrid__.html#ac6451df09dd330af588c59a65371b96a',1,'grid_']]],
+  ['s3m',['S3m',['../structgrid__.html#ab231046900b239ff5de7c6ebd57a155c',1,'grid_']]],
+  ['s3p',['S3p',['../structgrid__.html#a58712514231d3abe7d4ed67f5afbf3ab',1,'grid_']]],
+  ['scalar_5fcontraction_5frange1',['Scalar_Contraction_Range1',['../auxfunc_8c.html#ab48e98cff6b8d14e5211e3f470c1cbe4',1,'Scalar_Contraction_Range1(double *scalar, double *cov, double *con):&#160;auxfunc.c'],['../physics_8h.html#ab48e98cff6b8d14e5211e3f470c1cbe4',1,'Scalar_Contraction_Range1(double *scalar, double *cov, double *con):&#160;auxfunc.c']]],
+  ['source_5fterms',['Source_Terms',['../HD_2svector_8c.html#a5c4375c0cb1f9e6a83d35932a0949085',1,'Source_Terms(double *s, double *u, gauge_ local_grid):&#160;svector.c'],['../physics_8h.html#a5c4375c0cb1f9e6a83d35932a0949085',1,'Source_Terms(double *s, double *u, gauge_ local_grid):&#160;svector.c'],['../RHD_2svector_8c.html#a5c4375c0cb1f9e6a83d35932a0949085',1,'Source_Terms(double *s, double *u, gauge_ local_grid):&#160;svector.c']]],
+  ['sources',['Sources',['../physics_8h.html#adc28fdaa824eb2702ac8071f14d59336',1,'Sources(double *u, vec_ *v, int *I):&#160;vectors.c'],['../vectors_8c.html#adc28fdaa824eb2702ac8071f14d59336',1,'Sources(double *u, vec_ *v, int *I):&#160;vectors.c']]],
+  ['sph_5facc',['SPH_ACC',['../_8initial__cond_8c.html#af4f88c314f1309ab910be2fa48cc9a9a',1,'.initial_cond.c']]],
+  ['spherical',['SPHERICAL',['../macros_8h.html#a98d0c8669ef3baf965f23ec5c12c6330',1,'macros.h']]],
+  ['standard',['STANDARD',['../macros_8h.html#a0b8ca8ad62b88c01b639bad62eafcbf1',1,'macros.h']]],
+  ['start',['start',['../main_8h.html#a45314566a84a31f43e6435d1eb24d4ec',1,'main.h']]],
+  ['stiff',['STIFF',['../macros_8h.html#a8d8fc4d78143b39ee5529b55d76c18c8',1,'macros.h']]],
+  ['stiff_5fq2uvector_2ec',['stiff_q2uvector.c',['../stiff__q2uvector_8c.html',1,'']]],
+  ['superbee',['SUPERBEE',['../macros_8h.html#ad0a17f107997b4a566d46b475445eeea',1,'SUPERBEE():&#160;macros.h'],['../_8limiters_8c.html#a013143acf639241995f5488bf577fa62',1,'Superbee(double A, double B):&#160;.limiters.c'],['../limiters_8h.html#a013143acf639241995f5488bf577fa62',1,'Superbee(double A, double B):&#160;.limiters.c'],['../limiters_8c.html#a013143acf639241995f5488bf577fa62',1,'Superbee(double A, double B):&#160;limiters.c']]],
+  ['surface_2ec',['surface.c',['../HD_2surface_8c.html',1,'(Global Namespace)'],['../RHD_2surface_8c.html',1,'(Global Namespace)']]],
+  ['surface_5fvolume',['Surface_Volume',['../HD_2surface_8c.html#aeb77faea2a6605a8b9fcdbcd6a2f1ece',1,'Surface_Volume():&#160;surface.c'],['../mesh_8h.html#aeb77faea2a6605a8b9fcdbcd6a2f1ece',1,'Surface_Volume():&#160;surface.c'],['../RHD_2surface_8c.html#aeb77faea2a6605a8b9fcdbcd6a2f1ece',1,'Surface_Volume():&#160;surface.c']]],
+  ['svector_2ec',['svector.c',['../HD_2svector_8c.html',1,'(Global Namespace)'],['../RHD_2svector_8c.html',1,'(Global Namespace)']]],
+  ['sx1',['sx1',['../structlim__.html#a60216547f49b2ae3eb47d8a88a78af05',1,'lim_']]],
+  ['sx2',['sx2',['../structlim__.html#a9e263b76017e32cf3fe2a798797579ce',1,'lim_']]],
+  ['sx3',['sx3',['../structlim__.html#ab9aae5cce5d935feac16ff1bdeace55d',1,'lim_']]]
+];

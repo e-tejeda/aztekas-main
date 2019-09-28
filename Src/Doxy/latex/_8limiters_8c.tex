@@ -1,0 +1,89 @@
+\hypertarget{_8limiters_8c}{}\section{.limiters.\+c File Reference}
+\label{_8limiters_8c}\index{.\+limiters.\+c@{.\+limiters.\+c}}
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_8limiters_8c_aae44d2c5d79726a36810f0cc3f76d230}{Reconst1D} (double $\ast$u, int r, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+int \hyperlink{_8limiters_8c_a8698b5d83237e541a4810f2e30fc7fdf}{Reconst2D} (double $\ast$u, int r, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+int \hyperlink{_8limiters_8c_a111cbfc734e28411ed67b9cd4e1906f9}{Reconst3D} (double $\ast$u, int r, \hyperlink{structlim__}{lim\+\_\+} $\ast$l, int $\ast$I)
+\item 
+double \hyperlink{_8limiters_8c_a57285b56bc2b01118ec5b73c2f2dde13}{Limiter} (double A, double B, int r)
+\item 
+double \hyperlink{_8limiters_8c_ada3b770c377e9fc5181f086d2547643b}{Maxmod} (double A, double B)
+\item 
+double \hyperlink{_8limiters_8c_a9fae6595b98c24324c2f1c37fd7f0447}{Minmod} (double A, double B)
+\item 
+double \hyperlink{_8limiters_8c_a6ba059a34fa97dd299831e35dd59259e}{Mc} (double A, double B)
+\item 
+double \hyperlink{_8limiters_8c_a013143acf639241995f5488bf577fa62}{Superbee} (double A, double B)
+\item 
+double \hyperlink{_8limiters_8c_a21452fdb1b42a501de5eaf8708496c84}{Godunov} (double A, double B)
+\item 
+double \hyperlink{_8limiters_8c_aa4f3b3e57ab276d350c01b1f2eec9d47}{Weno5} (double v1, double v2, double v3, double v4, double v5)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_8limiters_8c_a21452fdb1b42a501de5eaf8708496c84}\label{_8limiters_8c_a21452fdb1b42a501de5eaf8708496c84}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Godunov@{Godunov}}
+\index{Godunov@{Godunov}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Godunov()}{Godunov()}}
+{\footnotesize\ttfamily double Godunov (\begin{DoxyParamCaption}\item[{double}]{A,  }\item[{double}]{B }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_a57285b56bc2b01118ec5b73c2f2dde13}\label{_8limiters_8c_a57285b56bc2b01118ec5b73c2f2dde13}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Limiter@{Limiter}}
+\index{Limiter@{Limiter}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Limiter()}{Limiter()}}
+{\footnotesize\ttfamily double Limiter (\begin{DoxyParamCaption}\item[{double}]{A,  }\item[{double}]{B,  }\item[{int}]{r }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_ada3b770c377e9fc5181f086d2547643b}\label{_8limiters_8c_ada3b770c377e9fc5181f086d2547643b}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Maxmod@{Maxmod}}
+\index{Maxmod@{Maxmod}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Maxmod()}{Maxmod()}}
+{\footnotesize\ttfamily double Maxmod (\begin{DoxyParamCaption}\item[{double}]{A,  }\item[{double}]{B }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_a6ba059a34fa97dd299831e35dd59259e}\label{_8limiters_8c_a6ba059a34fa97dd299831e35dd59259e}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Mc@{Mc}}
+\index{Mc@{Mc}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Mc()}{Mc()}}
+{\footnotesize\ttfamily double Mc (\begin{DoxyParamCaption}\item[{double}]{A,  }\item[{double}]{B }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_a9fae6595b98c24324c2f1c37fd7f0447}\label{_8limiters_8c_a9fae6595b98c24324c2f1c37fd7f0447}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Minmod@{Minmod}}
+\index{Minmod@{Minmod}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Minmod()}{Minmod()}}
+{\footnotesize\ttfamily double Minmod (\begin{DoxyParamCaption}\item[{double}]{A,  }\item[{double}]{B }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_aae44d2c5d79726a36810f0cc3f76d230}\label{_8limiters_8c_aae44d2c5d79726a36810f0cc3f76d230}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Reconst1D@{Reconst1D}}
+\index{Reconst1D@{Reconst1D}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Reconst1\+D()}{Reconst1D()}}
+{\footnotesize\ttfamily int Reconst1D (\begin{DoxyParamCaption}\item[{double $\ast$}]{u,  }\item[{int}]{r,  }\item[{\hyperlink{structlim__}{lim\+\_\+} $\ast$}]{l,  }\item[{int $\ast$}]{I }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_a8698b5d83237e541a4810f2e30fc7fdf}\label{_8limiters_8c_a8698b5d83237e541a4810f2e30fc7fdf}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Reconst2D@{Reconst2D}}
+\index{Reconst2D@{Reconst2D}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Reconst2\+D()}{Reconst2D()}}
+{\footnotesize\ttfamily int Reconst2D (\begin{DoxyParamCaption}\item[{double $\ast$}]{u,  }\item[{int}]{r,  }\item[{\hyperlink{structlim__}{lim\+\_\+} $\ast$}]{l,  }\item[{int $\ast$}]{I }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_a111cbfc734e28411ed67b9cd4e1906f9}\label{_8limiters_8c_a111cbfc734e28411ed67b9cd4e1906f9}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Reconst3D@{Reconst3D}}
+\index{Reconst3D@{Reconst3D}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Reconst3\+D()}{Reconst3D()}}
+{\footnotesize\ttfamily int Reconst3D (\begin{DoxyParamCaption}\item[{double $\ast$}]{u,  }\item[{int}]{r,  }\item[{\hyperlink{structlim__}{lim\+\_\+} $\ast$}]{l,  }\item[{int $\ast$}]{I }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_a013143acf639241995f5488bf577fa62}\label{_8limiters_8c_a013143acf639241995f5488bf577fa62}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Superbee@{Superbee}}
+\index{Superbee@{Superbee}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Superbee()}{Superbee()}}
+{\footnotesize\ttfamily double Superbee (\begin{DoxyParamCaption}\item[{double}]{A,  }\item[{double}]{B }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_8limiters_8c_aa4f3b3e57ab276d350c01b1f2eec9d47}\label{_8limiters_8c_aa4f3b3e57ab276d350c01b1f2eec9d47}} 
+\index{.\+limiters.\+c@{.\+limiters.\+c}!Weno5@{Weno5}}
+\index{Weno5@{Weno5}!.\+limiters.\+c@{.\+limiters.\+c}}
+\subsubsection{\texorpdfstring{Weno5()}{Weno5()}}
+{\footnotesize\ttfamily double Weno5 (\begin{DoxyParamCaption}\item[{double}]{v1,  }\item[{double}]{v2,  }\item[{double}]{v3,  }\item[{double}]{v4,  }\item[{double}]{v5 }\end{DoxyParamCaption})}
+

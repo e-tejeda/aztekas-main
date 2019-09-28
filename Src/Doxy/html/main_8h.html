@@ -73,7 +73,19 @@ $(function() {
 
 <p>Main function, headers and variable declaration.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;omp.h&gt;</code><br />
+<code>#include &quot;physics.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="boundaries_8h_source.html">boundaries.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="limiters_8h_source.html">limiters.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="const_8h_source.html">const.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="macros_8h_source.html">macros.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="io_8h_source.html">io.h</a>&quot;</code><br />
+<code>#include &quot;user_param.h&quot;</code><br />
+</div>
 <p><a href="main_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -140,12 +152,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>CheckSimParameters</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:af3f499ac6a681c13abaaad7231a7b6d0"><td class="memItemLeft" align="right" valign="top"><a id="af3f499ac6a681c13abaaad7231a7b6d0"></a>
-double *&#160;</td><td class="memItemRight" valign="bottom"><b>U0</b></td></tr>
-<tr class="separator:af3f499ac6a681c13abaaad7231a7b6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3751638582cd4e6f3cae2999cd52d1"><td class="memItemLeft" align="right" valign="top"><a id="aea3751638582cd4e6f3cae2999cd52d1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>CHECK_NAN</b></td></tr>
+<tr class="separator:aea3751638582cd4e6f3cae2999cd52d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4eca6bbf61516707d8c0fb8cae547bb"><td class="memItemLeft" align="right" valign="top"><a id="aa4eca6bbf61516707d8c0fb8cae547bb"></a>
 double *&#160;</td><td class="memItemRight" valign="bottom"><b>U</b></td></tr>
 <tr class="separator:aa4eca6bbf61516707d8c0fb8cae547bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007f83c44337eec7638dcd2a053f1f00"><td class="memItemLeft" align="right" valign="top"><a id="a007f83c44337eec7638dcd2a053f1f00"></a>
+double *&#160;</td><td class="memItemRight" valign="bottom"><b>U0</b></td></tr>
+<tr class="separator:a007f83c44337eec7638dcd2a053f1f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66114ee0a7b8903c66894ea7031d58b0"><td class="memItemLeft" align="right" valign="top"><a id="a66114ee0a7b8903c66894ea7031d58b0"></a>
 double *&#160;</td><td class="memItemRight" valign="bottom"><b>U1</b></td></tr>
 <tr class="separator:a66114ee0a7b8903c66894ea7031d58b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -205,14 +220,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>x3min</b></td></tr>
 <tr class="separator:a4e2849b81f14c848d911b344ef127f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Main function, headers and variable declaration. </p>
-<dl class="section author"><dt>Author</dt><dd>Alejandro Aguayo-Ortiz</dd></dl>
-<p>#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #include&lt;string.h&gt; #include&lt;math.h&gt; #include&lt;omp.h&gt;</p>
-<p>#include"physics.h"</p>
-<p>#include"boundaries.h" #include"limiters.h"</p>
-<p>#include"const.h" #include"macros.h" #include"io.h" #include"user_param.h"</p>
-<p>NAN int CHECK_NAN;</p>
-<p>/* Define pointers </p>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Alejandro Aguayo-Ortiz </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="af294b550613b2085798c10af3b7934e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af294b550613b2085798c10af3b7934e5">&#9670;&nbsp;</a></span>Allocate_Array()</h2>
